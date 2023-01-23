@@ -2,7 +2,7 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme_selection/app_data.dart';
+import '../../app/app_data.dart';
 
 // import '../../../example5/widgets/shared/copy_color_to_clipboard.dart';
 

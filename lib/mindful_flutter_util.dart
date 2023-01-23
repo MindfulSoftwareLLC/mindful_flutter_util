@@ -1,11 +1,11 @@
 /// Utilities for Flutter from Mindful Software.
 library mindful_flutter_util;
 
-export './src/theme_selection/app_color.dart';
-export './src/theme_selection/app_data.dart';
-export './src/theme_selection/home_page.dart';
-export './src/theme_selection/main_theme_selection.dart';
-export './src/theme_selection/store.dart';
+export 'src/app/app_color.dart';
+export 'src/app/app_data.dart';
+export './src/theme_selection/theme_page.dart';
+export './src/theme_selection/main_theme_selection_demo.dart';
+export 'src/app/store.dart';
 export './src/theme_selection/theme_mode_switch.dart';
 export './src/theme_selection/theme_selection.dart';
 export './src/theme_selection/theme_service.dart';

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart' as pro;
 
 import '../utils/app_scroll_behavior.dart';
-import 'home_page.dart';
+import 'theme_page.dart';
 import 'theme_controller.dart';
 import 'theme_service.dart';
 import 'theme_service_prefs.dart';

@@ -1,7 +1,7 @@
 name: mindful_flutter_util
 description: Utilities for Flutter from Mindful Software.
 version: 0.1.0+1
-
+publish_to: none
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
@@ -13,17 +13,19 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   bloc: ^8.1.0
-  intl: ^0.17.0
   flex_color_scheme: ^5.1.0
   flex_color_picker: ^2.5.0
   flutter_bloc: ^8.1.1
-  font_awesome_flutter: ^10.2.1
+  font_awesome_flutter: ^10.3.0
   google_fonts: ^3.0.1
   hive: ^2.2.3
-  path_provider: ^2.0.11
-  shared_preferences: ^2.0.15
+  intl: ^0.17.0
+  mindful_dart_util:
+    git: git@github.com:michaelbushe/mindful_dart_util.git
   package_info_plus: ^2.0.0
+  path_provider: ^2.0.11
   provider: ^6.0.4
+  shared_preferences: ^2.0.15
   url_launcher: ^6.1.6
 
 dev_dependencies:

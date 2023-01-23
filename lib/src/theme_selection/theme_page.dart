@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../widgets/app/btn_splash.dart';
 import '../widgets/themeselect.dart';
 import '../widgets/universal/page_body.dart';
-import 'app_data.dart';
+import '../app/app_data.dart';
 import 'theme_controller.dart';
 
 // -----------------------------------------------------------------------------
