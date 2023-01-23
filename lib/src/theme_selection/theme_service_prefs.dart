@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../theme_selection/theme_service.dart';
 import '../utils/same_types.dart';
-import 'theme_service.dart';
 // ignore_for_file: comment_references
 
 // Set the bool flag to true to show debug prints. Even if it is forgotten

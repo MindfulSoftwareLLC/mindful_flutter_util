@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../controllers/theme_controller.dart';
+import '../../theme_selection/theme_controller.dart';
 
 // ToggleButtons used to change usage of key colors for color scheme generation.
 //

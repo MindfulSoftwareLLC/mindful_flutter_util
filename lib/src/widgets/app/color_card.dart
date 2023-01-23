@@ -2,8 +2,9 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
+import '../../theme_selection/app_data.dart';
+
 // import '../../../example5/widgets/shared/copy_color_to_clipboard.dart';
-import '../../const/app_data.dart';
 
 /// This is just simple SizedBox in a Card, with a passed in label, background
 /// and text label color. Used to show the colors of a theme or scheme

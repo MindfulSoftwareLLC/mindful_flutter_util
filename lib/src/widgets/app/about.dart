@@ -1,11 +1,9 @@
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../const/app_data.dart';
-import '../../utils/link_text_span.dart';
+import '../../theme_selection/app_data.dart';
 
 /// An about icon button used on the example's app app bar.
 class AboutIconButton extends StatelessWidget {
@@ -29,7 +27,7 @@ class AboutIconButton extends StatelessWidget {
 
 // This [showAppAboutDialog] function is based on the [AboutDialog] example
 // that exist(ed) in the Flutter Gallery App.
-void showAppAboutDialog(BuildContext context) async{
+void showAppAboutDialog(BuildContext context) async {
   final ThemeData theme = Theme.of(context);
   final TextStyle aboutTextStyle = theme.textTheme.bodyLarge!;
   final TextStyle footerStyle = theme.textTheme.bodySmall!;
@@ -53,9 +51,9 @@ void showAppAboutDialog(BuildContext context) async{
   }
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   String appName = packageInfo.appName;
-String packageName = packageInfo.packageName;
-String version = packageInfo.version;
-String buildNumber = packageInfo.buildNumber;
+  String packageName = packageInfo.packageName;
+  String version = packageInfo.version;
+  String buildNumber = packageInfo.buildNumber;
 
   showAboutDialog(
     context: context,
@@ -88,11 +86,11 @@ String buildNumber = packageInfo.buildNumber;
           height: 60,
           width: 60,
           child: IconButton(
-            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-            icon: FaIcon(FontAwesomeIcons.facebook,size: 40),
-            onPressed: ()async {
-              await launchUrl(Uri.parse('fb://profile/100047632187836'));
-            }),
+              // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+              icon: FaIcon(FontAwesomeIcons.facebook, size: 40),
+              onPressed: () async {
+                await launchUrl(Uri.parse('fb://profile/100047632187836'));
+              }),
         ),
         // Container(
         //   height: 60,
@@ -104,7 +102,6 @@ String buildNumber = packageInfo.buildNumber;
         //       print("Pressed");
         //     })
         // ),
-        
       ],
     ),
     applicationLegalese:

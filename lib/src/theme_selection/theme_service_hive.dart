@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_service_hive_adapters.dart';
 
 import '../utils/app_data_dir/app_data_dir.dart';
 import 'theme_service.dart';
-import 'theme_service_hive_adapters.dart';
 
 // Set the bool flag to true to show debug prints. Even if it is forgotten
 // to set it to false, debug prints will not show in release builds.

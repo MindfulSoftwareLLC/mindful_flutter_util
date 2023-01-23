@@ -2,8 +2,8 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../const/store.dart';
-import '../services/theme_service.dart';
+import 'store.dart';
+import 'theme_service.dart';
 
 /// Enum to indicate which palette we are using.
 ///

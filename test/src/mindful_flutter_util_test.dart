@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:mindful_flutter_util/mindful_flutter_util.dart';
+import 'package:mindful_flutter_util/src/mindful_flutter_util.dart';
 import 'package:test/test.dart';
 
 void main() {

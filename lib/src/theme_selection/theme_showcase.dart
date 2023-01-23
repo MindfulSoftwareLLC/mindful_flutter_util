@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'switch_list_tile_adaptive.dart';
+import '../widgets/universal/switch_list_tile_adaptive.dart';
 
 /// Theme showcase for the current theme.
 ///

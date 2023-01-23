@@ -6,6 +6,10 @@
 
 Utilities for Flutter from Mindful Software.
 
+All of theme_selection, some of app and widgets are from a run of
+https://brickhub.dev/bricks/theme_selection/0.2.0+0#usage
+
+
 ## Installation 💻
 
 **❗ In order to start using Mindful Flutter Util you must have the [Dart SDK][dart_install_link] installed on your machine.**

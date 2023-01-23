@@ -1,12 +1,11 @@
-
-
-import 'package:fantasy_detective/utils/theme_selection/shared/widgets/app/btn_splash.dart';
 import 'package:flutter/material.dart';
-import 'package:fantasy_detective/utils/theme_selection/shared/const/app_data.dart';
-import 'package:fantasy_detective/utils/theme_selection/shared/controllers/theme_controller.dart';
-import 'package:fantasy_detective/utils/theme_selection/shared/widgets/universal/page_body.dart';
-import 'package:fantasy_detective/utils/theme_selection/shared/widgets/themeselect.dart';
 import 'package:provider/provider.dart';
+
+import '../widgets/app/btn_splash.dart';
+import '../widgets/themeselect.dart';
+import '../widgets/universal/page_body.dart';
+import 'app_data.dart';
+import 'theme_controller.dart';
 
 // -----------------------------------------------------------------------------
 // Home Page for EXAMPLE 3 - Four Themes
@@ -22,7 +21,6 @@ class ThemePage extends StatefulWidget {
 }
 
 class _ThemeIndexState extends State<ThemePage> {
-  
   // const ThemeSelectPage({
   @override
   Widget build(BuildContext context) {
@@ -39,10 +37,12 @@ class _ThemeIndexState extends State<ThemePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            "Theme",
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white),
-          ),
-        
+          "Theme",
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium!
+              .copyWith(color: Colors.white),
+        ),
       ),
       body: PageBody(
         constraints: const BoxConstraints(maxWidth: AppData.maxBodyWidth),
@@ -61,7 +61,10 @@ class _ThemeIndexState extends State<ThemePage> {
             //   'A theme showcase displays the resulting theme using '
             //   'common Material widgets. Settings are persisted.',
             // ),
-            Text("Theme Mode",style: Theme.of(context).textTheme.titleMedium,),
+            Text(
+              "Theme Mode",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: 12),
             Card(
               margin: EdgeInsets.zero,
@@ -77,7 +80,6 @@ class _ThemeIndexState extends State<ThemePage> {
                     ButtonSplash(
                         onTap: () {
                           controller.setThemeMode(ThemeMode.system);
-                          
                         },
                         borderRadius: 8,
                         splashColor: Theme.of(context)
@@ -93,9 +95,13 @@ class _ThemeIndexState extends State<ThemePage> {
                               children: [
                                 Radio<ThemeMode>(
                                   fillColor: MaterialStateColor.resolveWith(
-                                      (states) => Theme.of(context).colorScheme.primary),
+                                      (states) => Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                   focusColor: MaterialStateColor.resolveWith(
-                                      (states) => Theme.of(context).colorScheme.primary),
+                                      (states) => Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                   value: ThemeMode.system,
                                   groupValue: controller.themeMode,
                                   onChanged: (ThemeMode? value) {
@@ -113,7 +119,6 @@ class _ThemeIndexState extends State<ThemePage> {
                     ButtonSplash(
                         onTap: () {
                           controller.setThemeMode(ThemeMode.light);
-                          
                         },
                         borderRadius: 8,
                         splashColor: Theme.of(context)
@@ -129,9 +134,13 @@ class _ThemeIndexState extends State<ThemePage> {
                               children: [
                                 Radio<ThemeMode>(
                                   fillColor: MaterialStateColor.resolveWith(
-                                      (states) => Theme.of(context).colorScheme.primary),
+                                      (states) => Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                   focusColor: MaterialStateColor.resolveWith(
-                                      (states) => Theme.of(context).colorScheme.primary),
+                                      (states) => Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                   value: ThemeMode.light,
                                   groupValue: controller.themeMode,
                                   onChanged: (ThemeMode? value) {
@@ -150,7 +159,6 @@ class _ThemeIndexState extends State<ThemePage> {
                     ButtonSplash(
                         onTap: () {
                           controller.setThemeMode(ThemeMode.dark);
-                        
                         },
                         borderRadius: 8,
                         splashColor: Theme.of(context)
@@ -165,10 +173,14 @@ class _ThemeIndexState extends State<ThemePage> {
                             child: Row(
                               children: [
                                 Radio<ThemeMode>(
-                                 fillColor: MaterialStateColor.resolveWith(
-                                      (states) => Theme.of(context).colorScheme.primary),
+                                  fillColor: MaterialStateColor.resolveWith(
+                                      (states) => Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                   focusColor: MaterialStateColor.resolveWith(
-                                      (states) => Theme.of(context).colorScheme.primary),
+                                      (states) => Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                   value: ThemeMode.dark,
                                   groupValue: controller.themeMode,
                                   onChanged: (ThemeMode? value) {
@@ -188,7 +200,10 @@ class _ThemeIndexState extends State<ThemePage> {
               ),
             ),
             SizedBox(height: 12),
-            Text("Color Mode",style: Theme.of(context).textTheme.titleMedium,),
+            Text(
+              "Color Mode",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             SizedBox(height: 12),
             // The content is wrapped in a card so we can see the
             // theme's surface blend impact better via the Card widget.
