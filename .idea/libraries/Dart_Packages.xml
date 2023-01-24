@@ -289,6 +289,13 @@
             </list>
           </value>
         </entry>
+        <entry key="mindful_dart_util">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../flutter/.pub-cache/git/mindful_dart_util-81f1e569f30f1a3e690f936f052df14f1908eb4c//lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="mocktail">
           <value>
             <list>
@@ -740,6 +747,7 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../flutter/.pub-cache/git/mindful_dart_util-81f1e569f30f1a3e690f936f052df14f1908eb4c//lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-47.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-4.7.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.1/lib" />

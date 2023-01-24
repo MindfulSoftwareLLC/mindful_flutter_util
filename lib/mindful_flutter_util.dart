@@ -1,12 +1,9 @@
 /// Utilities for Flutter from Mindful Software.
 library mindful_flutter_util;
 
-export 'src/app/app_color.dart';
-export 'src/app/app_data.dart';
-export './src/theme_selection/theme_page.dart';
 export './src/theme_selection/main_theme_selection_demo.dart';
-export 'src/app/store.dart';
 export './src/theme_selection/theme_mode_switch.dart';
+export './src/theme_selection/theme_page.dart';
 export './src/theme_selection/theme_selection.dart';
 export './src/theme_selection/theme_service.dart';
 export './src/theme_selection/theme_service_hive.dart';
@@ -17,7 +14,6 @@ export './src/theme_selection/theme_showcase.dart';
 export './src/utils/app_data_dir/app_data_dir.dart';
 export './src/utils/app_scroll_behavior.dart';
 export './src/utils/link_text_span.dart';
-export './src/utils/same_types.dart';
 export './src/widgets/app/about.dart';
 export './src/widgets/app/btn_splash.dart';
 export './src/widgets/app/color_card.dart';
@@ -36,3 +32,6 @@ export './src/widgets/universal/responsive_dialog.dart';
 export './src/widgets/universal/stateful_header_card.dart';
 export './src/widgets/universal/syntax_highlighter.dart';
 export 'mindful_flutter_util.dart';
+export 'src/app/app_color.dart';
+export 'src/app/app_data.dart';
+export 'src/app/store.dart';
