@@ -1,4 +1,3 @@
-import 'dart:io' show Directory;
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -17,7 +16,7 @@ Future<String> getAppDataDir() async {
     return ''; // WEB return empty string
   } else {
     // Other platforms, use path provider and their app support folder.
-    final Directory dir = await path_provider.getApplicationSupportDirectory();
+    final dir = await path_provider.getApplicationSupportDirectory();
     return dir.path;
   }
 }

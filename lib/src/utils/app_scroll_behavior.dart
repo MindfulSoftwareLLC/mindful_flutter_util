@@ -34,12 +34,12 @@ class AppleScrollBehavior extends ScrollBehavior {
 
   @override
   Widget buildScrollbar(
-          BuildContext context, Widget child, ScrollableDetails details) =>
+          BuildContext context, Widget child, ScrollableDetails details,) =>
       child;
 
   @override
   Widget buildOverscrollIndicator(
-          BuildContext context, Widget child, ScrollableDetails details) =>
+          BuildContext context, Widget child, ScrollableDetails details,) =>
       child;
 
   // Override behavior methods and getters like dragDevices

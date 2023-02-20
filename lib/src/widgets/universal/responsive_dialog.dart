@@ -43,7 +43,7 @@ class ResponsiveDialog extends StatelessWidget {
                     // This clip is expensive, but the other ones don't
                     // look as pretty as all as this one.
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: child),
+                    child: child,),
               ),
             ),
           );
@@ -64,11 +64,10 @@ Future<T?> showResponsiveDialog<T>({
   required BuildContext context,
   required Widget child,
 }) {
-  final double screenWidth = MediaQuery.of(context).size.width;
+  final screenWidth = MediaQuery.of(context).size.width;
   if (screenWidth >= _kWidthForFullScreenDialog) {
     return showDialog<T>(
       context: context,
-      barrierDismissible: true,
       barrierColor: Colors.black38,
       builder: (BuildContext context) => ResponsiveDialog(
         child: child,

@@ -16,7 +16,7 @@ class NavigationBarLabelBehaviorButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<bool> isSelected = <bool>[
+    final isSelected = <bool>[
       labelBehavior == NavigationDestinationLabelBehavior.alwaysHide,
       labelBehavior == NavigationDestinationLabelBehavior.onlyShowSelected,
       labelBehavior == NavigationDestinationLabelBehavior.alwaysShow,

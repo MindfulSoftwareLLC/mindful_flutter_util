@@ -33,9 +33,9 @@ class ThemedApp extends StatelessWidget {
         ),
         pro.Provider<ThemeService>.value(value: themeService)
       ],
-      builder: ((context, child) {
+      builder: (context, child) {
         return animatedBuilder();
-      }),
+      },
     );
   }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/universal/switch_list_tile_adaptive.dart';
+import 'package:mindful_flutter_util/src/widgets/universal/switch_list_tile_adaptive.dart';
 
 /// Theme showcase for the current theme.
 ///
@@ -93,8 +92,10 @@ class ThemeShowcase extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Text('Normal TextTheme',
-                      style: Theme.of(context).textTheme.titleMedium),
+                  child: Text(
+                    'Normal TextTheme',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 const TextThemeShowcase(),
               ],
@@ -111,8 +112,10 @@ class ThemeShowcase extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Text('Primary TextTheme',
-                      style: Theme.of(context).primaryTextTheme.subtitle1),
+                  child: Text(
+                    'Primary TextTheme',
+                    style: Theme.of(context).primaryTextTheme.titleMedium,
+                  ),
                 ),
                 const PrimaryTextThemeShowcase(),
               ],
@@ -229,7 +232,6 @@ class ToggleButtonsShowcase extends StatelessWidget {
         ),
         ToggleButtons(
           isSelected: const <bool>[true, false, false],
-          onPressed: null,
           children: const <Widget>[
             Icon(Icons.adb),
             Icon(Icons.phone),
@@ -267,7 +269,6 @@ class FabShowcase extends StatelessWidget {
         ),
         FloatingActionButton.extended(
           heroTag: null,
-          isExtended: true,
           onPressed: () {},
           tooltip: 'Tooltip on extended:true\nFloatingActionButton.extended',
           icon: const Icon(Icons.accessibility),
@@ -419,8 +420,8 @@ class _PopupMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme scheme = theme.colorScheme;
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
     return PopupMenuButton<int>(
       onSelected: (_) {},
       enabled: enabled,
@@ -436,9 +437,9 @@ class _PopupMenuButton extends StatelessWidget {
         child: ElevatedButton.icon(
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            primary: scheme.primary,
-            onPrimary: scheme.onPrimary,
-            onSurface: scheme.onSurface,
+            backgroundColor: scheme.primary,
+            foregroundColor: scheme.onPrimary,
+            disabledForegroundColor: scheme.onSurface,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(radius ?? 8)),
             ),
@@ -693,17 +694,17 @@ class TabBarForAppBarShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final bool isDark = theme.brightness == Brightness.dark;
-    final ColorScheme colorScheme = theme.colorScheme;
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final colorScheme = theme.colorScheme;
 
-    final Color effectiveTabBackground =
+    final effectiveTabBackground =
         Theme.of(context).appBarTheme.backgroundColor ??
             (isDark ? colorScheme.surface : colorScheme.primary);
-    final TextStyle denseHeader = theme.textTheme.titleMedium!.copyWith(
+    final denseHeader = theme.textTheme.titleMedium!.copyWith(
       fontSize: 13,
     );
-    final TextStyle denseBody = theme.textTheme.bodyMedium!
+    final denseBody = theme.textTheme.bodyMedium!
         .copyWith(fontSize: 12, color: theme.textTheme.bodySmall!.color);
 
     return DefaultTabController(
@@ -760,11 +761,11 @@ class TabBarForBackgroundShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextStyle denseHeader = theme.textTheme.titleMedium!.copyWith(
+    final theme = Theme.of(context);
+    final denseHeader = theme.textTheme.titleMedium!.copyWith(
       fontSize: 13,
     );
-    final TextStyle denseBody = theme.textTheme.bodyMedium!
+    final denseBody = theme.textTheme.bodyMedium!
         .copyWith(fontSize: 12, color: theme.textTheme.bodySmall!.color);
     return DefaultTabController(
       length: 3,
@@ -826,11 +827,11 @@ class _BottomNavigationBarShowcaseState
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextStyle denseHeader = theme.textTheme.titleMedium!.copyWith(
+    final theme = Theme.of(context);
+    final denseHeader = theme.textTheme.titleMedium!.copyWith(
       fontSize: 13,
     );
-    final TextStyle denseBody = theme.textTheme.bodyMedium!
+    final denseBody = theme.textTheme.bodyMedium!
         .copyWith(fontSize: 12, color: theme.textTheme.bodySmall!.color);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -898,11 +899,11 @@ class _NavigationBarShowcaseState extends State<NavigationBarShowcase> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextStyle denseHeader = theme.textTheme.titleMedium!.copyWith(
+    final theme = Theme.of(context);
+    final denseHeader = theme.textTheme.titleMedium!.copyWith(
       fontSize: 13,
     );
-    final TextStyle denseBody = theme.textTheme.bodyMedium!
+    final denseBody = theme.textTheme.bodyMedium!
         .copyWith(fontSize: 12, color: theme.textTheme.bodySmall!.color);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -993,11 +994,11 @@ class _NavigationRailShowcaseState extends State<NavigationRailShowcase> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextStyle denseHeader = theme.textTheme.titleMedium!.copyWith(
+    final theme = Theme.of(context);
+    final denseHeader = theme.textTheme.titleMedium!.copyWith(
       fontSize: 13,
     );
-    final TextStyle denseBody = theme.textTheme.bodyMedium!
+    final denseBody = theme.textTheme.bodyMedium!
         .copyWith(fontSize: 12, color: theme.textTheme.bodySmall!.color);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1241,30 +1242,32 @@ class MaterialAndBottomSheetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
-    final bool isLight = theme.brightness == Brightness.light;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isLight = theme.brightness == Brightness.light;
 
-    final Color defaultBackgroundColor = isLight
+    final defaultBackgroundColor = isLight
         ? Color.alphaBlend(
-            colorScheme.onSurface.withOpacity(0.80), colorScheme.surface)
+            colorScheme.onSurface.withOpacity(0.80),
+            colorScheme.surface,
+          )
         : colorScheme.onSurface;
-    final Color snackBackground =
+    final snackBackground =
         theme.snackBarTheme.backgroundColor ?? defaultBackgroundColor;
-    final Color snackForeground =
+    final snackForeground =
         ThemeData.estimateBrightnessForColor(snackBackground) ==
                 Brightness.light
             ? Colors.black
             : Colors.white;
-    final TextStyle snackStyle = theme.snackBarTheme.contentTextStyle ??
+    final snackStyle = theme.snackBarTheme.contentTextStyle ??
         ThemeData(brightness: Brightness.light)
             .textTheme
             .titleMedium!
             .copyWith(color: snackForeground);
-    final TextStyle denseHeader = theme.textTheme.titleMedium!.copyWith(
+    final denseHeader = theme.textTheme.titleMedium!.copyWith(
       fontSize: 13,
     );
-    final TextStyle denseBody = theme.textTheme.bodyMedium!
+    final denseBody = theme.textTheme.bodyMedium!
         .copyWith(fontSize: 12, color: theme.textTheme.bodySmall!.color);
 
     return Column(
@@ -1303,8 +1306,6 @@ class MaterialAndBottomSheetShowcase extends StatelessWidget {
           style: denseBody,
         ),
         Material(
-          type: MaterialType.canvas,
-          elevation: 0,
           surfaceTintColor: colorScheme.surfaceTint,
           shadowColor: colorScheme.shadow,
           child: const SizedBox(
@@ -1314,7 +1315,6 @@ class MaterialAndBottomSheetShowcase extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Material(
-          type: MaterialType.canvas,
           elevation: 1,
           surfaceTintColor: colorScheme.surfaceTint,
           shadowColor: colorScheme.shadow,
@@ -1325,7 +1325,6 @@ class MaterialAndBottomSheetShowcase extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Material(
-          type: MaterialType.canvas,
           elevation: 4,
           surfaceTintColor: colorScheme.surfaceTint,
           shadowColor: colorScheme.shadow,
@@ -1344,7 +1343,6 @@ class MaterialAndBottomSheetShowcase extends StatelessWidget {
         ),
         Material(
           type: MaterialType.card,
-          elevation: 0,
           surfaceTintColor: colorScheme.surfaceTint,
           shadowColor: colorScheme.shadow,
           child: const SizedBox(
@@ -1399,15 +1397,15 @@ class MaterialAndBottomSheetShowcase extends StatelessWidget {
                     const Spacer(),
                     Material(
                       color: snackBackground,
-                      elevation: 0,
                       surfaceTintColor: colorScheme.surfaceTint,
                       shadowColor: colorScheme.shadow,
                       child: SizedBox(
                         height: 40,
                         child: Center(
                           child: Text(
-                              'A Material SnackBar, style simulation only',
-                              style: snackStyle),
+                            'A Material SnackBar, style simulation only',
+                            style: snackStyle,
+                          ),
                         ),
                       ),
                     ),
@@ -1427,12 +1425,12 @@ class CardShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
-    final TextStyle denseHeader = theme.textTheme.titleMedium!.copyWith(
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final denseHeader = theme.textTheme.titleMedium!.copyWith(
       fontSize: 13,
     );
-    final TextStyle denseBody = theme.textTheme.bodyMedium!
+    final denseBody = theme.textTheme.bodyMedium!
         .copyWith(fontSize: 12, color: theme.textTheme.bodySmall!.color);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1508,7 +1506,8 @@ class PrimaryTextThemeShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextThemeColumnShowcase(
-        textTheme: Theme.of(context).primaryTextTheme);
+      textTheme: Theme.of(context).primaryTextTheme,
+    );
   }
 }
 
@@ -1521,9 +1520,10 @@ class TextThemeColumnShowcase extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text('Font: ${textTheme.titleSmall!.fontFamily}',
-            style:
-                textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600)),
+        Text(
+          'Font: ${textTheme.titleSmall!.fontFamily}',
+          style: textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600),
+        ),
         Text(
           'Display Large '
           '(${textTheme.displayLarge!.fontSize!.toStringAsFixed(0)})',

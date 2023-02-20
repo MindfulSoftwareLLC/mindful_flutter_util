@@ -3,6 +3,19 @@
 import 'package:flutter/material.dart';
 
 class ButtonSplash extends StatefulWidget {
+
+  const ButtonSplash(
+      {super.key,
+      @required this.child,
+      this.splashColor,
+      @required this.onTap,
+      this.center,
+      this.borderRadius,
+      this.centerBottom,
+      this.topRight,
+      this.margin,
+      this.hoverColor,
+      this.selectedWidget,});
   final Widget? child;
   final Color? splashColor;
   final Color? hoverColor;
@@ -13,20 +26,6 @@ class ButtonSplash extends StatefulWidget {
   final double? borderRadius;
   final EdgeInsetsGeometry? margin;
   final bool Function()? selectedWidget;
-
-  ButtonSplash(
-      {Key? key,
-      @required this.child,
-      this.splashColor,
-      @required this.onTap,
-      this.center,
-      this.borderRadius,
-      this.centerBottom,
-      this.topRight,
-      this.margin,
-      this.hoverColor,
-      this.selectedWidget})
-      : super(key: key);
   @override
   _ButtonSplashState createState() => _ButtonSplashState();
 }
@@ -43,8 +42,7 @@ class _ButtonSplashState extends State<ButtonSplash>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 100),
-      lowerBound: 0.0,
+      duration: const Duration(milliseconds: 100),
       upperBound: 0.02,
     );
     _controller!.addListener(() {
@@ -76,7 +74,7 @@ class _ButtonSplashState extends State<ButtonSplash>
         scale: _scale!,
         child: Container(
           margin: widget.margin ??
-              EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
+              const EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
           child: InkWell(
             onTap: widget.onTap ?? () => print('tap'),
             onHover: (hover) {
@@ -108,15 +106,14 @@ class _ButtonSplashState extends State<ButtonSplash>
                       alignment: Alignment.centerRight,
                       child: Container(
                         width: 5,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.orange,
                         ),
                       ),
-                    )),
+                    ),),
                 if (onhover)
                   Positioned.fill(
                     child: Align(
-                      alignment: Alignment.center,
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius:
@@ -132,22 +129,21 @@ class _ButtonSplashState extends State<ButtonSplash>
                 if (widget.center != null)
                   Positioned.fill(
                       child: Align(
-                    alignment: Alignment.center,
                     child: enable
                         ? Icon(Icons.play_circle_outline,
-                            size: 36, color: widget.splashColor ?? Colors.white)
+                            size: 36, color: widget.splashColor ?? Colors.white,)
                         : Container(),
-                  )),
+                  ),),
                 if (widget.centerBottom != null)
                   Positioned.fill(
                       child: Align(
                           alignment: Alignment.bottomCenter,
-                          child: enable ? widget.centerBottom : Container())),
+                          child: enable ? widget.centerBottom : Container(),),),
                 if (widget.topRight != null)
                   Positioned.fill(
                       child: Align(
                           alignment: Alignment.topRight,
-                          child: enable ? widget.topRight : Container())),
+                          child: enable ? widget.topRight : Container(),),),
                 // Container(
                 //   margin: widget.margin,
                 //   child: Material(

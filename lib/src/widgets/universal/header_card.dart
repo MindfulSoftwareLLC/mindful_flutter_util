@@ -104,10 +104,10 @@ class HeaderCard extends StatelessWidget {
   final Widget? child;
 
   static bool _colorsAreClose(Color a, Color b) {
-    final int dR = a.red - b.red;
-    final int dG = a.green - b.green;
-    final int dB = a.blue - b.blue;
-    final int distance = dR * dR + dG * dG + dB * dB;
+    final dR = a.red - b.red;
+    final dG = a.green - b.green;
+    final dB = a.blue - b.blue;
+    final distance = dR * dR + dG * dG + dB * dB;
     // Calculating orthogonal distance between colors should take the the
     // square root as well, but we don't need that extra compute step.
     // We just need a number to represents some relative closeness of the
@@ -124,18 +124,18 @@ class HeaderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final bool useMaterial3 = theme.useMaterial3;
-    final ColorScheme scheme = theme.colorScheme;
-    final Color background = theme.scaffoldBackgroundColor;
+    final theme = Theme.of(context);
+    final useMaterial3 = theme.useMaterial3;
+    final scheme = theme.colorScheme;
+    final background = theme.scaffoldBackgroundColor;
     // Use passed in color for the Card, or default themed Card theme color.
-    final Color cardColor = color ?? theme.cardColor;
+    final cardColor = color ?? theme.cardColor;
     // Compute a header color with fixed primary blend from the card color,
-    final Color headerColor =
+    final headerColor =
         Color.alphaBlend(scheme.primary.withAlpha(20), cardColor);
     // Get the card's ShapeBorder from the theme card shape
-    ShapeBorder? shapeBorder = theme.cardTheme.shape;
-    final bool useHeading =
+    var shapeBorder = theme.cardTheme.shape;
+    final useHeading =
         title != null || subtitle != null || leading != null;
     // Make a shape border if Card or its header color are close in color
     // to the scaffold background color, because if that happens we want to
@@ -147,7 +147,6 @@ class HeaderCard extends StatelessWidget {
         shapeBorder = shapeBorder.copyWith(
           side: BorderSide(
             color: theme.dividerColor,
-            width: 1,
           ),
         );
         // If
@@ -161,7 +160,6 @@ class HeaderCard extends StatelessWidget {
               BorderRadius.all(Radius.circular(useMaterial3 ? 12 : 4)),
           side: BorderSide(
             color: theme.dividerColor,
-            width: 1,
           ),
         );
       }
@@ -169,11 +167,11 @@ class HeaderCard extends StatelessWidget {
 
     // Force title widget for Card header to use opinionated bold style,
     // if we have a title, boldTitle is true and title was a Text.
-    Widget? cardTitle = title;
+    var cardTitle = title;
     if (cardTitle != null && cardTitle is Text && boldTitle) {
-      final Text textTitle = cardTitle;
-      final TextStyle? cardTitleStyle = cardTitle.style;
-      final String cardTitleText = textTitle.data ?? '';
+      final textTitle = cardTitle;
+      final cardTitleStyle = cardTitle.style;
+      final cardTitleText = textTitle.data ?? '';
       cardTitle = Text(
         cardTitleText,
         style: cardTitleStyle?.copyWith(fontWeight: FontWeight.bold) ??

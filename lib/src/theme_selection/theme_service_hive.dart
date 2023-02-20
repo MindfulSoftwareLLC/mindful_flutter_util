@@ -1,9 +1,10 @@
+// ignore_for_file: cascade_invocations
+
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_service.dart';
 import 'package:mindful_flutter_util/src/theme_selection/theme_service_hive_adapters.dart';
-
-import '../utils/app_data_dir/app_data_dir.dart';
-import 'theme_service.dart';
+import 'package:mindful_flutter_util/src/utils/app_data_dir/app_data_dir.dart';
 
 // Set the bool flag to true to show debug prints. Even if it is forgotten
 // to set it to false, debug prints will not show in release builds.
@@ -43,7 +44,7 @@ class ThemeServiceHive implements ThemeService {
     // right, the folder we got with it did not work on Windows. This
     // implementation works and it uses the same folder that SharedPreferences
     // does.
-    final String appDataDir = await getAppDataDir();
+    final appDataDir = await getAppDataDir();
     // To make it easier to find the files on your device, this should help.
     // Usually you find the "shared_preferences.json" file in the same folder
     // that the ThemeServicePref creates with SharedPreferences. You cannot
@@ -55,7 +56,8 @@ class ThemeServiceHive implements ThemeService {
     // used as well. We always show this path info in none release builds.
     if (!kReleaseMode) {
       debugPrint(
-          'Hive using storage path: $appDataDir and file name: $boxName');
+        'Hive using storage path: $appDataDir and file name: $boxName',
+      );
     }
     // Init the Hive box box giving it the platform usable folder.
     Hive.init(appDataDir);
@@ -91,7 +93,7 @@ class ThemeServiceHive implements ThemeService {
   @override
   Future<T> load<T>(String key, T defaultValue) async {
     try {
-      final T loaded = _hiveBox.get(key, defaultValue: defaultValue) as T;
+      final loaded = _hiveBox.get(key, defaultValue: defaultValue) as T;
       if (_debug) {
         debugPrint('Hive type   : $key as ${defaultValue.runtimeType}');
         debugPrint('Hive loaded : $key as $loaded with ${loaded.runtimeType}');

@@ -2,9 +2,8 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mindful_dart_util/mindful_dart_util.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../theme_selection/theme_service.dart';
 // ignore_for_file: comment_references
 
 // Set the bool flag to true to show debug prints. Even if it is forgotten
@@ -105,7 +104,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is boolean nullable value.
       if (sameTypes<T, bool?>()) {
-        final bool? value = _prefs.getBool(key);
+        final value = _prefs.getBool(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded type bool?   : $key as $value');
         }
@@ -121,7 +120,7 @@ class ThemeServicePrefs implements ThemeService {
       if (sameTypes<T, bool>()) {
         // For a non nullable, we can just use the defaultValue as fallback if
         // a key did not exist.
-        final bool value = _prefs.getBool(key) ?? defaultValue as bool;
+        final value = _prefs.getBool(key) ?? defaultValue as bool;
         if (_debug) {
           debugPrint('SharedPrefs loaded type bool    : $key as $value');
         }
@@ -130,7 +129,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is integer nullable value.
       if (sameTypes<T, int?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded type int?    : $key as $value');
         }
@@ -149,7 +148,7 @@ class ThemeServicePrefs implements ThemeService {
       if (sameTypes<T, int>()) {
         // For a non nullable, we can just use the defaultValue as fallback if
         // a key did not exist.
-        final int value = _prefs.getInt(key) ?? defaultValue as int;
+        final value = _prefs.getInt(key) ?? defaultValue as int;
         if (_debug) {
           debugPrint('SharedPrefs loaded type int     : $key as $value');
         }
@@ -159,7 +158,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is double nullable value.
       if (sameTypes<T, double?>()) {
-        final double? value = _prefs.getDouble(key) ?? defaultValue as double?;
+        final value = _prefs.getDouble(key) ?? defaultValue as double?;
         if (_debug) {
           debugPrint('SharedPrefs loaded type double? : $key as $value');
         }
@@ -170,7 +169,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is double none nullable value.
       if (sameTypes<T, double>()) {
-        final double value = _prefs.getDouble(key) ?? defaultValue as double;
+        final value = _prefs.getDouble(key) ?? defaultValue as double;
         if (_debug) {
           debugPrint('SharedPrefs loaded type double  : $key as $value');
         }
@@ -179,7 +178,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is String nullable value.
       if (sameTypes<T, String?>()) {
-        final String? value = _prefs.getString(key) ?? defaultValue as String?;
+        final value = _prefs.getString(key) ?? defaultValue as String?;
         if (_debug) {
           debugPrint('SharedPrefs loaded type String? : $key as $value');
         }
@@ -190,7 +189,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is String none nullable value.
       if (sameTypes<T, String>()) {
-        final String value = _prefs.getString(key) ?? defaultValue as String;
+        final value = _prefs.getString(key) ?? defaultValue as String;
         if (_debug) {
           debugPrint('SharedPrefs loaded type String  : $key as $value');
         }
@@ -199,7 +198,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is Color nullable value.
       if (sameTypes<T, Color?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded Color?       : $key as $value');
         }
@@ -217,7 +216,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is Color none nullable value.
       if (sameTypes<T, Color>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded Color        : $key as $value');
         }
@@ -237,7 +236,7 @@ class ThemeServicePrefs implements ThemeService {
       //
       // T is ThemeMode nullable value.
       if (sameTypes<T, ThemeMode?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded ThemeMode?   : $key as $value');
         }
@@ -254,7 +253,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is ThemeMode none nullable value.
       if (sameTypes<T, ThemeMode>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded ThemeMode    : $key as $value');
         }
@@ -274,7 +273,7 @@ class ThemeServicePrefs implements ThemeService {
       //
       // T is FlexScheme nullable value.
       if (sameTypes<T, FlexScheme?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexScheme?  : $key as $value');
         }
@@ -285,7 +284,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexScheme none nullable value.
       if (sameTypes<T, FlexScheme>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexScheme   : $key as $value');
         }
@@ -296,7 +295,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexSurfaceMode nullable value.
       if (sameTypes<T, FlexSurfaceMode?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexSurfaceMode? : $key as $value');
         }
@@ -307,7 +306,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexSurfaceMode none nullable value.
       if (sameTypes<T, FlexSurfaceMode>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexSurfaceMode  : $key as $value');
         }
@@ -318,10 +317,10 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexInputBorderType nullable value.
       if (sameTypes<T, FlexInputBorderType?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint(
-              'SharedPrefs loaded FlexInputBorderType? : $key as $value');
+              'SharedPrefs loaded FlexInputBorderType? : $key as $value',);
         }
         if (value == null) return defaultValue;
         if (value < 0) return null as T;
@@ -330,10 +329,10 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexInputBorderType none nullable value.
       if (sameTypes<T, FlexInputBorderType>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint(
-              'SharedPrefs loaded FlexInputBorderType  : $key as $value');
+              'SharedPrefs loaded FlexInputBorderType  : $key as $value',);
         }
         if (value == null) return defaultValue;
         if (value < 0) return defaultValue;
@@ -342,7 +341,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexAppBarStyle nullable value.
       if (sameTypes<T, FlexAppBarStyle?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexAppBarStyle? : $key as $value');
         }
@@ -353,7 +352,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexAppBarStyle none nullable value.
       if (sameTypes<T, FlexAppBarStyle>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexAppBarStyle  : $key as $value');
         }
@@ -364,7 +363,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexTabBarStyle nullable value.
       if (sameTypes<T, FlexTabBarStyle?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexTabBarStyle? : $key as $value');
         }
@@ -375,7 +374,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexTabBarStyle none nullable value.
       if (sameTypes<T, FlexTabBarStyle>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded FlexTabBarStyle  : $key as $value');
         }
@@ -386,10 +385,10 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexSystemNavBarStyle nullable value.
       if (sameTypes<T, FlexSystemNavBarStyle?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint(
-              'SharedPrefs loaded FlexSystemNavBarStyle? : $key as $value');
+              'SharedPrefs loaded FlexSystemNavBarStyle? : $key as $value',);
         }
         if (value == null) return defaultValue;
         if (value < 0) return null as T;
@@ -398,10 +397,10 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is FlexSystemNavBarStyle none nullable value.
       if (sameTypes<T, FlexSystemNavBarStyle>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint(
-              'SharedPrefs loaded FlexSystemNavBarStyle  : $key as $value');
+              'SharedPrefs loaded FlexSystemNavBarStyle  : $key as $value',);
         }
         if (value == null) return defaultValue;
         if (value < 0) return defaultValue;
@@ -410,7 +409,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is SchemeColor nullable value.
       if (sameTypes<T, SchemeColor?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded SchemeColor? : $key as $value');
         }
@@ -421,7 +420,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is SchemeColor none nullable value.
       if (sameTypes<T, SchemeColor>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded SchemeColor  : $key as $value');
         }
@@ -432,7 +431,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is NavigationDestinationLabelBehavior nullable value.
       if (sameTypes<T, NavigationDestinationLabelBehavior?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded NavigationDestinationLabelBehavior? '
               ': $key as $value');
@@ -446,7 +445,7 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is NavigationDestinationLabelBehavior none nullable value.
       if (sameTypes<T, NavigationDestinationLabelBehavior>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint('SharedPrefs loaded NavigationDestinationLabelBehavior '
               ': $key as $value');
@@ -460,10 +459,10 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is NavigationRailLabelType nullable value.
       if (sameTypes<T, NavigationRailLabelType?>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint(
-              'SharedPrefs loaded NavigationRailLabelType?: $key as $value');
+              'SharedPrefs loaded NavigationRailLabelType?: $key as $value',);
         }
         if (value == null) return defaultValue;
         if (value < 0) return null as T;
@@ -472,10 +471,10 @@ class ThemeServicePrefs implements ThemeService {
       }
       // T is NavigationRailLabelType none nullable value.
       if (sameTypes<T, NavigationRailLabelType>()) {
-        final int? value = _prefs.getInt(key);
+        final value = _prefs.getInt(key);
         if (_debug) {
           debugPrint(
-              'SharedPrefs loaded NavigationRailLabelType : $key as $value');
+              'SharedPrefs loaded NavigationRailLabelType : $key as $value',);
         }
         if (value == null) return defaultValue;
         if (value < 0) return defaultValue;
@@ -569,7 +568,7 @@ class ThemeServicePrefs implements ThemeService {
       // Save a nullable double value.
       if (sameTypes<T, double?>()) {
         if (value == null) {
-          await _prefs.setDouble(key, -1.0);
+          await _prefs.setDouble(key, -1);
           if (_debug) {
             debugPrint('SharedPrefs saved type double?  : $key NULL as -1.0');
           }
@@ -626,7 +625,7 @@ class ThemeServicePrefs implements ThemeService {
           await _prefs.setInt(key, (value as Color).value);
           if (_debug) {
             debugPrint(
-                'SharedPrefs saved type Color?   : $key as ${value.value}');
+                'SharedPrefs saved type Color?   : $key as ${value.value}',);
           }
           return;
         }
@@ -636,7 +635,7 @@ class ThemeServicePrefs implements ThemeService {
         await _prefs.setInt(key, (value as Color).value);
         if (_debug) {
           debugPrint(
-              'SharedPrefs saved type Color    : $key as ${value.value}');
+              'SharedPrefs saved type Color    : $key as ${value.value}',);
         }
         return;
       }
@@ -651,7 +650,7 @@ class ThemeServicePrefs implements ThemeService {
         await _prefs.setInt(key, value.index);
         if (_debug) {
           debugPrint(
-              'SharedPrefs saved type Enum     : $key as ${value.index}');
+              'SharedPrefs saved type Enum     : $key as ${value.index}',);
         }
         return;
       }
@@ -676,7 +675,7 @@ class ThemeServicePrefs implements ThemeService {
             await _prefs.setInt(key, value.index);
             if (_debug) {
               debugPrint(
-                  'SharedPrefs saved type Enum?    : $key as ${value.index}');
+                  'SharedPrefs saved type Enum?    : $key as ${value.index}',);
             }
             return;
           }

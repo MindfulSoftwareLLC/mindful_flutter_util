@@ -16,7 +16,7 @@ class NavigationRailLabelTypeButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<bool> isSelected = <bool>[
+    final isSelected = <bool>[
       style == NavigationRailLabelType.none,
       style == NavigationRailLabelType.selected,
       style == NavigationRailLabelType.all,

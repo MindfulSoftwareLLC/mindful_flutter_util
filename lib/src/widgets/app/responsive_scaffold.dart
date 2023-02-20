@@ -476,8 +476,9 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
       }
     }
     menuItemsIconState = List<ResponsiveMenuItemIconState>.generate(
-        widget.menuItems.length,
-        (int i) => ResponsiveMenuItemIconState.primary);
+      widget.menuItems.length,
+      (int i) => ResponsiveMenuItemIconState.primary,
+    );
     if (widget.menuItemsIconState != null) {
       if ((widget.menuItemsIconState?.length ?? 0) == widget.menuItems.length) {
         menuItemsIconState = widget.menuItemsIconState!;
@@ -833,10 +834,14 @@ class _MenuItem extends StatelessWidget {
     // theme's color schemes, like here:
     final iconColor = enabled
         ? isLight
-            ? Color.alphaBlend(theme.colorScheme.primary.withAlpha(0x99),
-                theme.colorScheme.onSurface)
-            : Color.alphaBlend(theme.colorScheme.primary.withAlpha(0x7F),
-                theme.colorScheme.onSurface)
+            ? Color.alphaBlend(
+                theme.colorScheme.primary.withAlpha(0x99),
+                theme.colorScheme.onSurface,
+              )
+            : Color.alphaBlend(
+                theme.colorScheme.primary.withAlpha(0x7F),
+                theme.colorScheme.onSurface,
+              )
         : theme.colorScheme.onSurface.withAlpha(0x55);
     final textColor = enabled
         ? theme.colorScheme.onSurface.withAlpha(0xCC)
@@ -967,9 +972,10 @@ class _MenuLeadingItemState extends State<_MenuLeadingItem> {
             radius: widget.railWidth / 2 - hPadding,
             child: Text(
               widget.menuLeadingAvatarLabel,
-              style: primaryTextTheme.subtitle1!.copyWith(
-                  color: theme.colorScheme.onPrimary,
-                  fontWeight: FontWeight.w600),
+              style: primaryTextTheme.titleMedium!.copyWith(
+                color: theme.colorScheme.onPrimary,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           title: widget.menuLeadingTitle,

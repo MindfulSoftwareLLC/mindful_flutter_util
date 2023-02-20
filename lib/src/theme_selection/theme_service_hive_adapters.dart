@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 class ThemeModeAdapter extends TypeAdapter<ThemeMode> {
   @override
   ThemeMode read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return ThemeMode.values[index];
   }
 
@@ -23,7 +23,7 @@ class ThemeModeAdapter extends TypeAdapter<ThemeMode> {
 class ColorAdapter extends TypeAdapter<Color> {
   @override
   Color read(BinaryReader reader) {
-    final int value = reader.readInt();
+    final value = reader.readInt();
     return Color(value);
   }
 
@@ -40,7 +40,7 @@ class ColorAdapter extends TypeAdapter<Color> {
 class FlexSchemeAdapter extends TypeAdapter<FlexScheme> {
   @override
   FlexScheme read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return FlexScheme.values[index];
   }
 
@@ -57,7 +57,7 @@ class FlexSchemeAdapter extends TypeAdapter<FlexScheme> {
 class FlexSurfaceModeAdapter extends TypeAdapter<FlexSurfaceMode> {
   @override
   FlexSurfaceMode read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return FlexSurfaceMode.values[index];
   }
 
@@ -74,7 +74,7 @@ class FlexSurfaceModeAdapter extends TypeAdapter<FlexSurfaceMode> {
 class FlexInputBorderTypeAdapter extends TypeAdapter<FlexInputBorderType> {
   @override
   FlexInputBorderType read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return FlexInputBorderType.values[index];
   }
 
@@ -91,7 +91,7 @@ class FlexInputBorderTypeAdapter extends TypeAdapter<FlexInputBorderType> {
 class FlexAppBarStyleAdapter extends TypeAdapter<FlexAppBarStyle> {
   @override
   FlexAppBarStyle read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return FlexAppBarStyle.values[index];
   }
 
@@ -108,7 +108,7 @@ class FlexAppBarStyleAdapter extends TypeAdapter<FlexAppBarStyle> {
 class FlexTabBarStyleAdapter extends TypeAdapter<FlexTabBarStyle> {
   @override
   FlexTabBarStyle read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return FlexTabBarStyle.values[index];
   }
 
@@ -125,7 +125,7 @@ class FlexTabBarStyleAdapter extends TypeAdapter<FlexTabBarStyle> {
 class FlexSystemNavBarStyleAdapter extends TypeAdapter<FlexSystemNavBarStyle> {
   @override
   FlexSystemNavBarStyle read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return FlexSystemNavBarStyle.values[index];
   }
 
@@ -145,7 +145,7 @@ class FlexSystemNavBarStyleAdapter extends TypeAdapter<FlexSystemNavBarStyle> {
 class FlexSchemeColorAdapter extends TypeAdapter<SchemeColor?> {
   @override
   SchemeColor? read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     if (index < 0 || index >= SchemeColor.values.length) {
       return null;
     } else {
@@ -167,7 +167,7 @@ class NavigationDestinationLabelBehaviorAdapter
     extends TypeAdapter<NavigationDestinationLabelBehavior> {
   @override
   NavigationDestinationLabelBehavior read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return NavigationDestinationLabelBehavior.values[index];
   }
 
@@ -185,7 +185,7 @@ class NavigationRailLabelTypeAdapter
     extends TypeAdapter<NavigationRailLabelType> {
   @override
   NavigationRailLabelType read(BinaryReader reader) {
-    final int index = reader.readInt();
+    final index = reader.readInt();
     return NavigationRailLabelType.values[index];
   }
 

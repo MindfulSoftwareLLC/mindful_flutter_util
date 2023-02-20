@@ -31,14 +31,14 @@ class ColorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String materialName = ColorTools.materialName(color);
-    final String nameThatColor = ColorTools.nameThatColor(color);
-    final String space = materialName == '' ? '' : ' ';
-    final MediaQueryData media = MediaQuery.of(context);
-    final bool isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
+    final materialName = ColorTools.materialName(color);
+    final nameThatColor = ColorTools.nameThatColor(color);
+    final space = materialName == '' ? '' : ' ';
+    final media = MediaQuery.of(context);
+    final isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
         media.size.height < UIConst.phoneHeightBreakpoint;
-    final double fontSize = isPhone ? 10 : 11;
-    final Size effectiveSize =
+    final fontSize = isPhone ? 10.0 : 11.0;
+    final effectiveSize =
         size ?? (isPhone ? const Size(74, 54) : const Size(86, 58));
 
     return SizedBox(

@@ -16,7 +16,7 @@ class UseKeyColorsButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<bool> isSelected = <bool>[
+    final isSelected = <bool>[
       controller.useKeyColors,
       controller.useSecondary && controller.useKeyColors,
       controller.useTertiary && controller.useKeyColors,
@@ -39,7 +39,7 @@ class UseKeyColorsButtons extends StatelessWidget {
           message: 'Use input Primary color\n'
               'as key to seed your ColorScheme',
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 8),
             child: Text('Primary', style: TextStyle(fontSize: 12)),
           ),
         ),
@@ -52,7 +52,7 @@ class UseKeyColorsButtons extends StatelessWidget {
             message: 'Use input Secondary color\n'
                 'as key to seed your ColorScheme',
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 8),
               child: Text('Secondary', style: TextStyle(fontSize: 12)),
             ),
           ),
@@ -66,7 +66,7 @@ class UseKeyColorsButtons extends StatelessWidget {
             message: 'Use input Tertiary color\n'
                 'as key to seed your ColorScheme',
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 8),
               child: Text('Tertiary', style: TextStyle(fontSize: 12)),
             ),
           ),

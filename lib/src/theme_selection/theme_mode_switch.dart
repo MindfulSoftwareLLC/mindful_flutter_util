@@ -6,17 +6,22 @@ import 'package:flutter/material.dart';
 /// This is a simple Flutter "Universal" Widget that only depends on the SDK and
 /// can be dropped into any application.
 class ThemeModeSwitch extends StatelessWidget {
+  /// ctor
   const ThemeModeSwitch({
     super.key,
     required this.themeMode,
     required this.onChanged,
   });
+
+  /// Current mode - system, light, dark
   final ThemeMode themeMode;
+
+  /// Signles when user changes the theme
   final ValueChanged<ThemeMode> onChanged;
 
   @override
   Widget build(BuildContext context) {
-    final List<bool> isSelected = <bool>[
+    final isSelected = <bool>[
       themeMode == ThemeMode.light,
       themeMode == ThemeMode.system,
       themeMode == ThemeMode.dark,

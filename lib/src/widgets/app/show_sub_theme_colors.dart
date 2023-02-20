@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
@@ -39,27 +41,26 @@ class ShowSubThemeColors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
-    final bool isDark = colorScheme.brightness == Brightness.dark;
-    final bool useMaterial3 = theme.useMaterial3;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = colorScheme.brightness == Brightness.dark;
+    final useMaterial3 = theme.useMaterial3;
 
-    final MediaQueryData media = MediaQuery.of(context);
-    final bool isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
+    final media = MediaQuery.of(context);
+    final isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
         media.size.height < UIConst.phoneHeightBreakpoint;
-    final double spacing = isPhone ? 3 : 6;
+    final spacing = isPhone ? 3.0 : 6.0;
 
     // Get effective background color.
-    final Color background =
+    final background =
         onBackgroundColor ?? theme.cardTheme.color ?? theme.cardColor;
     // Grab the card border from the theme card shape
-    ShapeBorder? border = theme.cardTheme.shape;
+    var border = theme.cardTheme.shape;
     // If we had one, copy in a border side to it.
     if (border is RoundedRectangleBorder) {
       border = border.copyWith(
         side: BorderSide(
           color: theme.dividerColor,
-          width: 1,
         ),
       );
       // If
@@ -70,101 +71,104 @@ class ShowSubThemeColors extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(useMaterial3 ? 12 : 4)),
         side: BorderSide(
           color: theme.dividerColor,
-          width: 1,
         ),
       );
     }
 
     // Get the themed or default color of all shown components' colors.
-    final Color elevatedButtonColor = theme
-            .elevatedButtonTheme.style?.backgroundColor
+    final elevatedButtonColor = theme.elevatedButtonTheme.style?.backgroundColor
             ?.resolve(<MaterialState>{}) ??
         colorScheme.primary;
-    final Color outlinedButtonColor = theme
-            .outlinedButtonTheme.style?.foregroundColor
+    final outlinedButtonColor = theme.outlinedButtonTheme.style?.foregroundColor
             ?.resolve(<MaterialState>{}) ??
         colorScheme.primary;
-    final Color textButtonColor = theme.textButtonTheme.style?.foregroundColor
+    final textButtonColor = theme.textButtonTheme.style?.foregroundColor
             ?.resolve(<MaterialState>{}) ??
         colorScheme.primary;
-    final Color toggleButtonsColor =
+    final toggleButtonsColor =
         theme.toggleButtonsTheme.color ?? colorScheme.primary;
-    final Color floatingActionButtonColor =
+    final floatingActionButtonColor =
         theme.floatingActionButtonTheme.backgroundColor ??
             (theme.useMaterial3
                 ? colorScheme.primaryContainer
                 : colorScheme.secondary);
-    final Color switchColor = theme.switchTheme.thumbColor
+    final switchColor = theme.switchTheme.thumbColor
             ?.resolve(<MaterialState>{MaterialState.selected}) ??
         theme.toggleableActiveColor;
-    final Color checkboxColor = theme.checkboxTheme.fillColor
+    final checkboxColor = theme.checkboxTheme.fillColor
             ?.resolve(<MaterialState>{MaterialState.selected}) ??
         theme.toggleableActiveColor;
-    final Color radioColor = theme.radioTheme.fillColor
+    final radioColor = theme.radioTheme.fillColor
             ?.resolve(<MaterialState>{MaterialState.selected}) ??
         theme.toggleableActiveColor;
-    final Color circleAvatarColor =
+    final circleAvatarColor =
         isDark ? theme.primaryColorLight : theme.primaryColorDark;
-    final Color chipColor =
-        theme.chipTheme.backgroundColor ?? colorScheme.primary;
-    final Color inputDecoratorColor =
+    final chipColor = theme.chipTheme.backgroundColor ?? colorScheme.primary;
+    final inputDecoratorColor =
         theme.inputDecorationTheme.focusColor?.withAlpha(0xFF) ??
             colorScheme.primary;
-    final Decoration? tooltipDecoration = theme.tooltipTheme.decoration;
-    final Color tooltipColor = tooltipDecoration is BoxDecoration
+    final tooltipDecoration = theme.tooltipTheme.decoration;
+    final tooltipColor = tooltipDecoration is BoxDecoration
         ? tooltipDecoration.color ?? colorScheme.surface
         : colorScheme.surface;
-    final Color appBarColor = theme.appBarTheme.backgroundColor ??
+    final appBarColor = theme.appBarTheme.backgroundColor ??
         (isDark ? colorScheme.surface : colorScheme.primary);
-    final Color tabBarColor = theme.tabBarTheme.labelColor ??
+    final tabBarColor = theme.tabBarTheme.labelColor ??
         (isDark ? colorScheme.onSurface : colorScheme.onPrimary);
-    final Color dialogColor =
+    final dialogColor =
         theme.dialogTheme.backgroundColor ?? theme.dialogBackgroundColor;
-    final Color defaultSnackBackgroundColor = isDark
+    final defaultSnackBackgroundColor = isDark
         ? colorScheme.onSurface
         : Color.alphaBlend(
-            colorScheme.onSurface.withOpacity(0.80), colorScheme.surface);
-    final Color snackBarColor =
+            colorScheme.onSurface.withOpacity(0.80),
+            colorScheme.surface,
+          );
+    final snackBarColor =
         theme.snackBarTheme.backgroundColor ?? defaultSnackBackgroundColor;
-    final Color snackForeground = theme.snackBarTheme.contentTextStyle?.color ??
+    final snackForeground = theme.snackBarTheme.contentTextStyle?.color ??
         (ThemeData.estimateBrightnessForColor(snackBarColor) == Brightness.light
             ? Colors.black
             : Colors.white);
-    final Color bottomNavBarColor =
-        theme.bottomNavigationBarTheme.backgroundColor ??
-            colorScheme.background;
-    final Color bottomNavBarItemColor =
+    final bottomNavBarColor = theme.bottomNavigationBarTheme.backgroundColor ??
+        colorScheme.background;
+    final bottomNavBarItemColor =
         theme.bottomNavigationBarTheme.selectedItemColor ??
             (isDark ? colorScheme.secondary : colorScheme.primary);
-    final Color navigationBarColor = theme.navigationBarTheme.backgroundColor ??
+    final navigationBarColor = theme.navigationBarTheme.backgroundColor ??
         (useMaterial3
             ? ElevationOverlay.colorWithOverlay(
-                colorScheme.surface, colorScheme.primary, 3.0)
+                colorScheme.surface,
+                colorScheme.primary,
+                3,
+              )
             : ElevationOverlay.colorWithOverlay(
-                colorScheme.surface, colorScheme.onSurface, 3.0));
-    final Color navigationBarItemColor = theme.navigationBarTheme.iconTheme
+                colorScheme.surface,
+                colorScheme.onSurface,
+                3,
+              ));
+    final navigationBarItemColor = theme.navigationBarTheme.iconTheme
             ?.resolve(<MaterialState>{MaterialState.selected})?.color ??
         (useMaterial3
             ? colorScheme.onSecondaryContainer
             : colorScheme.onSurface);
-    final Color navigationBarIndicatorColor =
+    final navigationBarIndicatorColor =
         theme.navigationBarTheme.indicatorColor ??
             (useMaterial3
                 ? colorScheme.secondaryContainer
                 : colorScheme.secondary.withOpacity(.24));
-    final Color navigationRailColor =
+    final navigationRailColor =
         theme.navigationRailTheme.backgroundColor ?? colorScheme.surface;
-    final Color navigationRailItemColor = theme
+    final navigationRailItemColor = theme
             .navigationRailTheme.selectedIconTheme?.color ??
         (useMaterial3 ? colorScheme.onSecondaryContainer : colorScheme.primary);
-    final Color navigationRailIndicatorColor =
+    final navigationRailIndicatorColor =
         theme.navigationRailTheme.indicatorColor ??
             (useMaterial3
                 ? colorScheme.onSecondaryContainer
                 : colorScheme.secondary.withOpacity(.24));
-    final Color textColor = theme.textTheme.titleMedium?.color ??
+    final textColor = theme.textTheme.titleMedium?.color ??
         (isDark ? Colors.white : Colors.black);
-    final Color primTextColor = theme.primaryTextTheme.titleMedium?.color ??
+    final primTextColor = theme.primaryTextTheme.titleMedium?.color ??
         (ThemeData.estimateBrightnessForColor(colorScheme.primary) ==
                 Brightness.dark
             ? Colors.white
@@ -190,7 +194,6 @@ class ShowSubThemeColors extends StatelessWidget {
             ),
           ),
           Wrap(
-            alignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.center,
             spacing: spacing,
             runSpacing: spacing,

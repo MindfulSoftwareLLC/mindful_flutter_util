@@ -40,24 +40,23 @@ class ShowColorSchemeColors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final ColorScheme colorScheme = theme.colorScheme;
-    final bool isDark = colorScheme.brightness == Brightness.dark;
-    final bool useMaterial3 = theme.useMaterial3;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = colorScheme.brightness == Brightness.dark;
+    final useMaterial3 = theme.useMaterial3;
 
-    final MediaQueryData media = MediaQuery.of(context);
-    final bool isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
+    final media = MediaQuery.of(context);
+    final isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
         media.size.height < UIConst.phoneHeightBreakpoint;
-    final double spacing = isPhone ? 3 : 6;
+    final spacing = isPhone ? 3.0 : 6.0;
 
     // Grab the card border from the theme card shape
-    ShapeBorder? border = theme.cardTheme.shape;
+    var border = theme.cardTheme.shape;
     // If we had one, copy in a border side to it.
     if (border is RoundedRectangleBorder) {
       border = border.copyWith(
         side: BorderSide(
           color: theme.dividerColor,
-          width: 1,
         ),
       );
       // If
@@ -68,17 +67,16 @@ class ShowColorSchemeColors extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(useMaterial3 ? 12 : 4)),
         side: BorderSide(
           color: theme.dividerColor,
-          width: 1,
         ),
       );
     }
 
     // Get effective background color.
-    final Color background =
+    final background =
         onBackgroundColor ?? theme.cardTheme.color ?? theme.cardColor;
 
     // Warning label for scaffold background when it uses to much blend.
-    final String surfaceTooHigh = isDark
+    final surfaceTooHigh = isDark
         ? _isLight(theme.colorScheme.surface)
             ? '\nTOO HIGH'
             : ''
@@ -87,7 +85,7 @@ class ShowColorSchemeColors extends StatelessWidget {
             : '';
 
     // Warning label for scaffold background when it uses to much blend.
-    final String backTooHigh = isDark
+    final backTooHigh = isDark
         ? _isLight(theme.colorScheme.background)
             ? '\nTOO HIGH'
             : ''
@@ -115,7 +113,6 @@ class ShowColorSchemeColors extends StatelessWidget {
             ),
           ),
           Wrap(
-            alignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.center,
             spacing: spacing,
             runSpacing: spacing,

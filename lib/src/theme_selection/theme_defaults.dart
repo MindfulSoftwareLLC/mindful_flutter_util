@@ -31,7 +31,8 @@ class ThemeDefaults {
   Color defaultTertiaryDark;
   Color defaultTertiaryContainerDark;
 
-  // static ThemeDefaults fromThemeData(ThemeData lightTheme, ThemeData darkTheme) {
+  // static ThemeDefaults fromThemeData(ThemeData lightTheme,
+// ThemeData darkTheme) {
   //   ThemeDefaults result = ThemeDefaults(
   //       defaultPrimaryLight: lightTheme.primaryColor,
   //       defaultPrimaryContainerLight: lightTheme.primaryContainerLight,

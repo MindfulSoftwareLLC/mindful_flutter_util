@@ -1,4 +1,4 @@
-import 'theme_service.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_service.dart';
 // ignore_for_file: comment_references
 
 /// A service that stores and retrieves theme settings from memory only.

@@ -13,14 +13,14 @@ class ThemeSelectButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<bool> isSelected = <bool>[
+    final isSelected = <bool>[
       scheme == FlexScheme.custom,
       scheme == FlexScheme.mallardGreen,
       scheme == FlexScheme.outerSpace,
       scheme == FlexScheme.hippieBlue,
     ];
     return ToggleButtons(
-      borderRadius: BorderRadius.all(Radius.zero),
+      borderRadius: const BorderRadius.all(Radius.zero),
       isSelected: isSelected,
       onPressed: (int newIndex) {
         if (newIndex == 0) {
@@ -35,7 +35,7 @@ class ThemeSelectButtons extends StatelessWidget {
       },
       children: [
         Container(
-          color: Color(0xFF00296B),
+          color: const Color(0xFF00296B),
           child: const Padding(padding: EdgeInsets.all(12)),
         ),
         Container(
