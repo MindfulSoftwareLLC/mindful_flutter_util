@@ -2,10 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../../app/app_data.dart';
-import '../universal/maybe_tooltip.dart';
-import 'about.dart';
+import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
 // ignore_for_file: comment_references
 
@@ -424,12 +421,12 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
   @override
   void didUpdateWidget(covariant ResponsiveScaffold oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final MediaQueryData media = MediaQuery.of(context);
+    final media = MediaQuery.of(context);
     if (media.size != mediaSize) {
       mediaSize = media.size;
       // On purpose not checking the the height here, we want to keep and auto
       // open the rail if this is possibly a phone in landscape mode.
-      final bool isPhone = media.size.width < AppData.phoneWidthBreakpoint;
+      final isPhone = media.size.width < UIConst.phoneWidthBreakpoint;
       // This make the rail menu auto-close on phone size and open back up if
       // moving to landscape or none phone size. You can still open a very
       // narrow rail also in phone size, but if you resize the canvas at phone
@@ -491,11 +488,11 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
   @override
   Widget build(BuildContext context) {
     // Short handle to the media query, used to get size and paddings.
-    final MediaQueryData media = MediaQuery.of(context);
+    final media = MediaQuery.of(context);
     // We are on media width where we allow the menu to be shown as fixed,
     // we are just going to call that isDesktop, but it could be large tablet
     // or tablet in landscape, or even phone in landscape.
-    final bool isDesktop = media.size.width >= widget.breakpointShowFullMenu;
+    final isDesktop = media.size.width >= widget.breakpointShowFullMenu;
     // Secret sauce for a simple auto responsive & toggleable drawer-rail-menu.
     if (!isDesktop) activeMenuWidth = widget.railWidth;
     if (!isDesktop && isMenuClosed) activeMenuWidth = 0;
@@ -827,28 +824,28 @@ class _MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final bool isLight = theme.brightness == Brightness.light;
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
     // Just some colors for the menu items, based on the current color schemes.
     // Always when you can, use colors from the theme.colorScheme to make
     // custom elements in your app they react to theme changes and use the theme
     // colors. You can make elaborate hues and opacities of the colors in the
     // theme's color schemes, like here:
-    final Color iconColor = enabled
+    final iconColor = enabled
         ? isLight
             ? Color.alphaBlend(theme.colorScheme.primary.withAlpha(0x99),
                 theme.colorScheme.onSurface)
             : Color.alphaBlend(theme.colorScheme.primary.withAlpha(0x7F),
                 theme.colorScheme.onSurface)
         : theme.colorScheme.onSurface.withAlpha(0x55);
-    final Color textColor = enabled
+    final textColor = enabled
         ? theme.colorScheme.onSurface.withAlpha(0xCC)
         : theme.colorScheme.onSurface.withAlpha(0x55);
     // The M3 guide calls for 12dp padding after the selection indicator on
     // the menu highlight in a Drawer or side menu. We can do that, but we
     // have such a narrow rail for phone size, so at rail sizes we will make it
     // much smaller, even 2 different sizes.
-    final double endPadding = (width > railWidth + 10)
+    final endPadding = (width > railWidth + 10)
         ? 12
         // If we use a really narrow rail rail, make padding even smaller-
         : railWidth < 60
@@ -863,7 +860,8 @@ class _MenuItem extends StatelessWidget {
         children: <Widget>[
           if (showDivider) const Divider(thickness: 1, height: 1),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 2, endPadding, 2),
+            padding:
+                EdgeInsetsDirectional.fromSTEB(0, 2, endPadding as double, 2),
             child: Material(
               clipBehavior: Clip.antiAlias,
               borderRadius: const BorderRadius.only(
@@ -951,10 +949,10 @@ class _MenuLeadingItemState extends State<_MenuLeadingItem> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextTheme textTheme = theme.textTheme;
-    final TextTheme primaryTextTheme = theme.primaryTextTheme;
-    const double hPadding = 5;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final primaryTextTheme = theme.primaryTextTheme;
+    const hPadding = 5.0;
 
     return Column(
       children: <Widget>[

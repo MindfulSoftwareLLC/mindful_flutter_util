@@ -1,9 +1,11 @@
+// ignore_for_file: public_member_api_docs, lines_longer_than_80_chars, avoid_positional_boolean_parameters
+
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../app/store.dart';
-import 'theme_service.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_defaults.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_key.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_service.dart';
 
 /// Enum to indicate which palette we are using.
 ///
@@ -52,358 +54,596 @@ class ThemeController with ChangeNotifier {
   /// Load all ThemeController settings from the ThemeService. It may load from
   /// app coded defaults, a local database or the internet. The controller only
   /// knows it can load all the setting default values from the service.
-  Future<void> loadAll() async {
+  Future<void> loadAll(ThemeDefaults themeDefaults) async {
     //
     // GENERAL SETTINGS.
     // ThemeMode, use FlexColorScheme and sub-themes, current scheme, view, etc.
-    _themeMode =
-        await _themeService.load(Store.keyThemeMode, Store.defaultThemeMode);
+    _themeMode = await _themeService.load(
+      ThemeKey.keyThemeMode,
+      ThemeKey.defaultThemeMode,
+    );
     _useFlexColorScheme = await _themeService.load(
-        Store.keyUseFlexColorScheme, Store.defaultUseFlexColorScheme);
+      ThemeKey.keyUseFlexColorScheme,
+      ThemeKey.defaultUseFlexColorScheme,
+    );
     _useSubThemes = await _themeService.load(
-        Store.keyUseSubThemes, Store.defaultUseSubThemes);
+      ThemeKey.keyUseSubThemes,
+      ThemeKey.defaultUseSubThemes,
+    );
     _useFlutterDefaults = await _themeService.load(
-        Store.keyUseFlutterDefaults, Store.defaultUseFlutterDefaults);
+      ThemeKey.keyUseFlutterDefaults,
+      ThemeKey.defaultUseFlutterDefaults,
+    );
     _isLargeGridView = await _themeService.load(
-        Store.keyIsLargeGridView, Store.defaultIsLargeGridView);
-    _viewIndex =
-        await _themeService.load(Store.keyViewIndex, Store.defaultViewIndex);
+      ThemeKey.keyIsLargeGridView,
+      ThemeKey.defaultIsLargeGridView,
+    );
+    _viewIndex = await _themeService.load(
+      ThemeKey.keyViewIndex,
+      ThemeKey.defaultViewIndex,
+    );
     _useTextTheme = await _themeService.load(
-        Store.keyUseTextTheme, Store.defaultUseTextTheme);
-    _useAppFont =
-        await _themeService.load(Store.keyUseAppFont, Store.defaultUseAppFont);
-    _usedScheme =
-        await _themeService.load(Store.keyUsedScheme, Store.defaultUsedScheme);
+      ThemeKey.keyUseTextTheme,
+      ThemeKey.defaultUseTextTheme,
+    );
+    _useAppFont = await _themeService.load(
+      ThemeKey.keyUseAppFont,
+      ThemeKey.defaultUseAppFont,
+    );
+    _usedScheme = await _themeService.load(
+      ThemeKey.keyUsedScheme,
+      ThemeKey.defaultUsedScheme,
+    );
     _schemeIndex = await _themeService.load(
-        Store.keySchemeIndex, Store.defaultSchemeIndex);
+      ThemeKey.keySchemeIndex,
+      ThemeKey.defaultSchemeIndex,
+    );
     _interactionEffects = await _themeService.load(
-        Store.keyInteractionEffects, Store.defaultInteractionEffects);
+      ThemeKey.keyInteractionEffects,
+      ThemeKey.defaultInteractionEffects,
+    );
     _defaultRadius = await _themeService.load(
-      Store.keyDefaultRadius,
-      Store.defaultDefaultRadius,
+      ThemeKey.keyDefaultRadius,
+      ThemeKey.defaultDefaultRadius,
     );
     _tooltipsMatchBackground = await _themeService.load(
-        Store.keyTooltipsMatchBackground, Store.defaultTooltipsMatchBackground);
+      ThemeKey.keyTooltipsMatchBackground,
+      ThemeKey.defaultTooltipsMatchBackground,
+    );
     //
     // Surface and blend SETTINGS.
     _surfaceModeLight = await _themeService.load(
-        Store.keySurfaceModeLight, Store.defaultSurfaceModeLight);
+      ThemeKey.keySurfaceModeLight,
+      ThemeKey.defaultSurfaceModeLight,
+    );
     _surfaceModeDark = await _themeService.load(
-        Store.keySurfaceModeDark, Store.defaultSurfaceModeDark);
-    _blendLevel =
-        await _themeService.load(Store.keyBlendLevel, Store.defaultBlendLevel);
+      ThemeKey.keySurfaceModeDark,
+      ThemeKey.defaultSurfaceModeDark,
+    );
+    _blendLevel = await _themeService.load(
+      ThemeKey.keyBlendLevel,
+      ThemeKey.defaultBlendLevel,
+    );
     _blendLevelDark = await _themeService.load(
-        Store.keyBlendLevelDark, Store.defaultBlendLevelDark);
+      ThemeKey.keyBlendLevelDark,
+      ThemeKey.defaultBlendLevelDark,
+    );
     _blendOnLevel = await _themeService.load(
-        Store.keyOnBlendLevel, Store.defaultBlendOnLevel);
+      ThemeKey.keyOnBlendLevel,
+      ThemeKey.defaultBlendOnLevel,
+    );
     _blendOnLevelDark = await _themeService.load(
-        Store.keyBlendOnLevelDark, Store.defaultBlendOnLevelDark);
-    _usedColors =
-        await _themeService.load(Store.keyUsedColors, Store.defaultUsedColors);
+      ThemeKey.keyBlendOnLevelDark,
+      ThemeKey.defaultBlendOnLevelDark,
+    );
+    _usedColors = await _themeService.load(
+      ThemeKey.keyUsedColors,
+      ThemeKey.defaultUsedColors,
+    );
     _swapLightColors = await _themeService.load(
-        Store.keySwapLightColors, Store.defaultSwapLightColors);
+      ThemeKey.keySwapLightColors,
+      ThemeKey.defaultSwapLightColors,
+    );
     _swapDarkColors = await _themeService.load(
-        Store.keySwapDarkColors, Store.defaultSwapDarkColors);
+      ThemeKey.keySwapDarkColors,
+      ThemeKey.defaultSwapDarkColors,
+    );
     _lightIsWhite = await _themeService.load(
-        Store.keyLightIsWhite, Store.defaultLightIsWhite);
+      ThemeKey.keyLightIsWhite,
+      ThemeKey.defaultLightIsWhite,
+    );
     _darkIsTrueBlack = await _themeService.load(
-        Store.keyDarkIsTrueBlack, Store.defaultDarkIsTrueBlack);
+      ThemeKey.keyDarkIsTrueBlack,
+      ThemeKey.defaultDarkIsTrueBlack,
+    );
     _useDarkColorsForSeed = await _themeService.load(
-        Store.keyUseDarkColorsForSeed, Store.defaultUseDarkColorsForSeed);
+      ThemeKey.keyUseDarkColorsForSeed,
+      ThemeKey.defaultUseDarkColorsForSeed,
+    );
     _useToDarkMethod = await _themeService.load(
-        Store.keyUseToDarkMethod, Store.defaultUseToDarkMethod);
+      ThemeKey.keyUseToDarkMethod,
+      ThemeKey.defaultUseToDarkMethod,
+    );
     _toDarkSwapPrimaryAndContainer = await _themeService.load(
-        Store.keyToDarkSwapPrimaryAndContainer,
-        Store.defaultToDarkSwapPrimaryAndContainer);
+      ThemeKey.keyToDarkSwapPrimaryAndContainer,
+      ThemeKey.defaultToDarkSwapPrimaryAndContainer,
+    );
     _darkMethodLevel = await _themeService.load(
-        Store.keyDarkMethodLevel, Store.defaultDarkMethodLevel);
+      ThemeKey.keyDarkMethodLevel,
+      ThemeKey.defaultDarkMethodLevel,
+    );
     _blendLightOnColors = await _themeService.load(
-        Store.keyBlendLightOnColors, Store.defaultBlendLightOnColors);
+      ThemeKey.keyBlendLightOnColors,
+      ThemeKey.defaultBlendLightOnColors,
+    );
     _blendDarkOnColors = await _themeService.load(
-        Store.keyBlendDarkOnColors, Store.defaultBlendDarkOnColors);
+      ThemeKey.keyBlendDarkOnColors,
+      ThemeKey.defaultBlendDarkOnColors,
+    );
     _blendLightTextTheme = await _themeService.load(
-        Store.keyBlendLightTextTheme, Store.defaultBlendLightTextTheme);
+      ThemeKey.keyBlendLightTextTheme,
+      ThemeKey.defaultBlendLightTextTheme,
+    );
     _blendDarkTextTheme = await _themeService.load(
-        Store.keyBlendDarkTextTheme, Store.defaultBlendDarkTextTheme);
+      ThemeKey.keyBlendDarkTextTheme,
+      ThemeKey.defaultBlendDarkTextTheme,
+    );
     //
     // Material 3 and Seed ColorScheme SETTINGS.
     _useMaterial3 = await _themeService.load(
-        Store.keyUseMaterial3, Store.defaultUseMaterial3);
+      ThemeKey.keyUseMaterial3,
+      ThemeKey.defaultUseMaterial3,
+    );
     _useKeyColors = await _themeService.load(
-        Store.keyUseKeyColors, Store.defaultUseKeyColors);
+      ThemeKey.keyUseKeyColors,
+      ThemeKey.defaultUseKeyColors,
+    );
     _useSecondary = await _themeService.load(
-        Store.keyUseSecondary, Store.defaultUseSecondary);
+      ThemeKey.keyUseSecondary,
+      ThemeKey.defaultUseSecondary,
+    );
     _useTertiary = await _themeService.load(
-        Store.keyUseTertiary, Store.defaultUseTertiary);
+      ThemeKey.keyUseTertiary,
+      ThemeKey.defaultUseTertiary,
+    );
     _keepPrimary = await _themeService.load(
-        Store.keyKeepPrimary, Store.defaultKeepPrimary);
+      ThemeKey.keyKeepPrimary,
+      ThemeKey.defaultKeepPrimary,
+    );
     _keepSecondary = await _themeService.load(
-        Store.keyKeepSecondary, Store.defaultKeepSecondary);
+      ThemeKey.keyKeepSecondary,
+      ThemeKey.defaultKeepSecondary,
+    );
     _keepTertiary = await _themeService.load(
-        Store.keyKeepTertiary, Store.defaultKeepTertiary);
+      ThemeKey.keyKeepTertiary,
+      ThemeKey.defaultKeepTertiary,
+    );
     _keepPrimaryContainer = await _themeService.load(
-        Store.keyKeepPrimaryContainer, Store.defaultKeepPrimaryContainer);
+      ThemeKey.keyKeepPrimaryContainer,
+      ThemeKey.defaultKeepPrimaryContainer,
+    );
     _keepSecondaryContainer = await _themeService.load(
-        Store.keyKeepSecondaryContainer, Store.defaultKeepSecondaryContainer);
+      ThemeKey.keyKeepSecondaryContainer,
+      ThemeKey.defaultKeepSecondaryContainer,
+    );
     _keepTertiaryContainer = await _themeService.load(
-        Store.keyKeepTertiaryContainer, Store.defaultKeepTertiaryContainer);
+      ThemeKey.keyKeepTertiaryContainer,
+      ThemeKey.defaultKeepTertiaryContainer,
+    );
     _keepDarkPrimary = await _themeService.load(
-        Store.keyKeepDarkPrimary, Store.defaultKeepDarkPrimary);
+      ThemeKey.keyKeepDarkPrimary,
+      ThemeKey.defaultKeepDarkPrimary,
+    );
     _keepDarkSecondary = await _themeService.load(
-        Store.keyKeepDarkSecondary, Store.defaultKeepDarkSecondary);
+      ThemeKey.keyKeepDarkSecondary,
+      ThemeKey.defaultKeepDarkSecondary,
+    );
     _keepDarkTertiary = await _themeService.load(
-        Store.keyKeepDarkTertiary, Store.defaultKeepDarkTertiary);
+      ThemeKey.keyKeepDarkTertiary,
+      ThemeKey.defaultKeepDarkTertiary,
+    );
     _keepDarkPrimaryContainer = await _themeService.load(
-        Store.keyKeepDarkPrimaryContainer,
-        Store.defaultKeepDarkPrimaryContainer);
+      ThemeKey.keyKeepDarkPrimaryContainer,
+      ThemeKey.defaultKeepDarkPrimaryContainer,
+    );
     _keepDarkSecondaryContainer = await _themeService.load(
-        Store.keyKeepDarkSecondaryContainer,
-        Store.defaultKeepDarkSecondaryContainer);
+      ThemeKey.keyKeepDarkSecondaryContainer,
+      ThemeKey.defaultKeepDarkSecondaryContainer,
+    );
     _keepDarkTertiaryContainer = await _themeService.load(
-        Store.keyKeepDarkTertiaryContainer,
-        Store.defaultKeepDarkTertiaryContainer);
+      ThemeKey.keyKeepDarkTertiaryContainer,
+      ThemeKey.defaultKeepDarkTertiaryContainer,
+    );
     _usedFlexToneSetup = await _themeService.load(
-        Store.keyUsedFlexToneSetup, Store.defaultUsedFlexToneSetup);
+      ThemeKey.keyUsedFlexToneSetup,
+      ThemeKey.defaultUsedFlexToneSetup,
+    );
     _useM3ErrorColors = await _themeService.load(
-        Store.keyUseM3ErrorColors, Store.defaultUseM3ErrorColors);
+      ThemeKey.keyUseM3ErrorColors,
+      ThemeKey.defaultUseM3ErrorColors,
+    );
     //
     // InputDecorator SETTINGS.
     _inputDecoratorSchemeColorLight = await _themeService.load(
-        Store.keyInputDecoratorSchemeColorLight,
-        Store.defaultInputDecoratorSchemeColorLight);
+      ThemeKey.keyInputDecoratorSchemeColorLight,
+      ThemeKey.defaultInputDecoratorSchemeColorLight,
+    );
     _inputDecoratorSchemeColorDark = await _themeService.load(
-        Store.keyInputDecoratorSchemeColorDark,
-        Store.defaultInputDecoratorSchemeColorDark);
+      ThemeKey.keyInputDecoratorSchemeColorDark,
+      ThemeKey.defaultInputDecoratorSchemeColorDark,
+    );
     _inputDecoratorIsFilled = await _themeService.load(
-        Store.keyInputDecoratorIsFilled, Store.defaultInputDecoratorIsFilled);
+      ThemeKey.keyInputDecoratorIsFilled,
+      ThemeKey.defaultInputDecoratorIsFilled,
+    );
     _inputDecoratorBorderType = await _themeService.load(
-        Store.keyInputDecoratorBorderType,
-        Store.defaultInputDecoratorBorderType);
+      ThemeKey.keyInputDecoratorBorderType,
+      ThemeKey.defaultInputDecoratorBorderType,
+    );
     _inputDecoratorBorderRadius = await _themeService.load(
-        Store.keyInputDecoratorBorderRadius,
-        Store.defaultInputDecoratorBorderRadius);
+      ThemeKey.keyInputDecoratorBorderRadius,
+      ThemeKey.defaultInputDecoratorBorderRadius,
+    );
     _inputDecoratorUnfocusedHasBorder = await _themeService.load(
-        Store.keyInputDecoratorUnfocusedHasBorder,
-        Store.defaultInputDecoratorUnfocusedHasBorder);
+      ThemeKey.keyInputDecoratorUnfocusedHasBorder,
+      ThemeKey.defaultInputDecoratorUnfocusedHasBorder,
+    );
     _inputDecoratorUnfocusedBorderIsColored = await _themeService.load(
-        Store.keyInputDecoratorUnfocusedBorderIsColored,
-        Store.defaultInputDecoratorUnfocusedBorderIsColored);
+      ThemeKey.keyInputDecoratorUnfocusedBorderIsColored,
+      ThemeKey.defaultInputDecoratorUnfocusedBorderIsColored,
+    );
     //
     // AppBar SETTINGS.
     _appBarStyleLight = await _themeService.load(
-        Store.keyAppBarStyleLight, Store.defaultAppBarStyleLight);
+      ThemeKey.keyAppBarStyleLight,
+      ThemeKey.defaultAppBarStyleLight,
+    );
     _appBarStyleDark = await _themeService.load(
-        Store.keyAppBarStyleDark, Store.defaultAppBarStyleDark);
+      ThemeKey.keyAppBarStyleDark,
+      ThemeKey.defaultAppBarStyleDark,
+    );
     _appBarOpacityLight = await _themeService.load(
-        Store.keyAppBarOpacityLight, Store.defaultAppBarOpacityLight);
+      ThemeKey.keyAppBarOpacityLight,
+      ThemeKey.defaultAppBarOpacityLight,
+    );
     _appBarOpacityDark = await _themeService.load(
-        Store.keyAppBarOpacityDark, Store.defaultAppBarOpacityDark);
+      ThemeKey.keyAppBarOpacityDark,
+      ThemeKey.defaultAppBarOpacityDark,
+    );
     _appBarElevationLight = await _themeService.load(
-        Store.keyAppBarElevationLight, Store.defaultAppBarElevationLight);
+      ThemeKey.keyAppBarElevationLight,
+      ThemeKey.defaultAppBarElevationLight,
+    );
     _appBarElevationDark = await _themeService.load(
-        Store.keyAppBarElevationDark, Store.defaultAppBarElevationDark);
+      ThemeKey.keyAppBarElevationDark,
+      ThemeKey.defaultAppBarElevationDark,
+    );
     _transparentStatusBar = await _themeService.load(
-        Store.keyTransparentStatusBar, Store.defaultTransparentStatusBar);
+      ThemeKey.keyTransparentStatusBar,
+      ThemeKey.defaultTransparentStatusBar,
+    );
     _appBarBackgroundSchemeColorLight = await _themeService.load(
-        Store.keyAppBarBackgroundSchemeColorLight,
-        Store.defaultAppBarBackgroundSchemeColorLight);
+      ThemeKey.keyAppBarBackgroundSchemeColorLight,
+      ThemeKey.defaultAppBarBackgroundSchemeColorLight,
+    );
     _appBarBackgroundSchemeColorDark = await _themeService.load(
-        Store.keyAppBarBackgroundSchemeColorDark,
-        Store.defaultAppBarBackgroundSchemeColorDark);
+      ThemeKey.keyAppBarBackgroundSchemeColorDark,
+      ThemeKey.defaultAppBarBackgroundSchemeColorDark,
+    );
     //
     // TabBar SETTINGS.
     _tabBarStyle = await _themeService.load(
-        Store.keyTabBarStyle, Store.defaultTabBarStyle);
+      ThemeKey.keyTabBarStyle,
+      ThemeKey.defaultTabBarStyle,
+    );
     _tabBarIndicatorLight = await _themeService.load(
-        Store.keyTabBarIndicatorLight, Store.defaultTabBarIndicatorLight);
+      ThemeKey.keyTabBarIndicatorLight,
+      ThemeKey.defaultTabBarIndicatorLight,
+    );
     _tabBarIndicatorDark = await _themeService.load(
-        Store.keyTabBarIndicatorDark, Store.defaultTabBarIndicatorDark);
+      ThemeKey.keyTabBarIndicatorDark,
+      ThemeKey.defaultTabBarIndicatorDark,
+    );
     _tabBarItemSchemeColorLight = await _themeService.load(
-        Store.keyTabBarItemSchemeColorLight,
-        Store.defaultTabBarItemSchemeColorLight);
+      ThemeKey.keyTabBarItemSchemeColorLight,
+      ThemeKey.defaultTabBarItemSchemeColorLight,
+    );
     _tabBarItemSchemeColorDark = await _themeService.load(
-        Store.keyTabBarItemSchemeColorDark,
-        Store.defaultTabBarItemSchemeColorDark);
+      ThemeKey.keyTabBarItemSchemeColorDark,
+      ThemeKey.defaultTabBarItemSchemeColorDark,
+    );
     //
     // BottomSheet SETTINGS.
     _bottomSheetBorderRadius = await _themeService.load(
-        Store.keyBottomSheetBorderRadius, Store.defaultBottomSheetBorderRadius);
+      ThemeKey.keyBottomSheetBorderRadius,
+      ThemeKey.defaultBottomSheetBorderRadius,
+    );
     //
     // Android System Navigator bar SETTINGS.
     _sysNavBarStyle = await _themeService.load(
-        Store.keySysNavBarStyle, Store.defaultSysNavBarStyle);
+      ThemeKey.keySysNavBarStyle,
+      ThemeKey.defaultSysNavBarStyle,
+    );
     _sysNavBarOpacity = await _themeService.load(
-        Store.keySysNavBarOpacity, Store.defaultSysBarOpacity);
+      ThemeKey.keySysNavBarOpacity,
+      ThemeKey.defaultSysBarOpacity,
+    );
     _useSysNavDivider = await _themeService.load(
-        Store.keyUseSysNavDivider, Store.defaultUseSysNavDivider);
+      ThemeKey.keyUseSysNavDivider,
+      ThemeKey.defaultUseSysNavDivider,
+    );
     //
     // BottomNavigationBar SETTINGS.
     _bottomNavBarBackgroundSchemeColor = await _themeService.load(
-        Store.keyBottomNavBarBackgroundSchemeColor,
-        Store.defaultBottomNavBarBackgroundSchemeColor);
+      ThemeKey.keyBottomNavBarBackgroundSchemeColor,
+      ThemeKey.defaultBottomNavBarBackgroundSchemeColor,
+    );
     _bottomNavigationBarOpacity = await _themeService.load(
-        Store.keyBottomNavigationBarOpacity,
-        Store.defaultBottomNavigationBarOpacity);
+      ThemeKey.keyBottomNavigationBarOpacity,
+      ThemeKey.defaultBottomNavigationBarOpacity,
+    );
     _bottomNavigationBarElevation = await _themeService.load(
-        Store.keyBottomNavigationBarElevation,
-        Store.defaultBottomNavigationBarElevation);
+      ThemeKey.keyBottomNavigationBarElevation,
+      ThemeKey.defaultBottomNavigationBarElevation,
+    );
     _bottomNavBarSelectedSchemeColor = await _themeService.load(
-        Store.keyBottomNavBarSelectedItemSchemeColor,
-        Store.defaultBottomNavBarSelectedItemSchemeColor);
+      ThemeKey.keyBottomNavBarSelectedItemSchemeColor,
+      ThemeKey.defaultBottomNavBarSelectedItemSchemeColor,
+    );
     _bottomNavBarUnselectedSchemeColor = await _themeService.load(
-        Store.keyBottomNavBarUnselectedSchemeColor,
-        Store.defaultBottomNavBarUnselectedSchemeColor);
+      ThemeKey.keyBottomNavBarUnselectedSchemeColor,
+      ThemeKey.defaultBottomNavBarUnselectedSchemeColor,
+    );
     _bottomNavBarMuteUnselected = await _themeService.load(
-        Store.keyBottomNavBarMuteUnselected,
-        Store.defaultBottomNavBarMuteUnselected);
+      ThemeKey.keyBottomNavBarMuteUnselected,
+      ThemeKey.defaultBottomNavBarMuteUnselected,
+    );
     _bottomNavShowSelectedLabels = await _themeService.load(
-        Store.keyBottomNavShowSelectedLabels,
-        Store.defaultBottomNavShowSelectedLabels);
+      ThemeKey.keyBottomNavShowSelectedLabels,
+      ThemeKey.defaultBottomNavShowSelectedLabels,
+    );
     _bottomNavShowUnselectedLabels = await _themeService.load(
-        Store.keyBottomNavShowUnselectedLabels,
-        Store.defaultBottomNavShowUnselectedLabels);
+      ThemeKey.keyBottomNavShowUnselectedLabels,
+      ThemeKey.defaultBottomNavShowUnselectedLabels,
+    );
     //
     // NavigationBar SETTINGS.
     _navBarBackgroundSchemeColor = await _themeService.load(
-        Store.keyNavBarBackgroundSchemeColor,
-        Store.defaultNavBarBackgroundSchemeColor);
+      ThemeKey.keyNavBarBackgroundSchemeColor,
+      ThemeKey.defaultNavBarBackgroundSchemeColor,
+    );
     _navBarOpacity = await _themeService.load(
-        Store.keyNavBarOpacity, Store.defaultNavBarOpacity);
+      ThemeKey.keyNavBarOpacity,
+      ThemeKey.defaultNavBarOpacity,
+    );
     _navBarHeight = await _themeService.load(
-        Store.keyNavBarHeight, Store.defaultNavBarHeight);
+      ThemeKey.keyNavBarHeight,
+      ThemeKey.defaultNavBarHeight,
+    );
     _navBarSelectedSchemeColor = await _themeService.load(
-        Store.keyNavBarSelectedItemSchemeColor,
-        Store.defaultNavBarSelectedItemSchemeColor);
+      ThemeKey.keyNavBarSelectedItemSchemeColor,
+      ThemeKey.defaultNavBarSelectedItemSchemeColor,
+    );
     _navBarUnselectedSchemeColor = await _themeService.load(
-        Store.keyNavBarUnselectedSchemeColor,
-        Store.defaultNavBarUnselectedSchemeColor);
+      ThemeKey.keyNavBarUnselectedSchemeColor,
+      ThemeKey.defaultNavBarUnselectedSchemeColor,
+    );
     _navBarMuteUnselected = await _themeService.load(
-        Store.keyNavBarMuteUnselected, Store.defaultNavBarMuteUnselected);
+      ThemeKey.keyNavBarMuteUnselected,
+      ThemeKey.defaultNavBarMuteUnselected,
+    );
     _navBarIndicatorSchemeColor = await _themeService.load(
-        Store.keyNavBarIndicatorSchemeColor,
-        Store.defaultNavBarIndicatorSchemeColor);
+      ThemeKey.keyNavBarIndicatorSchemeColor,
+      ThemeKey.defaultNavBarIndicatorSchemeColor,
+    );
     _navBarIndicatorOpacity = await _themeService.load(
-        Store.keyNavBarIndicatorOpacity, Store.defaultNavBarIndicatorOpacity);
+      ThemeKey.keyNavBarIndicatorOpacity,
+      ThemeKey.defaultNavBarIndicatorOpacity,
+    );
     _navBarLabelBehavior = await _themeService.load(
-        Store.keyNavBarLabelBehavior, Store.defaultNavBarLabelBehavior);
+      ThemeKey.keyNavBarLabelBehavior,
+      ThemeKey.defaultNavBarLabelBehavior,
+    );
     //
     // NavigationRail SETTINGS.
     _navRailBackgroundSchemeColor = await _themeService.load(
-        Store.keyNavRailBackgroundSchemeColor,
-        Store.defaultNavRailBackgroundSchemeColor);
+      ThemeKey.keyNavRailBackgroundSchemeColor,
+      ThemeKey.defaultNavRailBackgroundSchemeColor,
+    );
     _navRailOpacity = await _themeService.load(
-        Store.keyNavRailOpacity, Store.defaultNavRailOpacity);
+      ThemeKey.keyNavRailOpacity,
+      ThemeKey.defaultNavRailOpacity,
+    );
     _navigationRailElevation = await _themeService.load(
-        Store.keyNavigationRailElevation, Store.defaultNavigationRailElevation);
+      ThemeKey.keyNavigationRailElevation,
+      ThemeKey.defaultNavigationRailElevation,
+    );
     _navRailSelectedSchemeColor = await _themeService.load(
-        Store.keyNavRailSelectedItemSchemeColor,
-        Store.defaultNavRailSelectedItemSchemeColor);
+      ThemeKey.keyNavRailSelectedItemSchemeColor,
+      ThemeKey.defaultNavRailSelectedItemSchemeColor,
+    );
     _navRailUnselectedSchemeColor = await _themeService.load(
-        Store.keyNavRailUnselectedSchemeColor,
-        Store.defaultNavRailUnselectedSchemeColor);
+      ThemeKey.keyNavRailUnselectedSchemeColor,
+      ThemeKey.defaultNavRailUnselectedSchemeColor,
+    );
     _navRailMuteUnselected = await _themeService.load(
-        Store.keyNavRailMuteUnselected, Store.defaultNavRailMuteUnselected);
+      ThemeKey.keyNavRailMuteUnselected,
+      ThemeKey.defaultNavRailMuteUnselected,
+    );
     _navRailLabelType = await _themeService.load(
-        Store.keyNavRailLabelType, Store.defaultNavRailLabelType);
+      ThemeKey.keyNavRailLabelType,
+      ThemeKey.defaultNavRailLabelType,
+    );
     _navRailUseIndicator = await _themeService.load(
-        Store.keyNavRailUseIndicator, Store.defaultNavRailUseIndicator);
+      ThemeKey.keyNavRailUseIndicator,
+      ThemeKey.defaultNavRailUseIndicator,
+    );
     _navRailIndicatorSchemeColor = await _themeService.load(
-        Store.keyNavRailIndicatorSchemeColor,
-        Store.defaultNavRailIndicatorSchemeColor);
+      ThemeKey.keyNavRailIndicatorSchemeColor,
+      ThemeKey.defaultNavRailIndicatorSchemeColor,
+    );
     _navRailIndicatorOpacity = await _themeService.load(
-        Store.keyNavRailIndicatorOpacity, Store.defaultNavRailIndicatorOpacity);
+      ThemeKey.keyNavRailIndicatorOpacity,
+      ThemeKey.defaultNavRailIndicatorOpacity,
+    );
     //
     // Button SETTINGS.
     _textButtonSchemeColor = await _themeService.load(
-        Store.keyTextButtonSchemeColor, Store.defaultTextButtonSchemeColor);
+      ThemeKey.keyTextButtonSchemeColor,
+      ThemeKey.defaultTextButtonSchemeColor,
+    );
     _textButtonBorderRadius = await _themeService.load(
-        Store.keyTextButtonBorderRadius, Store.defaultTextButtonBorderRadius);
+      ThemeKey.keyTextButtonBorderRadius,
+      ThemeKey.defaultTextButtonBorderRadius,
+    );
     _elevatedButtonSchemeColor = await _themeService.load(
-        Store.keyElevatedButtonSchemeColor,
-        Store.defaultElevatedButtonSchemeColor);
+      ThemeKey.keyElevatedButtonSchemeColor,
+      ThemeKey.defaultElevatedButtonSchemeColor,
+    );
     _elevatedButtonBorderRadius = await _themeService.load(
-        Store.keyElevatedButtonBorderRadius,
-        Store.defaultElevatedButtonBorderRadius);
+      ThemeKey.keyElevatedButtonBorderRadius,
+      ThemeKey.defaultElevatedButtonBorderRadius,
+    );
     _outlinedButtonSchemeColor = await _themeService.load(
-        Store.keyOutlinedButtonSchemeColor,
-        Store.defaultOutlinedButtonSchemeColor);
+      ThemeKey.keyOutlinedButtonSchemeColor,
+      ThemeKey.defaultOutlinedButtonSchemeColor,
+    );
     _outlinedButtonBorderRadius = await _themeService.load(
-        Store.keyOutlinedButtonBorderRadius,
-        Store.defaultOutlinedButtonBorderRadius);
+      ThemeKey.keyOutlinedButtonBorderRadius,
+      ThemeKey.defaultOutlinedButtonBorderRadius,
+    );
     _toggleButtonsSchemeColor = await _themeService.load(
-        Store.keyToggleButtonsSchemeColor,
-        Store.defaultToggleButtonsSchemeColor);
+      ThemeKey.keyToggleButtonsSchemeColor,
+      ThemeKey.defaultToggleButtonsSchemeColor,
+    );
     _toggleButtonsBorderRadius = await _themeService.load(
-        Store.keyToggleButtonsBorderRadius,
-        Store.defaultToggleButtonsBorderRadius);
+      ThemeKey.keyToggleButtonsBorderRadius,
+      ThemeKey.defaultToggleButtonsBorderRadius,
+    );
     //
     // Toggleable SETTINGS.
     _unselectedToggleIsColored = await _themeService.load(
-        Store.keyUnselectedToggleIsColored,
-        Store.defaultUnselectedToggleIsColored);
+      ThemeKey.keyUnselectedToggleIsColored,
+      ThemeKey.defaultUnselectedToggleIsColored,
+    );
     _switchSchemeColor = await _themeService.load(
-        Store.keySwitchSchemeColor, Store.defaultSwitchSchemeColor);
+      ThemeKey.keySwitchSchemeColor,
+      ThemeKey.defaultSwitchSchemeColor,
+    );
     _checkboxSchemeColor = await _themeService.load(
-        Store.keyCheckboxSchemeColor, Store.defaultCheckboxSchemeColor);
+      ThemeKey.keyCheckboxSchemeColor,
+      ThemeKey.defaultCheckboxSchemeColor,
+    );
     _radioSchemeColor = await _themeService.load(
-        Store.keyRadioSchemeColor, Store.defaultRadioSchemeColor);
+      ThemeKey.keyRadioSchemeColor,
+      ThemeKey.defaultRadioSchemeColor,
+    );
     //
     // Fab, Chip, SnackBar, Popup, Card nad Dialog SETTINGS.
     _fabUseShape = await _themeService.load(
-        Store.keyFabUseShape, Store.defaultFabUseShape);
+      ThemeKey.keyFabUseShape,
+      ThemeKey.defaultFabUseShape,
+    );
     _fabBorderRadius = await _themeService.load(
-        Store.keyFabBorderRadius, Store.defaultFabBorderRadius);
+      ThemeKey.keyFabBorderRadius,
+      ThemeKey.defaultFabBorderRadius,
+    );
     _fabSchemeColor = await _themeService.load(
-        Store.keyFabSchemeColor, Store.defaultFabSchemeColor);
+      ThemeKey.keyFabSchemeColor,
+      ThemeKey.defaultFabSchemeColor,
+    );
     _chipSchemeColor = await _themeService.load(
-        Store.keyChipSchemeColor, Store.defaultChipSchemeColor);
+      ThemeKey.keyChipSchemeColor,
+      ThemeKey.defaultChipSchemeColor,
+    );
     _chipBorderRadius = await _themeService.load(
-        Store.keyChipBorderRadius, Store.defaultChipBorderRadius);
+      ThemeKey.keyChipBorderRadius,
+      ThemeKey.defaultChipBorderRadius,
+    );
     _snackBarSchemeColor = await _themeService.load(
-        Store.keySnackBarSchemeColor, Store.defaultSnackBarSchemeColor);
+      ThemeKey.keySnackBarSchemeColor,
+      ThemeKey.defaultSnackBarSchemeColor,
+    );
     _popupMenuOpacity = await _themeService.load(
-        Store.keyPopupMenuOpacity, Store.defaultPopupMenuOpacity);
+      ThemeKey.keyPopupMenuOpacity,
+      ThemeKey.defaultPopupMenuOpacity,
+    );
     _popupMenuBorderRadius = await _themeService.load(
-        Store.keyPopupMenuBorderRadius, Store.defaultPopupMenuBorderRadius);
+      ThemeKey.keyPopupMenuBorderRadius,
+      ThemeKey.defaultPopupMenuBorderRadius,
+    );
     _cardBorderRadius = await _themeService.load(
-        Store.keyCardBorderRadius, Store.defaultCardBorderRadius);
+      ThemeKey.keyCardBorderRadius,
+      ThemeKey.defaultCardBorderRadius,
+    );
     _dialogBackgroundSchemeColor = await _themeService.load(
-        Store.keyDialogBackgroundSchemeColor,
-        Store.defaultDialogBackgroundSchemeColor);
+      ThemeKey.keyDialogBackgroundSchemeColor,
+      ThemeKey.defaultDialogBackgroundSchemeColor,
+    );
     _dialogBorderRadius = await _themeService.load(
-        Store.keyDialogBorderRadius, Store.defaultDialogBorderRadius);
+      ThemeKey.keyDialogBorderRadius,
+      ThemeKey.defaultDialogBorderRadius,
+    );
     //
     // Custom surface tint color SETTINGS.
     _surfaceTintLight = await _themeService.load(
-        Store.keySurfaceTintLight, Store.defaultSurfaceTintLight);
+      ThemeKey.keySurfaceTintLight,
+      ThemeKey.defaultSurfaceTintLight,
+    );
     _surfaceTintDark = await _themeService.load(
-        Store.keySurfaceTintDark, Store.defaultSurfaceTintDark);
+      ThemeKey.keySurfaceTintDark,
+      ThemeKey.defaultSurfaceTintDark,
+    );
     //
     // Custom color SETTINGS.
     _primaryLight = await _themeService.load(
-        Store.keyPrimaryLight, Store.defaultPrimaryLight);
-    _primaryContainerLight = await _themeService.load(
-        Store.keyPrimaryContainerLight, Store.defaultPrimaryContainerLight);
+      ThemeKey.keyPrimaryLight,
+      themeDefaults.defaultPrimaryLight,
+    );
+    _primaryContainerLight = await _themeService.load<Color>(
+      ThemeKey.keyPrimaryContainerLight,
+      themeDefaults.defaultPrimaryContainerLight,
+    );
     _secondaryLight = await _themeService.load(
-        Store.keySecondaryLight, Store.defaultSecondaryLight);
+      ThemeKey.keySecondaryLight,
+      themeDefaults.defaultSecondaryLight,
+    );
     _secondaryContainerLight = await _themeService.load(
-        Store.keySecondaryContainerLight, Store.defaultSecondaryContainerLight);
+      ThemeKey.keySecondaryContainerLight,
+      themeDefaults.defaultSecondaryContainerLight,
+    );
     _tertiaryLight = await _themeService.load(
-        Store.keyTertiaryLight, Store.defaultTertiaryLight);
+      ThemeKey.keyTertiaryLight,
+      themeDefaults.defaultTertiaryLight,
+    );
     _tertiaryContainerLight = await _themeService.load(
-        Store.keyTertiaryContainerLight, Store.defaultTertiaryContainerLight);
+      ThemeKey.keyTertiaryContainerLight,
+      themeDefaults.defaultTertiaryContainerLight,
+    );
     _primaryDark = await _themeService.load(
-        Store.keyPrimaryDark, Store.defaultPrimaryDark);
+      ThemeKey.keyPrimaryDark,
+      themeDefaults.defaultPrimaryDark,
+    );
     _primaryContainerDark = await _themeService.load(
-        Store.keyPrimaryContainerDark, Store.defaultPrimaryContainerDark);
+      ThemeKey.keyPrimaryContainerDark,
+      themeDefaults.defaultPrimaryContainerDark,
+    );
     _secondaryDark = await _themeService.load(
-        Store.keySecondaryDark, Store.defaultSecondaryDark);
+      ThemeKey.keySecondaryDark,
+      themeDefaults.defaultSecondaryDark,
+    );
     _secondaryContainerDark = await _themeService.load(
-        Store.keySecondaryContainerDark, Store.defaultSecondaryContainerDark);
+      ThemeKey.keySecondaryContainerDark,
+      themeDefaults.defaultSecondaryContainerDark,
+    );
     _tertiaryDark = await _themeService.load(
-        Store.keyTertiaryDark, Store.defaultTertiaryDark);
+      ThemeKey.keyTertiaryDark,
+      themeDefaults.defaultTertiaryDark,
+    );
     _tertiaryContainerDark = await _themeService.load(
-        Store.keyTertiaryContainerDark, Store.defaultTertiaryContainerDark);
+      ThemeKey.keyTertiaryContainerDark,
+      themeDefaults.defaultTertiaryContainerDark,
+    );
 
     // Not persisted, locally controlled popup selection for ThemeService,
     // resets to actual used platform when settings are reset or app loaded.
@@ -430,203 +670,311 @@ class ThemeController with ChangeNotifier {
     //
     // GENERAL SETTINGS.
     // ThemeMode, use FlexColorScheme and sub-themes, current scheme, view, etc.
-    await setThemeMode(Store.defaultThemeMode, false);
-    await setUseFlexColorScheme(Store.defaultUseFlexColorScheme, false);
-    await setUseSubThemes(Store.defaultUseSubThemes, false);
-    await setUseFlutterDefaults(Store.defaultUseFlutterDefaults, false);
+    await setThemeMode(ThemeKey.defaultThemeMode, false);
+    await setUseFlexColorScheme(ThemeKey.defaultUseFlexColorScheme, false);
+    await setUseSubThemes(ThemeKey.defaultUseSubThemes, false);
+    await setUseFlutterDefaults(ThemeKey.defaultUseFlutterDefaults, false);
     // The IsLargeGridView and ViewIndex settings are never reset to default in
     // a reset, we always keep the current screen and panel on page/panel view.
-    await setUseTextTheme(Store.defaultUseTextTheme, false);
-    await setUseAppFont(Store.defaultUseAppFont, false);
-    await setUsedScheme(Store.defaultUsedScheme, false);
-    await setSchemeIndex(Store.defaultSchemeIndex, false);
-    await setInteractionEffects(Store.defaultInteractionEffects, false);
-    await setDefaultRadius(Store.defaultDefaultRadius, false);
+    await setUseTextTheme(ThemeKey.defaultUseTextTheme, false);
+    await setUseAppFont(ThemeKey.defaultUseAppFont, false);
+    await setUsedScheme(ThemeKey.defaultUsedScheme, false);
+    await setSchemeIndex(ThemeKey.defaultSchemeIndex, false);
+    await setInteractionEffects(ThemeKey.defaultInteractionEffects, false);
+    await setDefaultRadius(ThemeKey.defaultDefaultRadius, false);
     await setTooltipsMatchBackground(
-        Store.defaultTooltipsMatchBackground, false);
+      ThemeKey.defaultTooltipsMatchBackground,
+      false,
+    );
     //
     // Surface and blend SETTINGS.
-    await setSurfaceModeLight(Store.defaultSurfaceModeLight, false);
-    await setSurfaceModeDark(Store.defaultSurfaceModeDark, false);
-    await setBlendLevel(Store.defaultBlendLevel, false);
-    await setBlendLevelDark(Store.defaultBlendLevelDark, false);
-    await setBlendOnLevel(Store.defaultBlendOnLevel, false);
-    await setBlendOnLevelDark(Store.defaultBlendOnLevelDark, false);
-    await setUsedColors(Store.defaultUsedColors, false);
-    await setSwapLightColors(Store.defaultSwapLightColors, false);
-    await setSwapDarkColors(Store.defaultSwapDarkColors, false);
-    await setLightIsWhite(Store.defaultLightIsWhite, false);
-    await setDarkIsTrueBlack(Store.defaultDarkIsTrueBlack, false);
-    await setUseDarkColorsForSeed(Store.defaultUseDarkColorsForSeed, false);
-    await setUseToDarkMethod(Store.defaultUseToDarkMethod, false);
+    await setSurfaceModeLight(ThemeKey.defaultSurfaceModeLight, false);
+    await setSurfaceModeDark(ThemeKey.defaultSurfaceModeDark, false);
+    await setBlendLevel(ThemeKey.defaultBlendLevel, false);
+    await setBlendLevelDark(ThemeKey.defaultBlendLevelDark, false);
+    await setBlendOnLevel(ThemeKey.defaultBlendOnLevel, false);
+    await setBlendOnLevelDark(ThemeKey.defaultBlendOnLevelDark, false);
+    await setUsedColors(ThemeKey.defaultUsedColors, false);
+    await setSwapLightColors(ThemeKey.defaultSwapLightColors, false);
+    await setSwapDarkColors(ThemeKey.defaultSwapDarkColors, false);
+    await setLightIsWhite(ThemeKey.defaultLightIsWhite, false);
+    await setDarkIsTrueBlack(ThemeKey.defaultDarkIsTrueBlack, false);
+    await setUseDarkColorsForSeed(ThemeKey.defaultUseDarkColorsForSeed, false);
+    await setUseToDarkMethod(ThemeKey.defaultUseToDarkMethod, false);
     await setToDarkSwapPrimaryAndContainer(
-        Store.defaultToDarkSwapPrimaryAndContainer, false);
-    await setDarkMethodLevel(Store.defaultDarkMethodLevel, false);
-    await setBlendLightOnColors(Store.defaultBlendLightOnColors, false);
-    await setBlendDarkOnColors(Store.defaultBlendDarkOnColors, false);
-    await setBlendLightTextTheme(Store.defaultBlendLightTextTheme, false);
-    await setBlendDarkTextTheme(Store.defaultBlendDarkTextTheme, false);
+      ThemeKey.defaultToDarkSwapPrimaryAndContainer,
+      false,
+    );
+    await setDarkMethodLevel(ThemeKey.defaultDarkMethodLevel, false);
+    await setBlendLightOnColors(ThemeKey.defaultBlendLightOnColors, false);
+    await setBlendDarkOnColors(ThemeKey.defaultBlendDarkOnColors, false);
+    await setBlendLightTextTheme(ThemeKey.defaultBlendLightTextTheme, false);
+    await setBlendDarkTextTheme(ThemeKey.defaultBlendDarkTextTheme, false);
     //
     // Material 3 and Seed ColorScheme SETTINGS.
-    await setUseMaterial3(Store.defaultUseMaterial3, false);
-    await setUseKeyColors(Store.defaultUseKeyColors, false);
-    await setUseSecondary(Store.defaultUseSecondary, false);
-    await setUseTertiary(Store.defaultUseTertiary, false);
-    await setKeepPrimary(Store.defaultKeepPrimary, false);
-    await setKeepSecondary(Store.defaultKeepSecondary, false);
-    await setKeepTertiary(Store.defaultKeepTertiary, false);
-    await setKeepPrimaryContainer(Store.defaultKeepPrimaryContainer, false);
-    await setKeepSecondaryContainer(Store.defaultKeepSecondaryContainer, false);
-    await setKeepTertiaryContainer(Store.defaultKeepTertiaryContainer, false);
-    await setKeepDarkPrimary(Store.defaultKeepDarkPrimary, false);
-    await setKeepDarkSecondary(Store.defaultKeepDarkSecondary, false);
-    await setKeepDarkTertiary(Store.defaultKeepDarkTertiary, false);
+    await setUseMaterial3(ThemeKey.defaultUseMaterial3, false);
+    await setUseKeyColors(ThemeKey.defaultUseKeyColors, false);
+    await setUseSecondary(ThemeKey.defaultUseSecondary, false);
+    await setUseTertiary(ThemeKey.defaultUseTertiary, false);
+    await setKeepPrimary(ThemeKey.defaultKeepPrimary, false);
+    await setKeepSecondary(ThemeKey.defaultKeepSecondary, false);
+    await setKeepTertiary(ThemeKey.defaultKeepTertiary, false);
+    await setKeepPrimaryContainer(ThemeKey.defaultKeepPrimaryContainer, false);
+    await setKeepSecondaryContainer(
+      ThemeKey.defaultKeepSecondaryContainer,
+      false,
+    );
+    await setKeepTertiaryContainer(
+      ThemeKey.defaultKeepTertiaryContainer,
+      false,
+    );
+    await setKeepDarkPrimary(ThemeKey.defaultKeepDarkPrimary, false);
+    await setKeepDarkSecondary(ThemeKey.defaultKeepDarkSecondary, false);
+    await setKeepDarkTertiary(ThemeKey.defaultKeepDarkTertiary, false);
     await setKeepDarkPrimaryContainer(
-        Store.defaultKeepDarkPrimaryContainer, false);
+      ThemeKey.defaultKeepDarkPrimaryContainer,
+      false,
+    );
     await setKeepDarkSecondaryContainer(
-        Store.defaultKeepDarkSecondaryContainer, false);
+      ThemeKey.defaultKeepDarkSecondaryContainer,
+      false,
+    );
     await setKeepDarkTertiaryContainer(
-        Store.defaultKeepDarkTertiaryContainer, false);
-    await setUsedFlexToneSetup(Store.defaultUsedFlexToneSetup, false);
-    await setUseM3ErrorColors(Store.defaultUseM3ErrorColors, false);
+      ThemeKey.defaultKeepDarkTertiaryContainer,
+      false,
+    );
+    await setUsedFlexToneSetup(ThemeKey.defaultUsedFlexToneSetup, false);
+    await setUseM3ErrorColors(ThemeKey.defaultUseM3ErrorColors, false);
     //
     // InputDecorator SETTINGS.
     await setInputDecoratorSchemeColorLight(
-        Store.defaultInputDecoratorSchemeColorLight, false);
+      ThemeKey.defaultInputDecoratorSchemeColorLight,
+      false,
+    );
     await setInputDecoratorSchemeColorDark(
-        Store.defaultInputDecoratorSchemeColorDark, false);
-    await setInputDecoratorIsFilled(Store.defaultInputDecoratorIsFilled, false);
+      ThemeKey.defaultInputDecoratorSchemeColorDark,
+      false,
+    );
+    await setInputDecoratorIsFilled(
+      ThemeKey.defaultInputDecoratorIsFilled,
+      false,
+    );
     await setInputDecoratorBorderType(
-        Store.defaultInputDecoratorBorderType, false);
+      ThemeKey.defaultInputDecoratorBorderType,
+      false,
+    );
     await setInputDecoratorBorderRadius(
-        Store.defaultInputDecoratorBorderRadius, false);
+      ThemeKey.defaultInputDecoratorBorderRadius,
+      false,
+    );
     await setInputDecoratorUnfocusedHasBorder(
-        Store.defaultInputDecoratorUnfocusedHasBorder, false);
+      ThemeKey.defaultInputDecoratorUnfocusedHasBorder,
+      false,
+    );
     await setInputDecoratorUnfocusedBorderIsColored(
-        Store.defaultInputDecoratorUnfocusedBorderIsColored, false);
+      ThemeKey.defaultInputDecoratorUnfocusedBorderIsColored,
+      false,
+    );
     //
     // AppBar SETTINGS.
-    await setAppBarStyleLight(Store.defaultAppBarStyleLight, false);
-    await setAppBarStyleDark(Store.defaultAppBarStyleDark, false);
-    await setAppBarOpacityLight(Store.defaultAppBarOpacityLight, false);
-    await setAppBarOpacityDark(Store.defaultAppBarOpacityDark, false);
-    await setAppBarElevationLight(Store.defaultAppBarElevationLight, false);
-    await setAppBarElevationDark(Store.defaultAppBarElevationDark, false);
-    await setTransparentStatusBar(Store.defaultTransparentStatusBar, false);
+    await setAppBarStyleLight(ThemeKey.defaultAppBarStyleLight, false);
+    await setAppBarStyleDark(ThemeKey.defaultAppBarStyleDark, false);
+    await setAppBarOpacityLight(ThemeKey.defaultAppBarOpacityLight, false);
+    await setAppBarOpacityDark(ThemeKey.defaultAppBarOpacityDark, false);
+    await setAppBarElevationLight(ThemeKey.defaultAppBarElevationLight, false);
+    await setAppBarElevationDark(ThemeKey.defaultAppBarElevationDark, false);
+    await setTransparentStatusBar(ThemeKey.defaultTransparentStatusBar, false);
     await setAppBarBackgroundSchemeColorLight(
-        Store.defaultAppBarBackgroundSchemeColorLight, false);
+      ThemeKey.defaultAppBarBackgroundSchemeColorLight,
+      false,
+    );
     await setAppBarBackgroundSchemeColorDark(
-        Store.defaultAppBarBackgroundSchemeColorDark, false);
+      ThemeKey.defaultAppBarBackgroundSchemeColorDark,
+      false,
+    );
     //
     // TabBar SETTINGS.
-    await setTabBarStyle(Store.defaultTabBarStyle, false);
-    await setTabBarIndicatorLight(Store.defaultTabBarIndicatorLight, false);
-    await setTabBarIndicatorDark(Store.defaultTabBarIndicatorDark, false);
+    await setTabBarStyle(ThemeKey.defaultTabBarStyle, false);
+    await setTabBarIndicatorLight(ThemeKey.defaultTabBarIndicatorLight, false);
+    await setTabBarIndicatorDark(ThemeKey.defaultTabBarIndicatorDark, false);
     await setTabBarItemSchemeColorLight(
-        Store.defaultTabBarItemSchemeColorLight, false);
+      ThemeKey.defaultTabBarItemSchemeColorLight,
+      false,
+    );
     await setTabBarItemSchemeColorDark(
-        Store.defaultTabBarItemSchemeColorDark, false);
+      ThemeKey.defaultTabBarItemSchemeColorDark,
+      false,
+    );
     //
     // BottomSheet SETTINGS.
     await setBottomSheetBorderRadius(
-        Store.defaultBottomSheetBorderRadius, false);
+      ThemeKey.defaultBottomSheetBorderRadius,
+      false,
+    );
     //
     // Android System Navigator bar SETTINGS.
-    await setSysNavBarStyle(Store.defaultSysNavBarStyle, false);
-    await setSysBarOpacity(Store.defaultSysBarOpacity, false);
-    await setUseSysNavDivider(Store.defaultUseSysNavDivider, false);
+    await setSysNavBarStyle(ThemeKey.defaultSysNavBarStyle, false);
+    await setSysBarOpacity(ThemeKey.defaultSysBarOpacity, false);
+    await setUseSysNavDivider(ThemeKey.defaultUseSysNavDivider, false);
     //
     // BottomNavigationBar SETTINGS.
     await setBottomNavBarBackgroundSchemeColor(
-        Store.defaultBottomNavBarBackgroundSchemeColor, false);
+      ThemeKey.defaultBottomNavBarBackgroundSchemeColor,
+      false,
+    );
     await setBottomNavigationBarOpacity(
-        Store.defaultBottomNavigationBarOpacity, false);
+      ThemeKey.defaultBottomNavigationBarOpacity,
+      false,
+    );
     await setBottomNavigationBarElevation(
-        Store.defaultBottomNavigationBarElevation, false);
+      ThemeKey.defaultBottomNavigationBarElevation,
+      false,
+    );
     await setBottomNavBarSelectedSchemeColor(
-        Store.defaultBottomNavBarSelectedItemSchemeColor, false);
+      ThemeKey.defaultBottomNavBarSelectedItemSchemeColor,
+      false,
+    );
     await setBottomNavBarUnselectedSchemeColor(
-        Store.defaultBottomNavBarUnselectedSchemeColor, false);
+      ThemeKey.defaultBottomNavBarUnselectedSchemeColor,
+      false,
+    );
     await setBottomNavBarMuteUnselected(
-        Store.defaultBottomNavBarMuteUnselected, false);
+      ThemeKey.defaultBottomNavBarMuteUnselected,
+      false,
+    );
     await setBottomNavShowSelectedLabels(
-        Store.defaultBottomNavShowSelectedLabels, false);
+      ThemeKey.defaultBottomNavShowSelectedLabels,
+      false,
+    );
     await setBottomNavShowUnselectedLabels(
-        Store.defaultBottomNavShowUnselectedLabels, false);
+      ThemeKey.defaultBottomNavShowUnselectedLabels,
+      false,
+    );
     //
     // NavigationBar SETTINGS.
     await setNavBarBackgroundSchemeColor(
-        Store.defaultNavBarBackgroundSchemeColor, false);
-    await setNavBarOpacity(Store.defaultNavBarOpacity, false);
-    await setNavBarHeight(Store.defaultNavBarHeight, false);
+      ThemeKey.defaultNavBarBackgroundSchemeColor,
+      false,
+    );
+    await setNavBarOpacity(ThemeKey.defaultNavBarOpacity, false);
+    await setNavBarHeight(ThemeKey.defaultNavBarHeight, false);
     await setNavBarSelectedSchemeColor(
-        Store.defaultNavBarSelectedItemSchemeColor, false);
+      ThemeKey.defaultNavBarSelectedItemSchemeColor,
+      false,
+    );
     await setNavBarUnselectedSchemeColor(
-        Store.defaultNavBarUnselectedSchemeColor, false);
-    await setNavBarMuteUnselected(Store.defaultNavBarMuteUnselected, false);
+      ThemeKey.defaultNavBarUnselectedSchemeColor,
+      false,
+    );
+    await setNavBarMuteUnselected(ThemeKey.defaultNavBarMuteUnselected, false);
     await setNavBarIndicatorSchemeColor(
-        Store.defaultNavBarIndicatorSchemeColor, false);
-    await setNavBarIndicatorOpacity(Store.defaultNavBarIndicatorOpacity, false);
-    await setNavBarLabelBehavior(Store.defaultNavBarLabelBehavior, false);
+      ThemeKey.defaultNavBarIndicatorSchemeColor,
+      false,
+    );
+    await setNavBarIndicatorOpacity(
+      ThemeKey.defaultNavBarIndicatorOpacity,
+      false,
+    );
+    await setNavBarLabelBehavior(ThemeKey.defaultNavBarLabelBehavior, false);
     //
     // NavigationRail SETTINGS.
     await setNavRailBackgroundSchemeColor(
-        Store.defaultNavRailBackgroundSchemeColor, false);
-    await setNavRailOpacity(Store.defaultNavRailOpacity, false);
+      ThemeKey.defaultNavRailBackgroundSchemeColor,
+      false,
+    );
+    await setNavRailOpacity(ThemeKey.defaultNavRailOpacity, false);
     await setNavigationRailElevation(
-        Store.defaultNavigationRailElevation, false);
+      ThemeKey.defaultNavigationRailElevation,
+      false,
+    );
     await setNavRailSelectedSchemeColor(
-        Store.defaultNavRailSelectedItemSchemeColor, false);
+      ThemeKey.defaultNavRailSelectedItemSchemeColor,
+      false,
+    );
     await setNavRailUnselectedSchemeColor(
-        Store.defaultNavRailUnselectedSchemeColor, false);
-    await setNavRailMuteUnselected(Store.defaultNavRailMuteUnselected, false);
-    await setNavRailLabelType(Store.defaultNavRailLabelType, false);
-    await setNavRailUseIndicator(Store.defaultNavRailUseIndicator, false);
+      ThemeKey.defaultNavRailUnselectedSchemeColor,
+      false,
+    );
+    await setNavRailMuteUnselected(
+      ThemeKey.defaultNavRailMuteUnselected,
+      false,
+    );
+    await setNavRailLabelType(ThemeKey.defaultNavRailLabelType, false);
+    await setNavRailUseIndicator(ThemeKey.defaultNavRailUseIndicator, false);
     await setNavRailIndicatorSchemeColor(
-        Store.defaultNavRailIndicatorSchemeColor, false);
+      ThemeKey.defaultNavRailIndicatorSchemeColor,
+      false,
+    );
     await setNavRailIndicatorOpacity(
-        Store.defaultNavRailIndicatorOpacity, false);
+      ThemeKey.defaultNavRailIndicatorOpacity,
+      false,
+    );
     //
     // Button SETTINGS.
-    await setTextButtonSchemeColor(Store.defaultTextButtonSchemeColor, false);
-    await setTextButtonBorderRadius(Store.defaultTextButtonBorderRadius, false);
+    await setTextButtonSchemeColor(
+      ThemeKey.defaultTextButtonSchemeColor,
+      false,
+    );
+    await setTextButtonBorderRadius(
+      ThemeKey.defaultTextButtonBorderRadius,
+      false,
+    );
     await setElevatedButtonSchemeColor(
-        Store.defaultElevatedButtonSchemeColor, false);
+      ThemeKey.defaultElevatedButtonSchemeColor,
+      false,
+    );
     await setElevatedButtonBorderRadius(
-        Store.defaultElevatedButtonBorderRadius, false);
+      ThemeKey.defaultElevatedButtonBorderRadius,
+      false,
+    );
     await setOutlinedButtonSchemeColor(
-        Store.defaultOutlinedButtonSchemeColor, false);
+      ThemeKey.defaultOutlinedButtonSchemeColor,
+      false,
+    );
     await setOutlinedButtonBorderRadius(
-        Store.defaultOutlinedButtonBorderRadius, false);
+      ThemeKey.defaultOutlinedButtonBorderRadius,
+      false,
+    );
     await setToggleButtonsSchemeColor(
-        Store.defaultToggleButtonsSchemeColor, false);
+      ThemeKey.defaultToggleButtonsSchemeColor,
+      false,
+    );
     await setToggleButtonsBorderRadius(
-        Store.defaultToggleButtonsBorderRadius, false);
+      ThemeKey.defaultToggleButtonsBorderRadius,
+      false,
+    );
     //
     // Toggleable SETTINGS.
     await setUnselectedToggleIsColored(
-        Store.defaultUnselectedToggleIsColored, false);
-    await setSwitchSchemeColor(Store.defaultSwitchSchemeColor, false);
-    await setCheckboxSchemeColor(Store.defaultCheckboxSchemeColor, false);
-    await setRadioSchemeColor(Store.defaultRadioSchemeColor, false);
+      ThemeKey.defaultUnselectedToggleIsColored,
+      false,
+    );
+    await setSwitchSchemeColor(ThemeKey.defaultSwitchSchemeColor, false);
+    await setCheckboxSchemeColor(ThemeKey.defaultCheckboxSchemeColor, false);
+    await setRadioSchemeColor(ThemeKey.defaultRadioSchemeColor, false);
     //
     // Fab, Chip, SnackBar, Popup, Card nad Dialog SETTINGS.
-    await setFabUseShape(Store.defaultFabUseShape, false);
-    await setFabBorderRadius(Store.defaultFabBorderRadius, false);
-    await setFabSchemeColor(Store.defaultFabSchemeColor, false);
-    await setChipSchemeColor(Store.defaultChipSchemeColor, false);
-    await setChipBorderRadius(Store.defaultChipBorderRadius, false);
-    await setSnackBarSchemeColor(Store.defaultSnackBarSchemeColor, false);
-    await setPopupMenuOpacity(Store.defaultPopupMenuOpacity, false);
-    await setPopupMenuBorderRadius(Store.defaultPopupMenuBorderRadius, false);
-    await setCardBorderRadius(Store.defaultCardBorderRadius, false);
+    await setFabUseShape(ThemeKey.defaultFabUseShape, false);
+    await setFabBorderRadius(ThemeKey.defaultFabBorderRadius, false);
+    await setFabSchemeColor(ThemeKey.defaultFabSchemeColor, false);
+    await setChipSchemeColor(ThemeKey.defaultChipSchemeColor, false);
+    await setChipBorderRadius(ThemeKey.defaultChipBorderRadius, false);
+    await setSnackBarSchemeColor(ThemeKey.defaultSnackBarSchemeColor, false);
+    await setPopupMenuOpacity(ThemeKey.defaultPopupMenuOpacity, false);
+    await setPopupMenuBorderRadius(
+      ThemeKey.defaultPopupMenuBorderRadius,
+      false,
+    );
+    await setCardBorderRadius(ThemeKey.defaultCardBorderRadius, false);
     await setDialogBackgroundSchemeColor(
-        Store.defaultDialogBackgroundSchemeColor, false);
-    await setDialogBorderRadius(Store.defaultDialogBorderRadius, false);
+      ThemeKey.defaultDialogBackgroundSchemeColor,
+      false,
+    );
+    await setDialogBorderRadius(ThemeKey.defaultDialogBorderRadius, false);
     //
     // Surface tint colors.
-    await setSurfaceTintLight(Store.defaultSurfaceTintLight, false);
-    await setSurfaceTintDark(Store.defaultSurfaceTintDark, false);
+    await setSurfaceTintLight(ThemeKey.defaultSurfaceTintLight, false);
+    await setSurfaceTintDark(ThemeKey.defaultSurfaceTintDark, false);
     //
     // Not persisted, locally controlled popup selection for ThemeService,
     // resets to actual used platform when settings are reset or app loaded.
@@ -644,20 +992,37 @@ class ThemeController with ChangeNotifier {
   /// deviate from their default value are changed. The property setters manage
   /// this. They are all set with not notification and notifyListeners() is
   /// only called once, weh all updates have been made.
-  Future<void> resetCustomColorsToDefaults() async {
-    await setPrimaryLight(Store.defaultPrimaryLight, false);
-    await setPrimaryContainerLight(Store.defaultPrimaryContainerLight, false);
-    await setSecondaryLight(Store.defaultSecondaryLight, false);
+  Future<void> resetCustomColorsToDefaults(ThemeDefaults themeDefaults) async {
+    await setPrimaryLight(themeDefaults.defaultPrimaryLight, false);
+    await setPrimaryContainerLight(
+      themeDefaults.defaultPrimaryContainerLight,
+      false,
+    );
+    await setSecondaryLight(themeDefaults.defaultSecondaryLight, false);
     await setSecondaryContainerLight(
-        Store.defaultSecondaryContainerLight, false);
-    await setTertiaryLight(Store.defaultTertiaryLight, false);
-    await setTertiaryContainerLight(Store.defaultTertiaryContainerLight, false);
-    await setPrimaryDark(Store.defaultPrimaryDark, false);
-    await setPrimaryContainerDark(Store.defaultPrimaryContainerDark, false);
-    await setSecondaryDark(Store.defaultSecondaryDark, false);
-    await setSecondaryContainerDark(Store.defaultSecondaryContainerDark, false);
-    await setTertiaryDark(Store.defaultTertiaryDark, false);
-    await setTertiaryContainerDark(Store.defaultTertiaryContainerDark, false);
+      themeDefaults.defaultSecondaryContainerLight,
+      false,
+    );
+    await setTertiaryLight(themeDefaults.defaultTertiaryLight, false);
+    await setTertiaryContainerLight(
+      themeDefaults.defaultTertiaryContainerLight,
+      false,
+    );
+    await setPrimaryDark(themeDefaults.defaultPrimaryDark, false);
+    await setPrimaryContainerDark(
+      themeDefaults.defaultPrimaryContainerDark,
+      false,
+    );
+    await setSecondaryDark(themeDefaults.defaultSecondaryDark, false);
+    await setSecondaryContainerDark(
+      themeDefaults.defaultSecondaryContainerDark,
+      false,
+    );
+    await setTertiaryDark(themeDefaults.defaultTertiaryDark, false);
+    await setTertiaryContainerDark(
+      themeDefaults.defaultTertiaryContainerDark,
+      false,
+    );
     notifyListeners();
   }
 
@@ -684,7 +1049,7 @@ class ThemeController with ChangeNotifier {
     // Inform all listeners a change has occurred, if notify flag is true.
     if (notify) notifyListeners();
     // Persist the change to whatever storage is used with the ThemeService.
-    await _themeService.save(Store.keyThemeMode, value);
+    await _themeService.save(ThemeKey.keyThemeMode, value);
   }
 
   // Repeat above pattern for all other theme settings. The properties will
@@ -697,7 +1062,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useFlexColorScheme) return;
     _useFlexColorScheme = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseFlexColorScheme, value);
+    await _themeService.save(ThemeKey.keyUseFlexColorScheme, value);
   }
 
   late bool _useSubThemes;
@@ -707,7 +1072,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useSubThemes) return;
     _useSubThemes = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseSubThemes, value);
+    await _themeService.save(ThemeKey.keyUseSubThemes, value);
   }
 
   late bool _useFlutterDefaults;
@@ -717,7 +1082,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useFlutterDefaults) return;
     _useFlutterDefaults = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseFlutterDefaults, value);
+    await _themeService.save(ThemeKey.keyUseFlutterDefaults, value);
   }
 
   late bool _isLargeGridView;
@@ -727,7 +1092,7 @@ class ThemeController with ChangeNotifier {
     if (value == _isLargeGridView) return;
     _isLargeGridView = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyIsLargeGridView, value);
+    await _themeService.save(ThemeKey.keyIsLargeGridView, value);
   }
 
   late int _viewIndex;
@@ -737,7 +1102,7 @@ class ThemeController with ChangeNotifier {
     if (value == _viewIndex) return;
     _viewIndex = value;
     notifyListeners();
-    await _themeService.save(Store.keyViewIndex, value);
+    await _themeService.save(ThemeKey.keyViewIndex, value);
   }
 
   late bool _useTextTheme;
@@ -747,7 +1112,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useTextTheme) return;
     _useTextTheme = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseTextTheme, value);
+    await _themeService.save(ThemeKey.keyUseTextTheme, value);
   }
 
   late bool _useAppFont;
@@ -757,7 +1122,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useAppFont) return;
     _useAppFont = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseAppFont, value);
+    await _themeService.save(ThemeKey.keyUseAppFont, value);
   }
 
   late FlexScheme _usedScheme;
@@ -767,7 +1132,7 @@ class ThemeController with ChangeNotifier {
     if (value == _usedScheme) return;
     _usedScheme = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUsedScheme, value);
+    await _themeService.save(ThemeKey.keyUsedScheme, value);
   }
 
   late int _schemeIndex;
@@ -777,7 +1142,7 @@ class ThemeController with ChangeNotifier {
     if (value == _schemeIndex) return;
     _schemeIndex = value;
     notifyListeners();
-    await _themeService.save(Store.keySchemeIndex, value);
+    await _themeService.save(ThemeKey.keySchemeIndex, value);
   }
 
   late bool _interactionEffects;
@@ -787,7 +1152,7 @@ class ThemeController with ChangeNotifier {
     if (value == _interactionEffects) return;
     _interactionEffects = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyInteractionEffects, value);
+    await _themeService.save(ThemeKey.keyInteractionEffects, value);
   }
 
   late double? _defaultRadius;
@@ -796,18 +1161,20 @@ class ThemeController with ChangeNotifier {
     if (value == _defaultRadius) return;
     _defaultRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyDefaultRadius, value);
+    await _themeService.save(ThemeKey.keyDefaultRadius, value);
   }
 
   late bool _tooltipsMatchBackground;
   bool get tooltipsMatchBackground => _tooltipsMatchBackground;
-  Future<void> setTooltipsMatchBackground(bool? value,
-      [bool notify = true]) async {
+  Future<void> setTooltipsMatchBackground(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _tooltipsMatchBackground) return;
     _tooltipsMatchBackground = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTooltipsMatchBackground, value);
+    await _themeService.save(ThemeKey.keyTooltipsMatchBackground, value);
   }
 
   // Surface and blend SETTINGS.
@@ -815,24 +1182,28 @@ class ThemeController with ChangeNotifier {
 
   late FlexSurfaceMode _surfaceModeLight;
   FlexSurfaceMode get surfaceModeLight => _surfaceModeLight;
-  Future<void> setSurfaceModeLight(FlexSurfaceMode? value,
-      [bool notify = true]) async {
+  Future<void> setSurfaceModeLight(
+    FlexSurfaceMode? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _surfaceModeLight) return;
     _surfaceModeLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySurfaceModeLight, value);
+    await _themeService.save(ThemeKey.keySurfaceModeLight, value);
   }
 
   late FlexSurfaceMode _surfaceModeDark;
   FlexSurfaceMode get surfaceModeDark => _surfaceModeDark;
-  Future<void> setSurfaceModeDark(FlexSurfaceMode? value,
-      [bool notify = true]) async {
+  Future<void> setSurfaceModeDark(
+    FlexSurfaceMode? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _surfaceModeDark) return;
     _surfaceModeDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySurfaceModeDark, value);
+    await _themeService.save(ThemeKey.keySurfaceModeDark, value);
   }
 
   late int _blendLevel;
@@ -842,7 +1213,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendLevel) return;
     _blendLevel = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBlendLevel, value);
+    await _themeService.save(ThemeKey.keyBlendLevel, value);
   }
 
   late int _blendLevelDark;
@@ -852,7 +1223,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendLevelDark) return;
     _blendLevelDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBlendLevelDark, value);
+    await _themeService.save(ThemeKey.keyBlendLevelDark, value);
   }
 
   late int _blendOnLevel;
@@ -862,7 +1233,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendOnLevel) return;
     _blendOnLevel = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyOnBlendLevel, value);
+    await _themeService.save(ThemeKey.keyOnBlendLevel, value);
   }
 
   late int _blendOnLevelDark;
@@ -872,7 +1243,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendOnLevelDark) return;
     _blendOnLevelDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBlendOnLevelDark, value);
+    await _themeService.save(ThemeKey.keyBlendOnLevelDark, value);
   }
 
   late int _usedColors;
@@ -882,7 +1253,7 @@ class ThemeController with ChangeNotifier {
     if (value == _usedColors) return;
     _usedColors = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUsedColors, value);
+    await _themeService.save(ThemeKey.keyUsedColors, value);
   }
 
   late bool _swapLightColors;
@@ -892,7 +1263,7 @@ class ThemeController with ChangeNotifier {
     if (value == _swapLightColors) return;
     _swapLightColors = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySwapLightColors, value);
+    await _themeService.save(ThemeKey.keySwapLightColors, value);
   }
 
   late bool _swapDarkColors;
@@ -902,7 +1273,7 @@ class ThemeController with ChangeNotifier {
     if (value == _swapDarkColors) return;
     _swapDarkColors = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySwapDarkColors, value);
+    await _themeService.save(ThemeKey.keySwapDarkColors, value);
   }
 
   late bool _lightIsWhite;
@@ -912,7 +1283,7 @@ class ThemeController with ChangeNotifier {
     if (value == _lightIsWhite) return;
     _lightIsWhite = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyLightIsWhite, value);
+    await _themeService.save(ThemeKey.keyLightIsWhite, value);
   }
 
   late bool _darkIsTrueBlack;
@@ -922,18 +1293,20 @@ class ThemeController with ChangeNotifier {
     if (value == _darkIsTrueBlack) return;
     _darkIsTrueBlack = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyDarkIsTrueBlack, value);
+    await _themeService.save(ThemeKey.keyDarkIsTrueBlack, value);
   }
 
   late bool _useDarkColorsForSeed;
   bool get useDarkColorsForSeed => _useDarkColorsForSeed;
-  Future<void> setUseDarkColorsForSeed(bool? value,
-      [bool notify = true]) async {
+  Future<void> setUseDarkColorsForSeed(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _useDarkColorsForSeed) return;
     _useDarkColorsForSeed = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseDarkColorsForSeed, value);
+    await _themeService.save(ThemeKey.keyUseDarkColorsForSeed, value);
   }
 
   late bool _useToDarkMethod;
@@ -943,18 +1316,20 @@ class ThemeController with ChangeNotifier {
     if (value == _useToDarkMethod) return;
     _useToDarkMethod = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseToDarkMethod, value);
+    await _themeService.save(ThemeKey.keyUseToDarkMethod, value);
   }
 
   late bool _toDarkSwapPrimaryAndContainer;
   bool get toDarkSwapPrimaryAndContainer => _toDarkSwapPrimaryAndContainer;
-  Future<void> setToDarkSwapPrimaryAndContainer(bool? value,
-      [bool notify = true]) async {
+  Future<void> setToDarkSwapPrimaryAndContainer(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _toDarkSwapPrimaryAndContainer) return;
     _toDarkSwapPrimaryAndContainer = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyToDarkSwapPrimaryAndContainer, value);
+    await _themeService.save(ThemeKey.keyToDarkSwapPrimaryAndContainer, value);
   }
 
   late int _darkMethodLevel;
@@ -964,7 +1339,7 @@ class ThemeController with ChangeNotifier {
     if (value == _darkMethodLevel) return;
     _darkMethodLevel = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyDarkMethodLevel, value);
+    await _themeService.save(ThemeKey.keyDarkMethodLevel, value);
   }
 
   // On color blending ON/OFF
@@ -975,7 +1350,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendLightOnColors) return;
     _blendLightOnColors = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBlendLightOnColors, value);
+    await _themeService.save(ThemeKey.keyBlendLightOnColors, value);
   }
 
   late bool _blendDarkOnColors;
@@ -985,7 +1360,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendDarkOnColors) return;
     _blendDarkOnColors = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBlendDarkOnColors, value);
+    await _themeService.save(ThemeKey.keyBlendDarkOnColors, value);
   }
 
   // TextThem blending ON/OFF
@@ -996,7 +1371,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendLightTextTheme) return;
     _blendLightTextTheme = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBlendLightTextTheme, value);
+    await _themeService.save(ThemeKey.keyBlendLightTextTheme, value);
   }
 
   late bool _blendDarkTextTheme;
@@ -1006,7 +1381,7 @@ class ThemeController with ChangeNotifier {
     if (value == _blendDarkTextTheme) return;
     _blendDarkTextTheme = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBlendDarkTextTheme, value);
+    await _themeService.save(ThemeKey.keyBlendDarkTextTheme, value);
   }
 
   // Material 3 and Seed ColorScheme SETTINGS.
@@ -1019,7 +1394,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useMaterial3) return;
     _useMaterial3 = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseMaterial3, value);
+    await _themeService.save(ThemeKey.keyUseMaterial3, value);
   }
 
   late bool _useKeyColors;
@@ -1029,7 +1404,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useKeyColors) return;
     _useKeyColors = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseKeyColors, value);
+    await _themeService.save(ThemeKey.keyUseKeyColors, value);
   }
 
   late bool _useSecondary;
@@ -1039,7 +1414,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useSecondary) return;
     _useSecondary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseSecondary, value);
+    await _themeService.save(ThemeKey.keyUseSecondary, value);
   }
 
   late bool _useTertiary;
@@ -1049,7 +1424,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useTertiary) return;
     _useTertiary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseTertiary, value);
+    await _themeService.save(ThemeKey.keyUseTertiary, value);
   }
 
   late bool _keepPrimary;
@@ -1059,7 +1434,7 @@ class ThemeController with ChangeNotifier {
     if (value == _keepPrimary) return;
     _keepPrimary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepPrimary, value);
+    await _themeService.save(ThemeKey.keyKeepPrimary, value);
   }
 
   late bool _keepSecondary;
@@ -1069,7 +1444,7 @@ class ThemeController with ChangeNotifier {
     if (value == _keepSecondary) return;
     _keepSecondary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepSecondary, value);
+    await _themeService.save(ThemeKey.keyKeepSecondary, value);
   }
 
   late bool _keepTertiary;
@@ -1079,40 +1454,46 @@ class ThemeController with ChangeNotifier {
     if (value == _keepTertiary) return;
     _keepTertiary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepTertiary, value);
+    await _themeService.save(ThemeKey.keyKeepTertiary, value);
   }
 
   late bool _keepPrimaryContainer;
   bool get keepPrimaryContainer => _keepPrimaryContainer;
-  Future<void> setKeepPrimaryContainer(bool? value,
-      [bool notify = true]) async {
+  Future<void> setKeepPrimaryContainer(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _keepPrimaryContainer) return;
     _keepPrimaryContainer = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepPrimaryContainer, value);
+    await _themeService.save(ThemeKey.keyKeepPrimaryContainer, value);
   }
 
   late bool _keepSecondaryContainer;
   bool get keepSecondaryContainer => _keepSecondaryContainer;
-  Future<void> setKeepSecondaryContainer(bool? value,
-      [bool notify = true]) async {
+  Future<void> setKeepSecondaryContainer(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _keepSecondaryContainer) return;
     _keepSecondaryContainer = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepSecondaryContainer, value);
+    await _themeService.save(ThemeKey.keyKeepSecondaryContainer, value);
   }
 
   late bool _keepTertiaryContainer;
   bool get keepTertiaryContainer => _keepTertiaryContainer;
-  Future<void> setKeepTertiaryContainer(bool? value,
-      [bool notify = true]) async {
+  Future<void> setKeepTertiaryContainer(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _keepTertiaryContainer) return;
     _keepTertiaryContainer = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepTertiaryContainer, value);
+    await _themeService.save(ThemeKey.keyKeepTertiaryContainer, value);
   }
 
   late bool _keepDarkPrimary;
@@ -1122,7 +1503,7 @@ class ThemeController with ChangeNotifier {
     if (value == _keepDarkPrimary) return;
     _keepDarkPrimary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepDarkPrimary, value);
+    await _themeService.save(ThemeKey.keyKeepDarkPrimary, value);
   }
 
   late bool _keepDarkSecondary;
@@ -1132,7 +1513,7 @@ class ThemeController with ChangeNotifier {
     if (value == _keepDarkSecondary) return;
     _keepDarkSecondary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepDarkSecondary, value);
+    await _themeService.save(ThemeKey.keyKeepDarkSecondary, value);
   }
 
   late bool _keepDarkTertiary;
@@ -1142,40 +1523,46 @@ class ThemeController with ChangeNotifier {
     if (value == _keepDarkTertiary) return;
     _keepDarkTertiary = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepDarkTertiary, value);
+    await _themeService.save(ThemeKey.keyKeepDarkTertiary, value);
   }
 
   late bool _keepDarkPrimaryContainer;
   bool get keepDarkPrimaryContainer => _keepDarkPrimaryContainer;
-  Future<void> setKeepDarkPrimaryContainer(bool? value,
-      [bool notify = true]) async {
+  Future<void> setKeepDarkPrimaryContainer(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _keepDarkPrimaryContainer) return;
     _keepDarkPrimaryContainer = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepDarkPrimaryContainer, value);
+    await _themeService.save(ThemeKey.keyKeepDarkPrimaryContainer, value);
   }
 
   late bool _keepDarkSecondaryContainer;
   bool get keepDarkSecondaryContainer => _keepDarkSecondaryContainer;
-  Future<void> setKeepDarkSecondaryContainer(bool? value,
-      [bool notify = true]) async {
+  Future<void> setKeepDarkSecondaryContainer(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _keepDarkSecondaryContainer) return;
     _keepDarkSecondaryContainer = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepDarkSecondaryContainer, value);
+    await _themeService.save(ThemeKey.keyKeepDarkSecondaryContainer, value);
   }
 
   late bool _keepDarkTertiaryContainer;
   bool get keepDarkTertiaryContainer => _keepDarkTertiaryContainer;
-  Future<void> setKeepDarkTertiaryContainer(bool? value,
-      [bool notify = true]) async {
+  Future<void> setKeepDarkTertiaryContainer(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _keepDarkTertiaryContainer) return;
     _keepDarkTertiaryContainer = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyKeepDarkTertiaryContainer, value);
+    await _themeService.save(ThemeKey.keyKeepDarkTertiaryContainer, value);
   }
 
   late int _usedFlexToneSetup;
@@ -1185,7 +1572,7 @@ class ThemeController with ChangeNotifier {
     if (value == _usedFlexToneSetup) return;
     _usedFlexToneSetup = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUsedFlexToneSetup, value);
+    await _themeService.save(ThemeKey.keyUsedFlexToneSetup, value);
   }
 
   late bool _useM3ErrorColors;
@@ -1195,7 +1582,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useM3ErrorColors) return;
     _useM3ErrorColors = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseM3ErrorColors, value);
+    await _themeService.save(ThemeKey.keyUseM3ErrorColors, value);
   }
 
   // InputDecorator SETTINGS.
@@ -1204,80 +1591,99 @@ class ThemeController with ChangeNotifier {
   late SchemeColor? _inputDecoratorSchemeColorLight;
   SchemeColor? get inputDecoratorSchemeColorLight =>
       _inputDecoratorSchemeColorLight;
-  Future<void> setInputDecoratorSchemeColorLight(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setInputDecoratorSchemeColorLight(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _inputDecoratorSchemeColorLight) return;
     _inputDecoratorSchemeColorLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyInputDecoratorSchemeColorLight, value);
+    await _themeService.save(ThemeKey.keyInputDecoratorSchemeColorLight, value);
   }
 
   late SchemeColor? _inputDecoratorSchemeColorDark;
   SchemeColor? get inputDecoratorSchemeColorDark =>
       _inputDecoratorSchemeColorDark;
-  Future<void> setInputDecoratorSchemeColorDark(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setInputDecoratorSchemeColorDark(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _inputDecoratorSchemeColorDark) return;
     _inputDecoratorSchemeColorDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyInputDecoratorSchemeColorDark, value);
+    await _themeService.save(ThemeKey.keyInputDecoratorSchemeColorDark, value);
   }
 
   late bool _inputDecoratorIsFilled;
   bool get inputDecoratorIsFilled => _inputDecoratorIsFilled;
-  Future<void> setInputDecoratorIsFilled(bool? value,
-      [bool notify = true]) async {
+  Future<void> setInputDecoratorIsFilled(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _inputDecoratorIsFilled) return;
     _inputDecoratorIsFilled = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyInputDecoratorIsFilled, value);
+    await _themeService.save(ThemeKey.keyInputDecoratorIsFilled, value);
   }
 
   late FlexInputBorderType _inputDecoratorBorderType;
   FlexInputBorderType get inputDecoratorBorderType => _inputDecoratorBorderType;
-  Future<void> setInputDecoratorBorderType(FlexInputBorderType? value,
-      [bool notify = true]) async {
+  Future<void> setInputDecoratorBorderType(
+    FlexInputBorderType? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _inputDecoratorBorderType) return;
     _inputDecoratorBorderType = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyInputDecoratorBorderType, value);
+    await _themeService.save(ThemeKey.keyInputDecoratorBorderType, value);
   }
 
   late double? _inputDecoratorBorderRadius;
   double? get inputDecoratorBorderRadius => _inputDecoratorBorderRadius;
-  Future<void> setInputDecoratorBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setInputDecoratorBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _inputDecoratorBorderRadius) return;
     _inputDecoratorBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyInputDecoratorBorderRadius, value);
+    await _themeService.save(ThemeKey.keyInputDecoratorBorderRadius, value);
   }
 
   late bool _inputDecoratorUnfocusedHasBorder;
   bool get inputDecoratorUnfocusedHasBorder =>
       _inputDecoratorUnfocusedHasBorder;
-  Future<void> setInputDecoratorUnfocusedHasBorder(bool? value,
-      [bool notify = true]) async {
+  Future<void> setInputDecoratorUnfocusedHasBorder(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _inputDecoratorUnfocusedHasBorder) return;
     _inputDecoratorUnfocusedHasBorder = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyInputDecoratorUnfocusedHasBorder, value);
+    await _themeService.save(
+      ThemeKey.keyInputDecoratorUnfocusedHasBorder,
+      value,
+    );
   }
 
   late bool _inputDecoratorUnfocusedBorderIsColored;
   bool get inputDecoratorUnfocusedBorderIsColored =>
       _inputDecoratorUnfocusedBorderIsColored;
-  Future<void> setInputDecoratorUnfocusedBorderIsColored(bool? value,
-      [bool notify = true]) async {
+  Future<void> setInputDecoratorUnfocusedBorderIsColored(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _inputDecoratorUnfocusedBorderIsColored) return;
     _inputDecoratorUnfocusedBorderIsColored = value;
     if (notify) notifyListeners();
     await _themeService.save(
-        Store.keyInputDecoratorUnfocusedBorderIsColored, value);
+      ThemeKey.keyInputDecoratorUnfocusedBorderIsColored,
+      value,
+    );
   }
 
   // AppBar SETTINGS.
@@ -1285,35 +1691,41 @@ class ThemeController with ChangeNotifier {
 
   late FlexAppBarStyle _appBarStyleLight;
   FlexAppBarStyle get appBarStyleLight => _appBarStyleLight;
-  Future<void> setAppBarStyleLight(FlexAppBarStyle? value,
-      [bool notify = true]) async {
+  Future<void> setAppBarStyleLight(
+    FlexAppBarStyle? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _appBarStyleLight) return;
     _appBarStyleLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarStyleLight, value);
+    await _themeService.save(ThemeKey.keyAppBarStyleLight, value);
   }
 
   late FlexAppBarStyle _appBarStyleDark;
   FlexAppBarStyle get appBarStyleDark => _appBarStyleDark;
-  Future<void> setAppBarStyleDark(FlexAppBarStyle? value,
-      [bool notify = true]) async {
+  Future<void> setAppBarStyleDark(
+    FlexAppBarStyle? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _appBarStyleDark) return;
     _appBarStyleDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarStyleDark, value);
+    await _themeService.save(ThemeKey.keyAppBarStyleDark, value);
   }
 
   late double _appBarOpacityLight;
   double get appBarOpacityLight => _appBarOpacityLight;
-  Future<void> setAppBarOpacityLight(double? value,
-      [bool notify = true]) async {
+  Future<void> setAppBarOpacityLight(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _appBarOpacityLight) return;
     _appBarOpacityLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarOpacityLight, value);
+    await _themeService.save(ThemeKey.keyAppBarOpacityLight, value);
   }
 
   late double _appBarOpacityDark;
@@ -1323,62 +1735,78 @@ class ThemeController with ChangeNotifier {
     if (value == _appBarOpacityDark) return;
     _appBarOpacityDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarOpacityDark, value);
+    await _themeService.save(ThemeKey.keyAppBarOpacityDark, value);
   }
 
   late double _appBarElevationLight;
   double get appBarElevationLight => _appBarElevationLight;
-  Future<void> setAppBarElevationLight(double? value,
-      [bool notify = true]) async {
+  Future<void> setAppBarElevationLight(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _appBarElevationLight) return;
     _appBarElevationLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarElevationLight, value);
+    await _themeService.save(ThemeKey.keyAppBarElevationLight, value);
   }
 
   late double _appBarElevationDark;
   double get appBarElevationDark => _appBarElevationDark;
-  Future<void> setAppBarElevationDark(double? value,
-      [bool notify = true]) async {
+  Future<void> setAppBarElevationDark(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _appBarElevationDark) return;
     _appBarElevationDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarElevationDark, value);
+    await _themeService.save(ThemeKey.keyAppBarElevationDark, value);
   }
 
   late bool _transparentStatusBar;
   bool get transparentStatusBar => _transparentStatusBar;
-  Future<void> setTransparentStatusBar(bool? value,
-      [bool notify = true]) async {
+  Future<void> setTransparentStatusBar(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _transparentStatusBar) return;
     _transparentStatusBar = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTransparentStatusBar, value);
+    await _themeService.save(ThemeKey.keyTransparentStatusBar, value);
   }
 
   late SchemeColor? _appBarBackgroundSchemeColorLight;
   SchemeColor? get appBarBackgroundSchemeColorLight =>
       _appBarBackgroundSchemeColorLight;
-  Future<void> setAppBarBackgroundSchemeColorLight(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setAppBarBackgroundSchemeColorLight(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _appBarBackgroundSchemeColorLight) return;
     _appBarBackgroundSchemeColorLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarBackgroundSchemeColorLight, value);
+    await _themeService.save(
+      ThemeKey.keyAppBarBackgroundSchemeColorLight,
+      value,
+    );
   }
 
   late SchemeColor? _appBarBackgroundSchemeColorDark;
   SchemeColor? get appBarBackgroundSchemeColorDark =>
       _appBarBackgroundSchemeColorDark;
-  Future<void> setAppBarBackgroundSchemeColorDark(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setAppBarBackgroundSchemeColorDark(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _appBarBackgroundSchemeColorDark) return;
     _appBarBackgroundSchemeColorDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyAppBarBackgroundSchemeColorDark, value);
+    await _themeService.save(
+      ThemeKey.keyAppBarBackgroundSchemeColorDark,
+      value,
+    );
   }
 
   // TabBar SETTINGS.
@@ -1386,53 +1814,63 @@ class ThemeController with ChangeNotifier {
 
   late FlexTabBarStyle _tabBarStyle;
   FlexTabBarStyle get tabBarStyle => _tabBarStyle;
-  Future<void> setTabBarStyle(FlexTabBarStyle? value,
-      [bool notify = true]) async {
+  Future<void> setTabBarStyle(
+    FlexTabBarStyle? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _tabBarStyle) return;
     _tabBarStyle = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTabBarStyle, value);
+    await _themeService.save(ThemeKey.keyTabBarStyle, value);
   }
 
   late SchemeColor? _tabBarIndicatorLight;
   SchemeColor? get tabBarIndicatorLight => _tabBarIndicatorLight;
-  Future<void> setTabBarIndicatorLight(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setTabBarIndicatorLight(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _tabBarIndicatorLight) return;
     _tabBarIndicatorLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTabBarIndicatorLight, value);
+    await _themeService.save(ThemeKey.keyTabBarIndicatorLight, value);
   }
 
   late SchemeColor? _tabBarIndicatorDark;
   SchemeColor? get tabBarIndicatorDark => _tabBarIndicatorDark;
-  Future<void> setTabBarIndicatorDark(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setTabBarIndicatorDark(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _tabBarIndicatorDark) return;
     _tabBarIndicatorDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTabBarIndicatorDark, value);
+    await _themeService.save(ThemeKey.keyTabBarIndicatorDark, value);
   }
 
   late SchemeColor? _tabBarItemSchemeColorLight;
   SchemeColor? get tabBarItemSchemeColorLight => _tabBarItemSchemeColorLight;
-  Future<void> setTabBarItemSchemeColorLight(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setTabBarItemSchemeColorLight(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _tabBarItemSchemeColorLight) return;
     _tabBarItemSchemeColorLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTabBarItemSchemeColorLight, value);
+    await _themeService.save(ThemeKey.keyTabBarItemSchemeColorLight, value);
   }
 
   late SchemeColor? _tabBarItemSchemeColorDark;
   SchemeColor? get tabBarItemSchemeColorDark => _tabBarItemSchemeColorDark;
-  Future<void> setTabBarItemSchemeColorDark(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setTabBarItemSchemeColorDark(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _tabBarItemSchemeColorDark) return;
     _tabBarItemSchemeColorDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTabBarItemSchemeColorDark, value);
+    await _themeService.save(ThemeKey.keyTabBarItemSchemeColorDark, value);
   }
 
   //
@@ -1440,12 +1878,14 @@ class ThemeController with ChangeNotifier {
 
   late double? _bottomSheetBorderRadius;
   double? get bottomSheetBorderRadius => _bottomSheetBorderRadius;
-  Future<void> setBottomSheetBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setBottomSheetBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _bottomSheetBorderRadius) return;
     _bottomSheetBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomSheetBorderRadius, value);
+    await _themeService.save(ThemeKey.keyBottomSheetBorderRadius, value);
   }
 
   // Android System Navigator bar SETTINGS.
@@ -1453,13 +1893,15 @@ class ThemeController with ChangeNotifier {
 
   late FlexSystemNavBarStyle _sysNavBarStyle;
   FlexSystemNavBarStyle get sysNavBarStyle => _sysNavBarStyle;
-  Future<void> setSysNavBarStyle(FlexSystemNavBarStyle? value,
-      [bool notify = true]) async {
+  Future<void> setSysNavBarStyle(
+    FlexSystemNavBarStyle? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _sysNavBarStyle) return;
     _sysNavBarStyle = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySysNavBarStyle, value);
+    await _themeService.save(ThemeKey.keySysNavBarStyle, value);
   }
 
   late double _sysNavBarOpacity;
@@ -1469,7 +1911,7 @@ class ThemeController with ChangeNotifier {
     if (value == _sysNavBarOpacity) return;
     _sysNavBarOpacity = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySysNavBarOpacity, value);
+    await _themeService.save(ThemeKey.keySysNavBarOpacity, value);
   }
 
   late bool _useSysNavDivider;
@@ -1479,7 +1921,7 @@ class ThemeController with ChangeNotifier {
     if (value == _useSysNavDivider) return;
     _useSysNavDivider = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUseSysNavDivider, value);
+    await _themeService.save(ThemeKey.keyUseSysNavDivider, value);
   }
 
   // BottomNavigationBar SETTINGS.
@@ -1488,90 +1930,114 @@ class ThemeController with ChangeNotifier {
   late SchemeColor? _bottomNavBarBackgroundSchemeColor;
   SchemeColor? get bottomNavBarBackgroundSchemeColor =>
       _bottomNavBarBackgroundSchemeColor;
-  Future<void> setBottomNavBarBackgroundSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavBarBackgroundSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _bottomNavBarBackgroundSchemeColor) return;
     _bottomNavBarBackgroundSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomNavBarBackgroundSchemeColor, value);
+    await _themeService.save(
+      ThemeKey.keyBottomNavBarBackgroundSchemeColor,
+      value,
+    );
   }
 
   late double _bottomNavigationBarOpacity;
   double get bottomNavigationBarOpacity => _bottomNavigationBarOpacity;
-  Future<void> setBottomNavigationBarOpacity(double? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavigationBarOpacity(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _bottomNavigationBarOpacity) return;
     _bottomNavigationBarOpacity = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomNavigationBarOpacity, value);
+    await _themeService.save(ThemeKey.keyBottomNavigationBarOpacity, value);
   }
 
   late double _bottomNavigationBarElevation;
   double get bottomNavigationBarElevation => _bottomNavigationBarElevation;
-  Future<void> setBottomNavigationBarElevation(double? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavigationBarElevation(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _bottomNavigationBarElevation) return;
     _bottomNavigationBarElevation = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomNavigationBarElevation, value);
+    await _themeService.save(ThemeKey.keyBottomNavigationBarElevation, value);
   }
 
   late SchemeColor? _bottomNavBarSelectedSchemeColor;
   SchemeColor? get bottomNavBarSelectedSchemeColor =>
       _bottomNavBarSelectedSchemeColor;
-  Future<void> setBottomNavBarSelectedSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavBarSelectedSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _bottomNavBarSelectedSchemeColor) return;
     _bottomNavBarSelectedSchemeColor = value;
     if (notify) notifyListeners();
     await _themeService.save(
-        Store.keyBottomNavBarSelectedItemSchemeColor, value);
+      ThemeKey.keyBottomNavBarSelectedItemSchemeColor,
+      value,
+    );
   }
 
   late SchemeColor? _bottomNavBarUnselectedSchemeColor;
   SchemeColor? get bottomNavBarUnselectedSchemeColor =>
       _bottomNavBarUnselectedSchemeColor;
-  Future<void> setBottomNavBarUnselectedSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavBarUnselectedSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _bottomNavBarUnselectedSchemeColor) return;
     _bottomNavBarUnselectedSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomNavBarUnselectedSchemeColor, value);
+    await _themeService.save(
+      ThemeKey.keyBottomNavBarUnselectedSchemeColor,
+      value,
+    );
   }
 
   late bool _bottomNavBarMuteUnselected;
   bool get bottomNavBarMuteUnselected => _bottomNavBarMuteUnselected;
-  Future<void> setBottomNavBarMuteUnselected(bool? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavBarMuteUnselected(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _bottomNavBarMuteUnselected) return;
     _bottomNavBarMuteUnselected = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomNavBarMuteUnselected, value);
+    await _themeService.save(ThemeKey.keyBottomNavBarMuteUnselected, value);
   }
 
   late bool _bottomNavShowSelectedLabels;
   bool get bottomNavShowSelectedLabels => _bottomNavShowSelectedLabels;
-  Future<void> setBottomNavShowSelectedLabels(bool? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavShowSelectedLabels(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _bottomNavShowSelectedLabels) return;
     _bottomNavShowSelectedLabels = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomNavShowSelectedLabels, value);
+    await _themeService.save(ThemeKey.keyBottomNavShowSelectedLabels, value);
   }
 
   late bool _bottomNavShowUnselectedLabels;
   bool get bottomNavShowUnselectedLabels => _bottomNavShowUnselectedLabels;
-  Future<void> setBottomNavShowUnselectedLabels(bool? value,
-      [bool notify = true]) async {
+  Future<void> setBottomNavShowUnselectedLabels(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _bottomNavShowUnselectedLabels) return;
     _bottomNavShowUnselectedLabels = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyBottomNavShowUnselectedLabels, value);
+    await _themeService.save(ThemeKey.keyBottomNavShowUnselectedLabels, value);
   }
 
   // NavigationBar SETTINGS.
@@ -1579,12 +2045,14 @@ class ThemeController with ChangeNotifier {
 
   late SchemeColor? _navBarBackgroundSchemeColor;
   SchemeColor? get navBarBackgroundSchemeColor => _navBarBackgroundSchemeColor;
-  Future<void> setNavBarBackgroundSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavBarBackgroundSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navBarBackgroundSchemeColor) return;
     _navBarBackgroundSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarBackgroundSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavBarBackgroundSchemeColor, value);
   }
 
   late double _navBarOpacity;
@@ -1594,7 +2062,7 @@ class ThemeController with ChangeNotifier {
     if (value == _navBarOpacity) return;
     _navBarOpacity = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarOpacity, value);
+    await _themeService.save(ThemeKey.keyNavBarOpacity, value);
   }
 
   late double? _navBarHeight;
@@ -1603,69 +2071,81 @@ class ThemeController with ChangeNotifier {
     if (value == _navBarHeight) return;
     _navBarHeight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarHeight, value);
+    await _themeService.save(ThemeKey.keyNavBarHeight, value);
   }
 
   late SchemeColor? _navBarSelectedSchemeColor;
   SchemeColor? get navBarSelectedSchemeColor => _navBarSelectedSchemeColor;
-  Future<void> setNavBarSelectedSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavBarSelectedSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navBarSelectedSchemeColor) return;
     _navBarSelectedSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarSelectedItemSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavBarSelectedItemSchemeColor, value);
   }
 
   late SchemeColor? _navBarUnselectedSchemeColor;
   SchemeColor? get navBarUnselectedSchemeColor => _navBarUnselectedSchemeColor;
-  Future<void> setNavBarUnselectedSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavBarUnselectedSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navBarUnselectedSchemeColor) return;
     _navBarUnselectedSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarUnselectedSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavBarUnselectedSchemeColor, value);
   }
 
   late bool _navBarMuteUnselected;
   bool get navBarMuteUnselected => _navBarMuteUnselected;
-  Future<void> setNavBarMuteUnselected(bool? value,
-      [bool notify = true]) async {
+  Future<void> setNavBarMuteUnselected(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _navBarMuteUnselected) return;
     _navBarMuteUnselected = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarMuteUnselected, value);
+    await _themeService.save(ThemeKey.keyNavBarMuteUnselected, value);
   }
 
   late SchemeColor? _navBarIndicatorSchemeColor;
   SchemeColor? get navBarIndicatorSchemeColor => _navBarIndicatorSchemeColor;
-  Future<void> setNavBarIndicatorSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavBarIndicatorSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navBarIndicatorSchemeColor) return;
     _navBarIndicatorSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarIndicatorSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavBarIndicatorSchemeColor, value);
   }
 
   late double? _navBarIndicatorOpacity;
   double? get navBarIndicatorOpacity => _navBarIndicatorOpacity;
-  Future<void> setNavBarIndicatorOpacity(double? value,
-      [bool notify = true]) async {
+  Future<void> setNavBarIndicatorOpacity(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navBarIndicatorOpacity) return;
     _navBarIndicatorOpacity = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarIndicatorOpacity, value);
+    await _themeService.save(ThemeKey.keyNavBarIndicatorOpacity, value);
   }
 
   late NavigationDestinationLabelBehavior _navBarLabelBehavior;
   NavigationDestinationLabelBehavior get navBarLabelBehavior =>
       _navBarLabelBehavior;
-  Future<void> setNavBarLabelBehavior(NavigationDestinationLabelBehavior value,
-      [bool notify = true]) async {
+  Future<void> setNavBarLabelBehavior(
+    NavigationDestinationLabelBehavior value, [
+    bool notify = true,
+  ]) async {
     if (value == _navBarLabelBehavior) return;
     _navBarLabelBehavior = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavBarLabelBehavior, value);
+    await _themeService.save(ThemeKey.keyNavBarLabelBehavior, value);
   }
 
   // NavigationRail SETTINGS.
@@ -1674,12 +2154,14 @@ class ThemeController with ChangeNotifier {
   late SchemeColor? _navRailBackgroundSchemeColor;
   SchemeColor? get navRailBackgroundSchemeColor =>
       _navRailBackgroundSchemeColor;
-  Future<void> setNavRailBackgroundSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavRailBackgroundSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navRailBackgroundSchemeColor) return;
     _navRailBackgroundSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailBackgroundSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavRailBackgroundSchemeColor, value);
   }
 
   late double _navRailOpacity;
@@ -1689,60 +2171,70 @@ class ThemeController with ChangeNotifier {
     if (value == _navRailOpacity) return;
     _navRailOpacity = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailOpacity, value);
+    await _themeService.save(ThemeKey.keyNavRailOpacity, value);
   }
 
   late double _navigationRailElevation;
   double get navigationRailElevation => _navigationRailElevation;
-  Future<void> setNavigationRailElevation(double? value,
-      [bool notify = true]) async {
+  Future<void> setNavigationRailElevation(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _navigationRailElevation) return;
     _navigationRailElevation = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavigationRailElevation, value);
+    await _themeService.save(ThemeKey.keyNavigationRailElevation, value);
   }
 
   late SchemeColor? _navRailSelectedSchemeColor;
   SchemeColor? get navRailSelectedSchemeColor => _navRailSelectedSchemeColor;
-  Future<void> setNavRailSelectedSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavRailSelectedSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navRailSelectedSchemeColor) return;
     _navRailSelectedSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailSelectedItemSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavRailSelectedItemSchemeColor, value);
   }
 
   late SchemeColor? _navRailUnselectedSchemeColor;
   SchemeColor? get navRailUnselectedSchemeColor =>
       _navRailUnselectedSchemeColor;
-  Future<void> setNavRailUnselectedSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavRailUnselectedSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navRailUnselectedSchemeColor) return;
     _navRailUnselectedSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailUnselectedSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavRailUnselectedSchemeColor, value);
   }
 
   late bool _navRailMuteUnselected;
   bool get navRailMuteUnselected => _navRailMuteUnselected;
-  Future<void> setNavRailMuteUnselected(bool? value,
-      [bool notify = true]) async {
+  Future<void> setNavRailMuteUnselected(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _navRailMuteUnselected) return;
     _navRailMuteUnselected = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailMuteUnselected, value);
+    await _themeService.save(ThemeKey.keyNavRailMuteUnselected, value);
   }
 
   late NavigationRailLabelType _navRailLabelType;
   NavigationRailLabelType get navRailLabelType => _navRailLabelType;
-  Future<void> setNavRailLabelType(NavigationRailLabelType value,
-      [bool notify = true]) async {
+  Future<void> setNavRailLabelType(
+    NavigationRailLabelType value, [
+    bool notify = true,
+  ]) async {
     if (value == _navRailLabelType) return;
     _navRailLabelType = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailLabelType, value);
+    await _themeService.save(ThemeKey.keyNavRailLabelType, value);
   }
 
   late bool _navRailUseIndicator;
@@ -1752,27 +2244,31 @@ class ThemeController with ChangeNotifier {
     if (value == _navRailUseIndicator) return;
     _navRailUseIndicator = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailUseIndicator, value);
+    await _themeService.save(ThemeKey.keyNavRailUseIndicator, value);
   }
 
   late SchemeColor? _navRailIndicatorSchemeColor;
   SchemeColor? get navRailIndicatorSchemeColor => _navRailIndicatorSchemeColor;
-  Future<void> setNavRailIndicatorSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setNavRailIndicatorSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navRailIndicatorSchemeColor) return;
     _navRailIndicatorSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailIndicatorSchemeColor, value);
+    await _themeService.save(ThemeKey.keyNavRailIndicatorSchemeColor, value);
   }
 
   late double? _navRailIndicatorOpacity;
   double? get navRailIndicatorOpacity => _navRailIndicatorOpacity;
-  Future<void> setNavRailIndicatorOpacity(double? value,
-      [bool notify = true]) async {
+  Future<void> setNavRailIndicatorOpacity(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _navRailIndicatorOpacity) return;
     _navRailIndicatorOpacity = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyNavRailIndicatorOpacity, value);
+    await _themeService.save(ThemeKey.keyNavRailIndicatorOpacity, value);
   }
 
   // Button SETTINGS.
@@ -1780,82 +2276,98 @@ class ThemeController with ChangeNotifier {
 
   late SchemeColor? _textButtonSchemeColor;
   SchemeColor? get textButtonSchemeColor => _textButtonSchemeColor;
-  Future<void> setTextButtonSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setTextButtonSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _textButtonSchemeColor) return;
     _textButtonSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTextButtonSchemeColor, value);
+    await _themeService.save(ThemeKey.keyTextButtonSchemeColor, value);
   }
 
   late double? _textButtonBorderRadius;
   double? get textButtonBorderRadius => _textButtonBorderRadius;
-  Future<void> setTextButtonBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setTextButtonBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _textButtonBorderRadius) return;
     _textButtonBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTextButtonBorderRadius, value);
+    await _themeService.save(ThemeKey.keyTextButtonBorderRadius, value);
   }
 
   late SchemeColor? _elevatedButtonSchemeColor;
   SchemeColor? get elevatedButtonSchemeColor => _elevatedButtonSchemeColor;
-  Future<void> setElevatedButtonSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setElevatedButtonSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _elevatedButtonSchemeColor) return;
     _elevatedButtonSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyElevatedButtonSchemeColor, value);
+    await _themeService.save(ThemeKey.keyElevatedButtonSchemeColor, value);
   }
 
   late double? _elevatedButtonBorderRadius;
   double? get elevatedButtonBorderRadius => _elevatedButtonBorderRadius;
-  Future<void> setElevatedButtonBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setElevatedButtonBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _elevatedButtonBorderRadius) return;
     _elevatedButtonBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyElevatedButtonBorderRadius, value);
+    await _themeService.save(ThemeKey.keyElevatedButtonBorderRadius, value);
   }
 
   late SchemeColor? _outlinedButtonSchemeColor;
   SchemeColor? get outlinedButtonSchemeColor => _outlinedButtonSchemeColor;
-  Future<void> setOutlinedButtonSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setOutlinedButtonSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _outlinedButtonSchemeColor) return;
     _outlinedButtonSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyOutlinedButtonSchemeColor, value);
+    await _themeService.save(ThemeKey.keyOutlinedButtonSchemeColor, value);
   }
 
   late double? _outlinedButtonBorderRadius;
   double? get outlinedButtonBorderRadius => _outlinedButtonBorderRadius;
-  Future<void> setOutlinedButtonBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setOutlinedButtonBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _outlinedButtonBorderRadius) return;
     _outlinedButtonBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyOutlinedButtonBorderRadius, value);
+    await _themeService.save(ThemeKey.keyOutlinedButtonBorderRadius, value);
   }
 
   late SchemeColor? _toggleButtonsSchemeColor;
   SchemeColor? get toggleButtonsSchemeColor => _toggleButtonsSchemeColor;
-  Future<void> setToggleButtonsSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setToggleButtonsSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _toggleButtonsSchemeColor) return;
     _toggleButtonsSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyToggleButtonsSchemeColor, value);
+    await _themeService.save(ThemeKey.keyToggleButtonsSchemeColor, value);
   }
 
   late double? _toggleButtonsBorderRadius;
   double? get toggleButtonsBorderRadius => _toggleButtonsBorderRadius;
-  Future<void> setToggleButtonsBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setToggleButtonsBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _toggleButtonsBorderRadius) return;
     _toggleButtonsBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyToggleButtonsBorderRadius, value);
+    await _themeService.save(ThemeKey.keyToggleButtonsBorderRadius, value);
   }
 
   // Toggleable SETTINGS.
@@ -1863,43 +2375,51 @@ class ThemeController with ChangeNotifier {
 
   late bool _unselectedToggleIsColored;
   bool get unselectedToggleIsColored => _unselectedToggleIsColored;
-  Future<void> setUnselectedToggleIsColored(bool? value,
-      [bool notify = true]) async {
+  Future<void> setUnselectedToggleIsColored(
+    bool? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _unselectedToggleIsColored) return;
     _unselectedToggleIsColored = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyUnselectedToggleIsColored, value);
+    await _themeService.save(ThemeKey.keyUnselectedToggleIsColored, value);
   }
 
   late SchemeColor? _switchSchemeColor;
   SchemeColor? get switchSchemeColor => _switchSchemeColor;
-  Future<void> setSwitchSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setSwitchSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _switchSchemeColor) return;
     _switchSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySwitchSchemeColor, value);
+    await _themeService.save(ThemeKey.keySwitchSchemeColor, value);
   }
 
   late SchemeColor? _checkboxSchemeColor;
   SchemeColor? get checkboxSchemeColor => _checkboxSchemeColor;
-  Future<void> setCheckboxSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setCheckboxSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _checkboxSchemeColor) return;
     _checkboxSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyCheckboxSchemeColor, value);
+    await _themeService.save(ThemeKey.keyCheckboxSchemeColor, value);
   }
 
   late SchemeColor? _radioSchemeColor;
   SchemeColor? get radioSchemeColor => _radioSchemeColor;
-  Future<void> setRadioSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setRadioSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _radioSchemeColor) return;
     _radioSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyRadioSchemeColor, value);
+    await _themeService.save(ThemeKey.keyRadioSchemeColor, value);
   }
 
   // Fab, Chip, SnackBar, Popup, Card nad Dialog SETTINGS.
@@ -1912,7 +2432,7 @@ class ThemeController with ChangeNotifier {
     if (value == _fabUseShape) return;
     _fabUseShape = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyFabUseShape, value);
+    await _themeService.save(ThemeKey.keyFabUseShape, value);
   }
 
   late double? _fabBorderRadius;
@@ -1921,27 +2441,31 @@ class ThemeController with ChangeNotifier {
     if (value == _fabBorderRadius) return;
     _fabBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyFabBorderRadius, value);
+    await _themeService.save(ThemeKey.keyFabBorderRadius, value);
   }
 
   late SchemeColor? _fabSchemeColor;
   SchemeColor? get fabSchemeColor => _fabSchemeColor;
-  Future<void> setFabSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setFabSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _fabSchemeColor) return;
     _fabSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyFabSchemeColor, value);
+    await _themeService.save(ThemeKey.keyFabSchemeColor, value);
   }
 
   late SchemeColor? _chipSchemeColor;
   SchemeColor? get chipSchemeColor => _chipSchemeColor;
-  Future<void> setChipSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setChipSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _chipSchemeColor) return;
     _chipSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyChipSchemeColor, value);
+    await _themeService.save(ThemeKey.keyChipSchemeColor, value);
   }
 
   late double? _chipBorderRadius;
@@ -1950,17 +2474,19 @@ class ThemeController with ChangeNotifier {
     if (value == _chipBorderRadius) return;
     _chipBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyChipBorderRadius, value);
+    await _themeService.save(ThemeKey.keyChipBorderRadius, value);
   }
 
   late SchemeColor? _snackBarSchemeColor;
   SchemeColor? get snackBarSchemeColor => _snackBarSchemeColor;
-  Future<void> setSnackBarSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setSnackBarSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _snackBarSchemeColor) return;
     _snackBarSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySnackBarSchemeColor, value);
+    await _themeService.save(ThemeKey.keySnackBarSchemeColor, value);
   }
 
   late double _popupMenuOpacity;
@@ -1970,17 +2496,19 @@ class ThemeController with ChangeNotifier {
     if (value == _popupMenuOpacity) return;
     _popupMenuOpacity = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyPopupMenuOpacity, value);
+    await _themeService.save(ThemeKey.keyPopupMenuOpacity, value);
   }
 
   late double? _popupMenuBorderRadius;
   double? get popupMenuBorderRadius => _popupMenuBorderRadius;
-  Future<void> setPopupMenuBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setPopupMenuBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _popupMenuBorderRadius) return;
     _popupMenuBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyPopupMenuBorderRadius, value);
+    await _themeService.save(ThemeKey.keyPopupMenuBorderRadius, value);
   }
 
   late double? _cardBorderRadius;
@@ -1989,27 +2517,31 @@ class ThemeController with ChangeNotifier {
     if (value == _cardBorderRadius) return;
     _cardBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyCardBorderRadius, value);
+    await _themeService.save(ThemeKey.keyCardBorderRadius, value);
   }
 
   late SchemeColor? _dialogBackgroundSchemeColor;
   SchemeColor? get dialogBackgroundSchemeColor => _dialogBackgroundSchemeColor;
-  Future<void> setDialogBackgroundSchemeColor(SchemeColor? value,
-      [bool notify = true]) async {
+  Future<void> setDialogBackgroundSchemeColor(
+    SchemeColor? value, [
+    bool notify = true,
+  ]) async {
     if (value == _dialogBackgroundSchemeColor) return;
     _dialogBackgroundSchemeColor = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyDialogBackgroundSchemeColor, value);
+    await _themeService.save(ThemeKey.keyDialogBackgroundSchemeColor, value);
   }
 
   late double? _dialogBorderRadius;
   double? get dialogBorderRadius => _dialogBorderRadius;
-  Future<void> setDialogBorderRadius(double? value,
-      [bool notify = true]) async {
+  Future<void> setDialogBorderRadius(
+    double? value, [
+    bool notify = true,
+  ]) async {
     if (value == _dialogBorderRadius) return;
     _dialogBorderRadius = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyDialogBorderRadius, value);
+    await _themeService.save(ThemeKey.keyDialogBorderRadius, value);
   }
 
   // Custom surface tint color SETTINGS.
@@ -2021,7 +2553,7 @@ class ThemeController with ChangeNotifier {
     if (value == _surfaceTintLight) return;
     _surfaceTintLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySurfaceTintLight, value);
+    await _themeService.save(ThemeKey.keySurfaceTintLight, value);
   }
 
   late Color? _surfaceTintDark;
@@ -2030,7 +2562,7 @@ class ThemeController with ChangeNotifier {
     if (value == _surfaceTintDark) return;
     _surfaceTintDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySurfaceTintDark, value);
+    await _themeService.save(ThemeKey.keySurfaceTintDark, value);
   }
 
   // Custom color SETTINGS.
@@ -2043,18 +2575,20 @@ class ThemeController with ChangeNotifier {
     if (value == _primaryLight) return;
     _primaryLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyPrimaryLight, value);
+    await _themeService.save(ThemeKey.keyPrimaryLight, value);
   }
 
   late Color _primaryContainerLight;
   Color get primaryContainerLight => _primaryContainerLight;
-  Future<void> setPrimaryContainerLight(Color? value,
-      [bool notify = true]) async {
+  Future<void> setPrimaryContainerLight(
+    Color? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _primaryContainerLight) return;
     _primaryContainerLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyPrimaryContainerLight, value);
+    await _themeService.save(ThemeKey.keyPrimaryContainerLight, value);
   }
 
   late Color _secondaryLight;
@@ -2064,18 +2598,20 @@ class ThemeController with ChangeNotifier {
     if (value == _secondaryLight) return;
     _secondaryLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySecondaryLight, value);
+    await _themeService.save(ThemeKey.keySecondaryLight, value);
   }
 
   late Color _secondaryContainerLight;
   Color get secondaryContainerLight => _secondaryContainerLight;
-  Future<void> setSecondaryContainerLight(Color? value,
-      [bool notify = true]) async {
+  Future<void> setSecondaryContainerLight(
+    Color? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _secondaryContainerLight) return;
     _secondaryContainerLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySecondaryContainerLight, value);
+    await _themeService.save(ThemeKey.keySecondaryContainerLight, value);
   }
 
   late Color _tertiaryLight;
@@ -2085,18 +2621,20 @@ class ThemeController with ChangeNotifier {
     if (value == _tertiaryLight) return;
     _tertiaryLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTertiaryLight, value);
+    await _themeService.save(ThemeKey.keyTertiaryLight, value);
   }
 
   late Color _tertiaryContainerLight;
   Color get tertiaryContainerLight => _tertiaryContainerLight;
-  Future<void> setTertiaryContainerLight(Color? value,
-      [bool notify = true]) async {
+  Future<void> setTertiaryContainerLight(
+    Color? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _tertiaryContainerLight) return;
     _tertiaryContainerLight = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTertiaryContainerLight, value);
+    await _themeService.save(ThemeKey.keyTertiaryContainerLight, value);
   }
 
   late Color _primaryDark;
@@ -2106,18 +2644,20 @@ class ThemeController with ChangeNotifier {
     if (value == _primaryDark) return;
     _primaryDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyPrimaryDark, value);
+    await _themeService.save(ThemeKey.keyPrimaryDark, value);
   }
 
   late Color _primaryContainerDark;
   Color get primaryContainerDark => _primaryContainerDark;
-  Future<void> setPrimaryContainerDark(Color? value,
-      [bool notify = true]) async {
+  Future<void> setPrimaryContainerDark(
+    Color? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _primaryContainerDark) return;
     _primaryContainerDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyPrimaryContainerDark, value);
+    await _themeService.save(ThemeKey.keyPrimaryContainerDark, value);
   }
 
   late Color _secondaryDark;
@@ -2127,18 +2667,20 @@ class ThemeController with ChangeNotifier {
     if (value == _secondaryDark) return;
     _secondaryDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySecondaryDark, value);
+    await _themeService.save(ThemeKey.keySecondaryDark, value);
   }
 
   late Color _secondaryContainerDark;
   Color get secondaryContainerDark => _secondaryContainerDark;
-  Future<void> setSecondaryContainerDark(Color? value,
-      [bool notify = true]) async {
+  Future<void> setSecondaryContainerDark(
+    Color? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _secondaryContainerDark) return;
     _secondaryContainerDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keySecondaryContainerDark, value);
+    await _themeService.save(ThemeKey.keySecondaryContainerDark, value);
   }
 
   late Color _tertiaryDark;
@@ -2148,18 +2690,20 @@ class ThemeController with ChangeNotifier {
     if (value == _tertiaryDark) return;
     _tertiaryDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTertiaryDark, value);
+    await _themeService.save(ThemeKey.keyTertiaryDark, value);
   }
 
   late Color _tertiaryContainerDark;
   Color get tertiaryContainerDark => _tertiaryContainerDark;
-  Future<void> setTertiaryContainerDark(Color? value,
-      [bool notify = true]) async {
+  Future<void> setTertiaryContainerDark(
+    Color? value, [
+    bool notify = true,
+  ]) async {
     if (value == null) return;
     if (value == _tertiaryContainerDark) return;
     _tertiaryContainerDark = value;
     if (notify) notifyListeners();
-    await _themeService.save(Store.keyTertiaryContainerDark, value);
+    await _themeService.save(ThemeKey.keyTertiaryContainerDark, value);
   }
 
   // Get custom scheme data based on currently defined scheme colors.
@@ -2232,7 +2776,7 @@ class ThemeController with ChangeNotifier {
   List<Color> _recentColors = <Color>[];
   List<Color> get recentColors => _recentColors;
   // ignore: use_setters_to_change_properties
-  void setRecentColors(final List<Color> colors) {
+  void setRecentColors(List<Color> colors) {
     _recentColors = colors;
   }
 
@@ -2252,8 +2796,10 @@ class ThemeController with ChangeNotifier {
   // This is just a controller prop for hovered palette on Colorscheme.
   TonalPalettes? _hoverTonalPalette;
   TonalPalettes? get hoverTonalPalette => _hoverTonalPalette;
-  Future<void> setHoverTonalPalette(TonalPalettes? value,
-      [bool notify = true]) async {
+  Future<void> setHoverTonalPalette(
+    TonalPalettes? value, [
+    bool notify = true,
+  ]) async {
     if (value == _hoverTonalPalette) return;
     _hoverTonalPalette = value;
     if (notify) notifyListeners();

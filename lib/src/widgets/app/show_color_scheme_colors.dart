@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../app/app_data.dart';
-import 'color_card.dart';
+import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
 /// Draw a number of boxes showing the colors of key theme color properties
 /// in the ColorScheme of the inherited ThemeData and its color properties.
@@ -48,8 +46,8 @@ class ShowColorSchemeColors extends StatelessWidget {
     final bool useMaterial3 = theme.useMaterial3;
 
     final MediaQueryData media = MediaQuery.of(context);
-    final bool isPhone = media.size.width < AppData.phoneWidthBreakpoint ||
-        media.size.height < AppData.phoneHeightBreakpoint;
+    final bool isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
+        media.size.height < UIConst.phoneHeightBreakpoint;
     final double spacing = isPhone ? 3 : 6;
 
     // Grab the card border from the theme card shape

@@ -1,8 +1,7 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-
-import '../../app/app_data.dart';
+import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
 // import '../../../example5/widgets/shared/copy_color_to_clipboard.dart';
 
@@ -36,8 +35,8 @@ class ColorCard extends StatelessWidget {
     final String nameThatColor = ColorTools.nameThatColor(color);
     final String space = materialName == '' ? '' : ' ';
     final MediaQueryData media = MediaQuery.of(context);
-    final bool isPhone = media.size.width < AppData.phoneWidthBreakpoint ||
-        media.size.height < AppData.phoneHeightBreakpoint;
+    final bool isPhone = media.size.width < UIConst.phoneWidthBreakpoint ||
+        media.size.height < UIConst.phoneHeightBreakpoint;
     final double fontSize = isPhone ? 10 : 11;
     final Size effectiveSize =
         size ?? (isPhone ? const Size(74, 54) : const Size(86, 58));

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mindful_flutter_util/mindful_flutter_util.dart';
+import 'package:mindful_flutter_util/src/theme_selection/theme_controller.dart';
 import 'package:provider/provider.dart';
-
-import '../widgets/app/btn_splash.dart';
-import '../widgets/themeselect.dart';
-import '../widgets/universal/page_body.dart';
-import '../app/app_data.dart';
-import 'theme_controller.dart';
 
 // -----------------------------------------------------------------------------
 // Home Page for EXAMPLE 3 - Four Themes
@@ -24,11 +20,10 @@ class _ThemeIndexState extends State<ThemePage> {
   // const ThemeSelectPage({
   @override
   Widget build(BuildContext context) {
-    final double margins =
-        AppData.responsiveInsets(MediaQuery.of(context).size.width);
-    final ThemeData theme = Theme.of(context);
-    final TextTheme textTheme = theme.textTheme;
-    final TextStyle headlineMedium = textTheme.headlineMedium!;
+    final margins = UIConst.responsiveInsets(MediaQuery.of(context).size.width);
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final headlineMedium = textTheme.headlineMedium!;
 
     // final flexSchemeData = context.watch<ThemeController>();
 
@@ -45,9 +40,9 @@ class _ThemeIndexState extends State<ThemePage> {
         ),
       ),
       body: PageBody(
-        constraints: const BoxConstraints(maxWidth: AppData.maxBodyWidth),
+        constraints: const BoxConstraints(maxWidth: UIConst.maxBodyWidth),
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.all(margins),
           children: <Widget>[
             // const Text(
@@ -65,7 +60,7 @@ class _ThemeIndexState extends State<ThemePage> {
               "Theme Mode",
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Card(
               margin: EdgeInsets.zero,
               child: Padding(
@@ -199,12 +194,12 @@ class _ThemeIndexState extends State<ThemePage> {
                 ),
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Text(
               "Color Mode",
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             // The content is wrapped in a card so we can see the
             // theme's surface blend impact better via the Card widget.
             Card(
