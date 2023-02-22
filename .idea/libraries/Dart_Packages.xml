@@ -292,7 +292,7 @@
         <entry key="mindful_dart_util">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/git/mindful_dart_util-9fbe5494fe38a1da195312fd49d2108f9a34f188//lib" />
+              <option value="$USER_HOME$/.pub-cache/git/mindful_dart_util-2b7900025ab4c716185831fcec5c12e60fd113b3//lib" />
             </list>
           </value>
         </entry>
@@ -712,7 +712,7 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://$USER_HOME$/.pub-cache/git/mindful_dart_util-9fbe5494fe38a1da195312fd49d2108f9a34f188//lib" />
+      <root url="file://$USER_HOME$/.pub-cache/git/mindful_dart_util-2b7900025ab4c716185831fcec5c12e60fd113b3//lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-47.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/analyzer-4.7.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/args-2.3.1/lib" />
