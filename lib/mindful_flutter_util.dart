@@ -1,16 +1,6 @@
 /// Utilities for Flutter from Mindful Software.
 library mindful_flutter_util;
 
-export './src/theme_selection/theme_mode_switch.dart';
-export './src/theme_selection/theme_page.dart';
-export './src/theme_selection/theme_selection.dart';
-export './src/theme_selection/theme_service.dart';
-export './src/theme_selection/theme_service_hive.dart';
-export './src/theme_selection/theme_service_hive_adapters.dart';
-export './src/theme_selection/theme_service_mem.dart';
-export './src/theme_selection/theme_service_prefs.dart';
-export './src/theme_selection/theme_showcase.dart';
-export './src/theme_selection/themed_app.dart';
 export './src/utils/app_data_dir/app_data_dir.dart';
 export './src/utils/app_scroll_behavior.dart';
 export './src/utils/link_text_span.dart';
@@ -20,8 +10,6 @@ export './src/widgets/app/color_card.dart';
 export './src/widgets/app/show_color_scheme_colors.dart';
 export './src/widgets/app/show_sub_theme_colors.dart';
 export './src/widgets/app/show_theme_data_colors.dart';
-export './src/widgets/app/use_key_colors_buttons.dart';
-export './src/widgets/themeselect.dart';
 export './src/widgets/universal/animated_switch_hide.dart';
 export './src/widgets/universal/header_card.dart';
 export './src/widgets/universal/maybe_tooltip.dart';
@@ -32,5 +20,7 @@ export './src/widgets/universal/responsive_dialog.dart';
 export './src/widgets/universal/stateful_header_card.dart';
 export './src/widgets/universal/syntax_highlighter.dart';
 export 'mindful_flutter_util.dart';
-export 'src/theme_selection/theme_key.dart';
+export 'src/theme/themeselect.dart';
+export 'src/ui/theme/dynamic_color_wrapper.dart';
 export 'src/ui/ui_const.dart';
+export 'src/ui/widget_util.dart';

@@ -14,6 +14,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   bloc: ^8.1.1
+  dynamic_color: ^1.6.2
   flex_color_scheme: ^6.1.2
   flex_color_picker: ^3.1.0
   flutter_bloc: ^8.1.2
@@ -22,8 +23,8 @@ dependencies:
   hive: ^2.2.3
   intl: ^0.17.0
   mindful_dart_util:
-#    path: ../dart_util
-    git: git@github.com:michaelbushe/mindful_dart_util.git
+    path: ../dart_util
+#    git: git@github.com:michaelbushe/mindful_dart_util.git
   package_info_plus: ^3.0.3
   path_provider: ^2.0.12
   provider: ^6.0.5
