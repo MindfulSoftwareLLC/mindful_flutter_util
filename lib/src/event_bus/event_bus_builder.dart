@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mindful_flutter_util/src/event_bus/event_bus.dart';
 
-class AppBusBuilder<T> extends StatefulWidget {
-  AppBusBuilder({
+class EventBusBuilder<T> extends StatefulWidget {
+  EventBusBuilder({
     required this.child,
     required this.on,
     Key? key,
@@ -17,11 +17,11 @@ class AppBusBuilder<T> extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return AppBusBuilderState();
+    return EventBusBuilderState();
   }
 }
 
-class AppBusBuilderState extends State<AppBusBuilder> {
+class EventBusBuilderState extends State<EventBusBuilder> {
   StreamSubscription? eventStream;
 
   @override

@@ -28,12 +28,13 @@ class DynamicColorBuilderWrapper extends StatelessWidget {
       darkScheme = darkDefault;
     }
 
+    var lightThemeData = ThemeData(
+      useMaterial3: true,
+      colorScheme: lightScheme,
+      //extensions: [lightCustomColors],
+    );
     return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: lightScheme,
-        //extensions: [lightCustomColors],
-      ),
+      theme: lightThemeData,
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: darkScheme,

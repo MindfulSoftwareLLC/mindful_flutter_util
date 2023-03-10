@@ -43,7 +43,7 @@ class EventBus {
     return stream.listen(on);
   }
 
-  /// Subscribes to a type known at runtime
+  /// Subscribes to a type known at runtime, as opposed for a generic
   static StreamSubscription? subscribe(Type eventType, void on(dynamic event)) {
     return _streamController.stream
         .where((event) => event.runtimeType == eventType)
