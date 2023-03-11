@@ -4,8 +4,8 @@ import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
 /// This button shows an Add icon and the text Increment and
 /// when clicked, publishes a CounterIncrementEvent on the EventBus.
-class IncrementCounterWidget extends StatelessWidget {
-  const IncrementCounterWidget({Key? key}) : super(key: key);
+class CounterIncrementEventButton extends StatelessWidget {
+  const CounterIncrementEventButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
