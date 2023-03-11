@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   mindful_flutter_util:
     path: ../../
+  mindful_flutter_themes:
+    git: git@github.com:michaelbushe/mindful_material3_themes.git
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,16 +1,18 @@
+import 'package:counter/counter_increment_event.dart';
 import 'package:flutter/material.dart';
 import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
+/// This button shows an Add icon and the text Increment and
+/// when clicked, publishes a CounterIncrementEvent on the EventBus.
 class IncrementCounterWidget extends StatelessWidget {
-  const IncrementCounterWidget({Key key}) : super(key: key);
+  const IncrementCounterWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: EventBus.fire(),
+      onPressed: () => EventBus.publish(CounterIncrementEvent()),
       tooltip: 'Increment',
       child: const Icon(Icons.add),
-    ),;
+    );
   }
 }
-

@@ -1,7 +1,7 @@
 name: mindful_flutter_util
 description: Utilities for Flutter from Mindful Software.
 repository: https://github.com/michaelbushe/mindful_flutter_util
-version: 0.5.0+1
+version: 0.6.0+1
 publish_to: none
 
 environment:

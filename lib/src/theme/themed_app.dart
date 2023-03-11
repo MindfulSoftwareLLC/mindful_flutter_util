@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:mindful_flutter_util/mindful_flutter_util.dart';
-import 'package:mindful_flutter_util/src/event_bus/event_bus_builder.dart';
-import 'package:mindful_flutter_util/src/theme/theme_changed_event.dart';
 
 /// A wrapper for a MaterialApp that themes it and changes the theme whenever
 /// a ThemedChangedEvent is fired on the EventBus.
@@ -17,11 +15,11 @@ class ThemedApp extends StatefulWidget {
     required this.child,
   });
 
-  String title;
-  ThemeData lightTheme;
-  ThemeData darkTheme;
-  bool useDynamicColor;
+  final String title;
+  final bool useDynamicColor;
   final Widget child;
+  final ThemeData lightTheme;
+  final ThemeData darkTheme;
 
   @override
   State<StatefulWidget> createState() {
@@ -30,13 +28,20 @@ class ThemedApp extends StatefulWidget {
 }
 
 class ThemedAppState extends State<ThemedApp> {
+  ThemedAppState() {
+    latestLightTheme = widget.lightTheme;
+    latestDarkTheme = widget.darkTheme;
+  }
+  late ThemeData latestLightTheme;
+  late ThemeData latestDarkTheme;
+
   @override
   Widget build(BuildContext context) {
     return EventBusBuilder<ThemeChangedEvent>(
         on: (ThemeChangedEvent themeChangedEvent) {
           setState(() {
-            widget.lightTheme = themeChangedEvent.lightTheme;
-            widget.darkTheme = themeChangedEvent.darkTheme;
+            latestLightTheme = themeChangedEvent.lightTheme;
+            latestDarkTheme = themeChangedEvent.darkTheme;
           });
         },
         child: createThemedMaterialApp(widget.child) //animatedBuilder(child),
@@ -51,8 +56,8 @@ class ThemedAppState extends State<ThemedApp> {
       debugShowCheckedModeBanner: false,
       scrollBehavior: const AppScrollBehavior(),
       title: widget.title,
-      theme: widget.lightTheme,
-      darkTheme: widget.darkTheme,
+      theme: latestLightTheme,
+      darkTheme: latestDarkTheme,
       //themeMode: themeController.themeMode,
       home: home,
     );
