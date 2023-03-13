@@ -28,12 +28,17 @@ class ThemedApp extends StatefulWidget {
 }
 
 class ThemedAppState extends State<ThemedApp> {
-  ThemedAppState() {
-    latestLightTheme = widget.lightTheme;
-    latestDarkTheme = widget.darkTheme;
-  }
+  ThemedAppState() {}
+
   late ThemeData latestLightTheme;
   late ThemeData latestDarkTheme;
+
+  @override
+  void initState() {
+    latestLightTheme = widget.lightTheme;
+    latestDarkTheme = widget.darkTheme;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +49,10 @@ class ThemedAppState extends State<ThemedApp> {
             latestDarkTheme = themeChangedEvent.darkTheme;
           });
         },
-        child: createThemedMaterialApp(widget.child) //animatedBuilder(child),
-        );
+        child: createThemedMaterialApp(widget.child));
   }
 
   MaterialApp createThemedMaterialApp(Widget home) {
-    // return AnimatedBuilder(
-    //   animation: themeController,
-    //   builder: (BuildContext context, Widget? child) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       scrollBehavior: const AppScrollBehavior(),
@@ -61,7 +62,5 @@ class ThemedAppState extends State<ThemedApp> {
       //themeMode: themeController.themeMode,
       home: home,
     );
-    // },
-    //);
   }
 }

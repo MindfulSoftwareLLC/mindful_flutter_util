@@ -11,31 +11,42 @@ class EventBusBuilder<T> extends StatefulWidget {
   }) : super(key: key);
 
   final Widget child;
-  final EventBusFunction<T> on;
-
-  Type get eventType => T.runtimeType;
+  final void Function(T) on;
+  late StreamSubscription<T> eventStreamSubscription;
+  //
+  // Type get eventType => T.runtimeType;
 
   @override
   State<StatefulWidget> createState() {
-    return EventBusBuilderState();
+    return EventBusBuilderState<T>();
   }
 }
 
-class EventBusBuilderState extends State<EventBusBuilder> {
-  StreamSubscription? eventStream;
-
+class EventBusBuilderState<T> extends State<EventBusBuilder> {
   @override
   void initState() {
-    eventStream = EventBus.subscribe(widget.eventType, widget.on);
     super.initState();
+    widget.eventStreamSubscription = EventBus.on<T>(widget.on);
+    // eventStreamSubscription.pause();
+    // widget.eventStreamSubscription.resume();
+  }
+
+  @override
+  void activate() {
+    super.activate();
+    widget.eventStreamSubscription.resume();
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    widget.eventStreamSubscription.pause();
   }
 
   @override
   void dispose() {
-    if (eventStream != null) {
-      eventStream!.cancel();
-    }
     super.dispose();
+    widget.eventStreamSubscription.cancel();
   }
 
   @override

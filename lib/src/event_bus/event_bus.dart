@@ -43,13 +43,6 @@ class EventBus {
     return stream.listen(on);
   }
 
-  /// Subscribes to a type known at runtime, as opposed for a generic
-  static StreamSubscription? subscribe(Type eventType, void on(dynamic event)) {
-    return _streamController.stream
-        .where((event) => event.runtimeType == eventType)
-        .listen(on);
-  }
-
   /// Destroy this [EventBus]. This is generally only in a testing context.
   static void destroy() {
     _streamController.close();
