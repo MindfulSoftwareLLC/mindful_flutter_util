@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bus/flutter_bus.dart';
 import 'package:mindful_flutter_themes/mindful_flutter_themes.dart';
 import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
@@ -12,13 +13,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = MindfulFlutterThemes.themes[0];
-    return ThemedApp(
+    StreamBuilder s;
+    var themedApp = ThemedApp(
       title: 'Theme Changed Event Demo',
       lightTheme: theme.lightThemeDataFor(),
       darkTheme: theme.darkThemeDataFor(),
       useDynamicColor: true,
       child: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
+    return FlutterBusBuilder<ThemeChangedEvent>(
+        on: (event) {
+          themedApp.setState(() {});
+        },
+        child: themedApp);
   }
 }
 

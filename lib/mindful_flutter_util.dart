@@ -1,8 +1,6 @@
 /// Utilities for Flutter from Mindful Software.
 library mindful_flutter_util;
 
-export './src/event_bus/event_bus.dart';
-export './src/event_bus/event_bus_builder.dart';
 export './src/utils/app_data_dir/app_data_dir.dart';
 export './src/utils/app_scroll_behavior.dart';
 export './src/utils/link_text_span.dart';

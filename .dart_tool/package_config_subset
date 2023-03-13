@@ -1,3 +1,7 @@
+flutter_bus
+2.19
+file:///Users/mbushe/.pub-cache/git/flutter_bus-44acb38259397b619a223351992312a5d112ad95/
+file:///Users/mbushe/.pub-cache/git/flutter_bus-44acb38259397b619a223351992312a5d112ad95/lib/
 mindful_dart_util
 2.18
 file:///Users/mbushe/.pub-cache/git/mindful_dart_util-5c8b994e1fc0e323067bdeea18c1c3c4a3d9499e/
@@ -154,6 +158,10 @@ mime
 2.12
 file:///Users/mbushe/.pub-cache/hosted/pub.dev/mime-1.0.2/
 file:///Users/mbushe/.pub-cache/hosted/pub.dev/mime-1.0.2/lib/
+mindful_analysis
+2.19
+file:///Users/mbushe/.pub-cache/hosted/pub.dev/mindful_analysis-1.0.0+2/
+file:///Users/mbushe/.pub-cache/hosted/pub.dev/mindful_analysis-1.0.0+2/lib/
 mocktail
 2.12
 file:///Users/mbushe/.pub-cache/hosted/pub.dev/mocktail-0.3.0/
@@ -354,10 +362,6 @@ vector_math
 2.14
 file:///Users/mbushe/.pub-cache/hosted/pub.dev/vector_math-2.1.4/
 file:///Users/mbushe/.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib/
-very_good_analysis
-2.19
-file:///Users/mbushe/.pub-cache/hosted/pub.dev/very_good_analysis-4.0.0+1/
-file:///Users/mbushe/.pub-cache/hosted/pub.dev/very_good_analysis-4.0.0+1/lib/
 vm_service
 2.15
 file:///Users/mbushe/.pub-cache/hosted/pub.dev/vm_service-9.4.0/

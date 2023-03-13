@@ -42,7 +42,7 @@ class ThemedAppState extends State<ThemedApp> {
 
   @override
   Widget build(BuildContext context) {
-    return EventBusBuilder<ThemeChangedEvent>(
+    return FlutterBusBuilder<ThemeChangedEvent>(
         on: (ThemeChangedEvent themeChangedEvent) {
           setState(() {
             latestLightTheme = themeChangedEvent.lightTheme;

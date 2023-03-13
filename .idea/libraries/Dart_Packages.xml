@@ -170,6 +170,14 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_bus">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/git/flutter_bus-7933ab4cc30c607bab1e3e081674c51f31a6516f//lib" />
+              <option value="$USER_HOME$/.pub-cache/git/flutter_bus-44acb38259397b619a223351992312a5d112ad95//lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_lints">
           <value>
             <list>
@@ -315,6 +323,13 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/mime-1.0.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="mindful_analysis">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/mindful_analysis-1.0.0+2/lib" />
             </list>
           </value>
         </entry>
@@ -711,13 +726,6 @@
             </list>
           </value>
         </entry>
-        <entry key="very_good_analysis">
-          <value>
-            <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/very_good_analysis-4.0.0+1/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="vm_service">
           <value>
             <list>
@@ -771,6 +779,8 @@
       </option>
     </properties>
     <CLASSES>
+      <root url="file://$USER_HOME$/.pub-cache/git/flutter_bus-44acb38259397b619a223351992312a5d112ad95//lib" />
+      <root url="file://$USER_HOME$/.pub-cache/git/flutter_bus-7933ab4cc30c607bab1e3e081674c51f31a6516f//lib" />
       <root url="file://$USER_HOME$/.pub-cache/git/mindful_dart_util-5c8b994e1fc0e323067bdeea18c1c3c4a3d9499e//lib" />
       <root url="file://$USER_HOME$/.pub-cache/git/mindful_material3_themes-1ecead83ccdffbe490ec40c888aaf7ecb473f83e//lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-47.0.0/lib" />
@@ -815,6 +825,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/material_color_utilities-0.2.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.8.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/mime-1.0.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/mindful_analysis-1.0.0+2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/mocktail-0.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/nested-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/node_preamble-2.0.1/lib" />
@@ -887,7 +898,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_windows-3.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_windows-3.0.5/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/very_good_analysis-4.0.0+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vm_service-9.4.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/watcher-1.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/web_socket_channel-2.2.0/lib" />

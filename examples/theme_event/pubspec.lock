@@ -134,6 +134,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.1.2"
+  flutter_bus:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "7933ab4cc30c607bab1e3e081674c51f31a6516f"
+      url: "git@github.com:michaelbushe/flutter_bus.git"
+    source: git
+    version: "0.2.0+1"
   flutter_lints:
     dependency: "direct dev"
     description:
