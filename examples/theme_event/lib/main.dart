@@ -12,20 +12,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = MindfulFlutterThemes.themes[0];
-    StreamBuilder s;
-    var themedApp = ThemedApp(
-      title: 'Theme Changed Event Demo',
-      lightTheme: theme.lightThemeDataFor(),
-      darkTheme: theme.darkThemeDataFor(),
-      useDynamicColor: true,
-      child: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    var defaultTheme = MindfulFlutterThemes.themes[0];
     return FlutterBusBuilder<ThemeChangedEvent>(
-        on: (event) {
-          themedApp.setState(() {});
-        },
-        child: themedApp);
+      initialData: ThemeChangedEvent(
+          defaultTheme.lightThemeDataFor(), defaultTheme.darkThemeDataFor()),
+      builder: (context, themeEvent) {
+        return ThemedApp(
+          title: 'Theme Changed Event Demo',
+          //Events are never null if initialData is set
+          //FlutterBus does not publish null and the non-builder
+          //API does not allow nulls. The only null is for initialData.
+          lightTheme: themeEvent!.lightTheme,
+          darkTheme: themeEvent.darkTheme,
+          useDynamicColor: true,
+          child: const MyHomePage(title: 'Flutter Demo Home Page'),
+        );
+      },
+    );
   }
 }
 

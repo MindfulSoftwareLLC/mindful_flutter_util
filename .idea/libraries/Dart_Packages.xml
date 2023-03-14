@@ -173,8 +173,7 @@
         <entry key="flutter_bus">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/git/flutter_bus-7933ab4cc30c607bab1e3e081674c51f31a6516f//lib" />
-              <option value="$USER_HOME$/.pub-cache/git/flutter_bus-44acb38259397b619a223351992312a5d112ad95//lib" />
+              <option value="$USER_HOME$/.pub-cache/git/flutter_bus-8c203aec3b780e8c79dd47110b076f99b0079f84//lib" />
             </list>
           </value>
         </entry>
@@ -336,6 +335,7 @@
         <entry key="mindful_dart_util">
           <value>
             <list>
+              <option value="$USER_HOME$/.pub-cache/git/mindful_dart_util-90b1fec39405af414fd0fbe574bfbcfb062a75c5//lib" />
               <option value="$USER_HOME$/.pub-cache/git/mindful_dart_util-5c8b994e1fc0e323067bdeea18c1c3c4a3d9499e//lib" />
             </list>
           </value>
@@ -343,7 +343,7 @@
         <entry key="mindful_flutter_themes">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/git/mindful_material3_themes-1ecead83ccdffbe490ec40c888aaf7ecb473f83e//lib" />
+              <option value="$USER_HOME$/.pub-cache/git/mindful_material3_themes-208a6866743cc48627144d9f904c86c5ec5ba469//lib" />
             </list>
           </value>
         </entry>
@@ -779,10 +779,10 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://$USER_HOME$/.pub-cache/git/flutter_bus-44acb38259397b619a223351992312a5d112ad95//lib" />
-      <root url="file://$USER_HOME$/.pub-cache/git/flutter_bus-7933ab4cc30c607bab1e3e081674c51f31a6516f//lib" />
+      <root url="file://$USER_HOME$/.pub-cache/git/flutter_bus-8c203aec3b780e8c79dd47110b076f99b0079f84//lib" />
       <root url="file://$USER_HOME$/.pub-cache/git/mindful_dart_util-5c8b994e1fc0e323067bdeea18c1c3c4a3d9499e//lib" />
-      <root url="file://$USER_HOME$/.pub-cache/git/mindful_material3_themes-1ecead83ccdffbe490ec40c888aaf7ecb473f83e//lib" />
+      <root url="file://$USER_HOME$/.pub-cache/git/mindful_dart_util-90b1fec39405af414fd0fbe574bfbcfb062a75c5//lib" />
+      <root url="file://$USER_HOME$/.pub-cache/git/mindful_material3_themes-208a6866743cc48627144d9f904c86c5ec5ba469//lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-47.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/analyzer-4.7.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/args-2.3.1/lib" />

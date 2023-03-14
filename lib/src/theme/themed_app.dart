@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bus/flutter_bus.dart';
 import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
 /// A wrapper for a MaterialApp that themes it and changes the theme whenever
