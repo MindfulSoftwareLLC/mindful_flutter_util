@@ -5,12 +5,13 @@ import 'package:flutter_bus/flutter_bus.dart';
 import 'package:mindful_flutter_util/mindful_flutter_util.dart';
 
 /// A wrapper for a MaterialApp that themes it and changes the theme whenever
-/// a ThemedChangedEvent is fired on the EventBus.
+/// a ThemedChangedEvent is fired on the FlutterBus.
 class ThemedApp extends StatefulWidget {
   ThemedApp({
     super.key,
-    required this.lightTheme,
-    required this.darkTheme,
+    required this.defaultLightTheme,
+    required this.defaultDarkTheme,
+    required this.defaultThemeMode,
     required this.title,
     required this.useDynamicColor,
     required this.child,
@@ -19,8 +20,9 @@ class ThemedApp extends StatefulWidget {
   final String title;
   final bool useDynamicColor;
   final Widget child;
-  final ThemeData lightTheme;
-  final ThemeData darkTheme;
+  final ThemeData defaultLightTheme;
+  final ThemeData defaultDarkTheme;
+  final ThemeMode defaultThemeMode;
 
   @override
   State<StatefulWidget> createState() {
@@ -29,28 +31,37 @@ class ThemedApp extends StatefulWidget {
 }
 
 class ThemedAppState extends State<ThemedApp> {
-  ThemedAppState() {}
+  ThemedAppState();
 
-  late ThemeData latestLightTheme;
-  late ThemeData latestDarkTheme;
+  ThemeData? latestLightTheme;
+  ThemeData? latestDarkTheme;
+  ThemeMode? latestThemeMode;
 
   @override
   void initState() {
-    latestLightTheme = widget.lightTheme;
-    latestDarkTheme = widget.darkTheme;
+    latestLightTheme = widget.defaultLightTheme;
+    latestDarkTheme = widget.defaultDarkTheme;
+    latestThemeMode = widget.defaultThemeMode;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FlutterBusBuilder<ThemeChangedEvent>(
-        on: (ThemeChangedEvent themeChangedEvent) {
-          setState(() {
-            latestLightTheme = themeChangedEvent.lightTheme;
-            latestDarkTheme = themeChangedEvent.darkTheme;
-          });
-        },
-        child: createThemedMaterialApp(widget.child));
+        builder: (context, themeChangedEvent) {
+      setState(() {
+        latestLightTheme = themeChangedEvent == null
+            ? widget.defaultLightTheme
+            : themeChangedEvent.lightTheme;
+        latestDarkTheme = themeChangedEvent == null
+            ? widget.defaultLightTheme
+            : themeChangedEvent.lightTheme;
+        latestThemeMode = themeChangedEvent == null
+            ? widget.defaultThemeMode
+            : themeChangedEvent.themeMode;
+      });
+      return createThemedMaterialApp(widget.child);
+    });
   }
 
   MaterialApp createThemedMaterialApp(Widget home) {
@@ -60,7 +71,7 @@ class ThemedAppState extends State<ThemedApp> {
       title: widget.title,
       theme: latestLightTheme,
       darkTheme: latestDarkTheme,
-      //themeMode: themeController.themeMode,
+      themeMode: latestThemeMode,
       home: home,
     );
   }

@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
           //Events are never null if initialData is set
           //FlutterBus does not publish null and the non-builder
           //API does not allow nulls. The only null is for initialData.
-          lightTheme: themeEvent!.lightTheme,
-          darkTheme: themeEvent.darkTheme,
+          defaultLightTheme: themeEvent!.lightTheme,
+          defaultDarkTheme: themeEvent.darkTheme,
           useDynamicColor: true,
           child: const MyHomePage(title: 'Flutter Demo Home Page'),
         );
