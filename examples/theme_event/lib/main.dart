@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var defaultTheme = MindfulFlutterThemes.themes[0];
     return FlutterBusBuilder<ThemeChangedEvent>(
-      initialData: ThemeChangedEvent(
-          defaultTheme.lightThemeDataFor(), defaultTheme.darkThemeDataFor()),
+      initialData: ThemeChangedEvent(defaultTheme.lightThemeDataFor(),
+          defaultTheme.darkThemeDataFor(), ThemeMode.system),
       builder: (context, themeEvent) {
         return ThemedApp(
           title: 'Theme Changed Event Demo',
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
           //API does not allow nulls. The only null is for initialData.
           defaultLightTheme: themeEvent!.lightTheme,
           defaultDarkTheme: themeEvent.darkTheme,
+          defaultThemeMode: ThemeMode.system,
           useDynamicColor: true,
           child: const MyHomePage(title: 'Flutter Demo Home Page'),
         );

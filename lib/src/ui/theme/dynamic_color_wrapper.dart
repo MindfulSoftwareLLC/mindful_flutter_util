@@ -19,7 +19,7 @@ class DynamicColorBuilderWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     ColorScheme lightScheme;
     ColorScheme darkScheme;
-    DynamicColorBuilder dcb;
+    //DynamicColorBuilder dcb;
     if (lightDynamic != null && darkDynamic != null) {
       lightScheme = lightDynamic!.harmonized();
       darkScheme = darkDynamic!.harmonized();
