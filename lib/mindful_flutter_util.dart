@@ -11,6 +11,7 @@ export './src/widgets/app/responsive_scaffold.dart';
 export './src/widgets/app/show_color_scheme_colors.dart';
 export './src/widgets/app/show_sub_theme_colors.dart';
 export './src/widgets/app/show_theme_data_colors.dart';
+export './src/widgets/rebuilder.dart';
 export './src/widgets/universal/animated_switch_hide.dart';
 export './src/widgets/universal/header_card.dart';
 export './src/widgets/universal/maybe_tooltip.dart';
