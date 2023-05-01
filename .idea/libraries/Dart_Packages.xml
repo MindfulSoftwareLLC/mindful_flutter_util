@@ -174,6 +174,7 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/git/flutter_bus-8c203aec3b780e8c79dd47110b076f99b0079f84//lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_bus-0.5.0+4/lib" />
             </list>
           </value>
         </entry>
@@ -806,6 +807,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flex_color_scheme-6.1.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flex_seed_scheme-1.2.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_bus-0.5.0+4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_lints-2.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/font_awesome_flutter-10.4.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/frontend_server_client-2.1.3/lib" />

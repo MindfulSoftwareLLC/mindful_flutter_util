@@ -17,14 +17,12 @@ dependencies:
   flex_color_scheme: ^6.1.2
   flex_color_picker: ^3.1.0
   flutter_bloc: ^8.1.2
-  flutter_bus:
-    git: git@github.com:michaelbushe/flutter_bus.git
+  flutter_bus: ^0.5.0+4
   font_awesome_flutter: ^10.4.0
   google_fonts: ^4.0.3
   hive: ^2.2.3
   intl: ^0.17.0
-  mindful_dart_util:
-    git: git@github.com:michaelbushe/mindful_dart_util.git
+  mindful_dart_util: ^0.6.3
   package_info_plus: ^3.0.3
   path_provider: ^2.0.12
   provider: ^6.0.5

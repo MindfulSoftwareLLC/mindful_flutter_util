@@ -21,10 +21,10 @@ packages:
     dependency: transitive
     description:
       name: args
-      sha256: b003c3098049a51720352d219b0bb5f219b60fbfb68e7a4748139a06a5676515
+      sha256: "4cab82a83ffef80b262ddedf47a0a8e56ee6fbf7fe21e6e768b02792034dd440"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.4.0"
   async:
     dependency: transitive
     description:
@@ -185,12 +185,11 @@ packages:
   flutter_bus:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "8c203aec3b780e8c79dd47110b076f99b0079f84"
-      url: "git@github.com:michaelbushe/flutter_bus.git"
-    source: git
-    version: "0.2.0+1"
+      name: flutter_bus
+      sha256: "66389ce16c1dcbdae254d179bbf740f801ef56794b9f1d59fdf92956ce93200b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0+4"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -345,12 +344,11 @@ packages:
   mindful_dart_util:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "5c8b994e1fc0e323067bdeea18c1c3c4a3d9499e"
-      url: "git@github.com:michaelbushe/mindful_dart_util.git"
-    source: git
-    version: "0.5.0+1"
+      name: mindful_dart_util
+      sha256: ed14182f48e119305d95986a952e0b5e3fe0e8a819851ac14a691fa5b1f37169
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.3"
   mocktail:
     dependency: "direct dev"
     description:
