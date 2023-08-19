@@ -6,12 +6,12 @@
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/examples/counter/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/examples/counter/.dart_tool" />
-      <excludeFolder url="file://$MODULE_DIR$/examples/counter/build" />
-      <excludeFolder url="file://$MODULE_DIR$/examples/theme_event/.pub" />
-      <excludeFolder url="file://$MODULE_DIR$/examples/theme_event/build" />
-      <excludeFolder url="file://$MODULE_DIR$/examples/theme_event/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/counter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/counter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/counter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/theme_event/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/theme_event/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/theme_event/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
