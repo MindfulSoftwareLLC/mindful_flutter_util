@@ -1,10 +1,10 @@
 name: mindful_flutter_util
 description: Utilities for Flutter from Mindful Software.
 repository: https://github.com/michaelbushe/mindful_flutter_util
-version: 0.8.0+1
+version: 0.8.1+1
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.18.0 <4.0.0"
   flutter: 3.3.10
 
 dependencies:
@@ -12,28 +12,28 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  bloc: ^8.1.1
-  dynamic_color: ^1.6.2
-  flex_color_scheme: ^6.1.2
-  flex_color_picker: ^3.1.0
-  flutter_bloc: ^8.1.2
+  bloc: ^8.1.2
+  dynamic_color: ^1.6.6
+  flex_color_scheme: ^7.3.1
+  flex_color_picker: ^3.3.0
+  flutter_bloc: ^8.1.3
   flutter_bus: ^0.5.0+4
-  font_awesome_flutter: ^10.4.0
-  google_fonts: ^4.0.3
+  font_awesome_flutter: ^10.5.0
+  google_fonts: ^5.1.0
   hive: ^2.2.3
-  intl: ^0.17.0
-  mindful_dart_util: ^0.6.3
-  package_info_plus: ^3.0.3
-  path_provider: ^2.0.12
+  intl: ^0.18.1
+  mindful_dart_util: ^0.6.4
+  package_info_plus: ^4.1.0
+  path_provider: ^2.1.0
   provider: ^6.0.5
-  shared_preferences: ^2.0.17
-  url_launcher: ^6.1.9
+  shared_preferences: ^2.2.0
+  url_launcher: ^6.1.12
 
 dev_dependencies:
-  bloc_test: ^9.1.1
+  bloc_test: ^9.1.4
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
+  mocktail: ^1.0.0
   mindful_analysis: ^1.0.0+2
 
 flutter:
