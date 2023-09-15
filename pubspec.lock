@@ -345,10 +345,10 @@ packages:
     dependency: "direct main"
     description:
       name: mindful_dart_util
-      sha256: f21c43e62a11ec92a083cafc8cc422f43843e10759fb492cf43fbe360fe3ce61
+      sha256: "51871fff70611fcbeed4948f865f5aec85ebdcb5a465b9aade0eb17c1fc969c2"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.4"
+    version: "0.7.1"
   mocktail:
     dependency: "direct dev"
     description:
