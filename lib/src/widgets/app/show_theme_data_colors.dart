@@ -233,11 +233,11 @@ class ShowThemeDataColors extends StatelessWidget {
                 color: theme.hintColor,
                 textColor: _onColor(theme.hintColor, background),
               ),
-              ColorCard(
-                label: 'Selected\nRow',
-                color: theme.selectedRowColor,
-                textColor: _onColor(theme.selectedRowColor, background),
-              ),
+              // ColorCard(
+              //   label: 'Selected\nRow',
+              //   color: theme.selectedRowColor,
+              //   textColor: _onColor(theme.selectedRowColor, background),
+              // ),
               ColorCard(
                 label: 'Unselected\nWidget',
                 color: theme.unselectedWidgetColor,

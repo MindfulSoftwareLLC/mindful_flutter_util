@@ -1,9 +1,16 @@
 /// Utilities for Flutter from Mindful Software.
 library mindful_flutter_util;
 
+export './src/extensions/color_extensions.dart';
+export './src/extensions/route_extensions.dart';
+export './src/extensions/firebase_extensions.dart';
+export './src/extensions/responsive_extensions.dart';
+export './src/extensions/snackbar_extensions.dart';
+export './src/extensions/widget_extensions.dart';
 export './src/utils/app_data_dir/app_data_dir.dart';
 export './src/utils/app_scroll_behavior.dart';
 export './src/utils/link_text_span.dart';
+export './src/widgets/text.dart';
 export './src/widgets/app/about.dart';
 export './src/widgets/app/btn_splash.dart';
 export './src/widgets/app/color_card.dart';
