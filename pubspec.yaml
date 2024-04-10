@@ -4,8 +4,7 @@ repository: https://github.com/michaelbushe/mindful_flutter_util
 version: 0.11.0
 
 environment:
-  sdk: ">=2.18.0 <4.0.0"
-  flutter: '>=3.3.10'
+  sdk: '>=3.3.1 <4.0.0'
 
 dependencies:
   flutter:
@@ -19,11 +18,13 @@ dependencies:
   flex_color_picker: ^3.4.1
   flutter_bloc: ^8.1.4
   flutter_bus: ^0.5.0+4
+
   font_awesome_flutter: ^10.7.0
+  #for dynamic_widget font_awesome_flutter:  ^9.0.0
   google_fonts: ^6.2.1
   hive: ^2.2.3
   hooks_riverpod: ^2.5.1
-  intl: ^0.18.1
+  intl: ^0.19.0
 #  mindful_dart_util: ^0.7.1
   mindful_dart_util:
     path: ../mindful_dart_util
@@ -33,6 +34,9 @@ dependencies:
   shared_preferences: ^2.2.2
   string_scanner: ^1.2.0
   url_launcher: ^6.2.5
+
+dependency_overrides:
+  intl: 0.19.0
 
 dev_dependencies:
   bloc_test: ^9.1.6

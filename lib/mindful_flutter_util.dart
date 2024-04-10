@@ -11,6 +11,7 @@ export './src/utils/app_data_dir/app_data_dir.dart';
 export './src/utils/app_scroll_behavior.dart';
 export './src/utils/link_text_span.dart';
 export './src/widgets/text.dart';
+export './src/widgets/wavy_gradient_decorated_container.dart';
 export './src/widgets/app/about.dart';
 export './src/widgets/app/btn_splash.dart';
 export './src/widgets/app/color_card.dart';
