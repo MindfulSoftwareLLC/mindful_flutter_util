@@ -11,7 +11,7 @@ class H1 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.headline1,
+      style: Theme.of(context).textTheme.displayLarge,
     );
   }
 }
@@ -27,7 +27,7 @@ class H2 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.headline2,
+      style: Theme.of(context).textTheme.displayMedium,
     );
   }
 }
@@ -45,7 +45,7 @@ class H3 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.headline3,
+      style: Theme.of(context).textTheme.displaySmall,
     );
   }
 }
@@ -61,7 +61,7 @@ class H4 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.headline4,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 }
@@ -77,7 +77,7 @@ class H5 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.headline5,
+      style: Theme.of(context).textTheme.headlineSmall,
     );
   }
 }
@@ -93,7 +93,7 @@ class H6 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.headline6,
+      style: Theme.of(context).textTheme.titleLarge,
     );
   }
 }
@@ -109,7 +109,7 @@ class Subtitle1 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.subtitle1,
+      style: Theme.of(context).textTheme.titleMedium,
     );
   }
 }
@@ -125,7 +125,7 @@ class Subtitle2 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.subtitle2,
+      style: Theme.of(context).textTheme.titleSmall,
     );
   }
 }
@@ -141,7 +141,7 @@ class BodyText1 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.bodyText1,
+      style: Theme.of(context).textTheme.bodyLarge,
     );
   }
 }
@@ -157,7 +157,7 @@ class BodyText2 extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.bodyText2,
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 }
