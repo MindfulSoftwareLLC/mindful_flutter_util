@@ -16,6 +16,7 @@ export './src/extensions/widget_extensions.dart';
 export './src/widgets/text.dart';
 export 'src/widgets/decor/gradient_decorated_container.dart';
 export 'src/widgets/decor/gradient_animated_container.dart';
+export 'src/widgets/pulsing_spinning_icon.dart';
 export './src/widgets/app/about.dart';
 export './src/widgets/app/btn_splash.dart';
 export './src/widgets/app/color_card.dart';

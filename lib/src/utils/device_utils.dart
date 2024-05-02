@@ -1,10 +1,17 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'dart:io' show Platform;
 
+import 'package:flutter/foundation.dart';
+
 Future<Map<String, dynamic>> getDeviceInfo() async {
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   var deviceData = <String, dynamic>{};
 
+  if (kIsWeb) {
+    // Web or other platforms
+    WebBrowserInfo webInfo = await deviceInfo.webBrowserInfo;
+    return webInfo.data;
+  }
   if (Platform.isAndroid) {
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
     deviceData = androidInfo.data;
@@ -25,10 +32,6 @@ Future<Map<String, dynamic>> getDeviceInfo() async {
     //   deviceData = {
     //     'deviceType': 'Fuchsia',
     //   };
-  } else {
-    // Web or other platforms
-    WebBrowserInfo webInfo = await deviceInfo.webBrowserInfo;
-    deviceData = webInfo.data;
   }
 
   return deviceData;
