@@ -1,6 +1,4 @@
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/widgets.dart';
-import 'dart:io' show Platform;
 
 import 'device_utils.dart';
 import 'geo_utils.dart';
