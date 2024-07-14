@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../mindful_flutter_util.dart';
-import '../utils/format.dart';
 
 class DateTimePicker extends StatelessWidget {
   const DateTimePicker({

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// The wrapper sets the active thumb color for the switch to
 /// SwitchTheme.active color, and if not define to theme.colorscheme.secondary.
 ///
-/// NOTE: toggleableActiveColor will be deprecated soon in Flutter SDK,
+/// NOTE: toggleButtonsTheme.color will be deprecated soon in Flutter SDK,
 /// so we are using its replacement fallback already now. See:
 /// https://docs.flutter.dev/release/breaking-changes/toggleable-active-color
 ///
@@ -59,7 +59,7 @@ class SwitchListTileAdaptive extends StatelessWidget {
   /// The color to use when this switch is on.
   ///
   /// Defaults to selected thumb color of SwitchTheme, and if not defined to
-  /// [theme.toggleableActiveColor] color of the current [Theme].
+  /// [theme.toggleButtonsTheme.color] color of the current [Theme].
   ///
   /// The Material mode of this switch does this by default, but the iOS remain
   /// iOS active green despite the theme, unless explicitly set via the
@@ -113,7 +113,7 @@ class SwitchListTileAdaptive extends StatelessWidget {
               .switchTheme
               .thumbColor
               ?.resolve(<MaterialState>{MaterialState.selected}) ??
-          Theme.of(context).toggleableActiveColor,
+          Theme.of(context).toggleButtonsTheme.color,
       value: value,
       onChanged: onChanged,
       title: title,

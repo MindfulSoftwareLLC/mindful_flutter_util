@@ -33,8 +33,6 @@ export './src/widgets/app/about.dart';
 export './src/widgets/app/btn_splash.dart';
 export './src/widgets/app/color_card.dart';
 export './src/widgets/app/show_color_scheme_colors.dart';
-export './src/widgets/app/show_sub_theme_colors.dart';
-export './src/widgets/app/show_theme_data_colors.dart';
 export './src/widgets/async_value_widget.dart';
 export './src/widgets/avatar.dart';
 export './src/widgets/biggest_height_layout_builder.dart';
