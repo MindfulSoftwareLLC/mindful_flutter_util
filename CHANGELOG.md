@@ -1,8 +1,8 @@
-# 0.12.0
-- No wonder extraction
+# 0.13.0
+- Stripe utils, device utils,  pulsing-spining-icon, removed riverpod and associated
 
 # 0.12.0
-- No wonder extraction
+- Gradient animated container, responsive scaffold, No wonder extraction, Pluto grid tools, Alert & exception dialogs,
 
 # 0.11.0
 - Supabase login, many context extensions

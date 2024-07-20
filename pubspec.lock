@@ -816,10 +816,11 @@ packages:
   mindful_dart_util:
     dependency: "direct main"
     description:
-      path: "../mindful_dart_util"
-      relative: true
-    source: path
-    version: "0.8.0"
+      name: mindful_dart_util
+      sha256: c4ceed5cc5005661270d9a18758a4bcbd52eb85b9db7ce012b44232dc82f8da0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.0"
   mocktail:
     dependency: "direct dev"
     description:
