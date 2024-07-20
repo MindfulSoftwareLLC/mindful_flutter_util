@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+///Set of Text replacements that match the Web and Material standards
+
+class DisplayLarge extends H1 {
+  DisplayLarge(super.text, {super.textAlign});
+}
+
+/// H1('Hello, World') shows displayLarge
 class H1 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -14,6 +21,11 @@ class H1 extends StatelessWidget {
       style: Theme.of(context).textTheme.displayLarge,
     );
   }
+}
+
+/// H2('Hello, World') shows displayMedium
+class DisplayMedium extends H2 {
+  DisplayMedium(super.text, {super.textAlign});
 }
 
 class H2 extends StatelessWidget {
@@ -34,6 +46,11 @@ class H2 extends StatelessWidget {
 
 // Continue from previous definitions
 
+/// H2('Hello, World') shows displayMedium
+class DisplaySmall extends BodyText1 {
+  DisplaySmall(super.text, {super.textAlign});
+}
+
 class H3 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -50,6 +67,11 @@ class H3 extends StatelessWidget {
   }
 }
 
+class HeadlineMedium extends H4 {
+  HeadlineMedium(super.text, {super.textAlign});
+}
+
+/// H2('Hello, World') shows headlineMedium
 class H4 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -66,6 +88,11 @@ class H4 extends StatelessWidget {
   }
 }
 
+class HeadlineSmall extends H5 {
+  HeadlineSmall(super.text, {super.textAlign});
+}
+
+/// H2('Hello, World') shows headlineSmall
 class H5 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -82,6 +109,11 @@ class H5 extends StatelessWidget {
   }
 }
 
+class TitleLarge extends H6 {
+  TitleLarge(super.text, {super.textAlign});
+}
+
+/// H2('Hello, World') shows displayMedium
 class H6 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -98,6 +130,11 @@ class H6 extends StatelessWidget {
   }
 }
 
+class TitleMedium extends Subtitle1 {
+  TitleMedium(super.text, {super.textAlign});
+}
+
+/// H2('Hello, World') shows titleMedium
 class Subtitle1 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -114,6 +151,11 @@ class Subtitle1 extends StatelessWidget {
   }
 }
 
+class TitleSmall extends Subtitle2 {
+  TitleSmall(super.text, {super.textAlign});
+}
+
+/// H2('Hello, World') shows titleSmall
 class Subtitle2 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -130,6 +172,11 @@ class Subtitle2 extends StatelessWidget {
   }
 }
 
+class BodyLarge extends BodyText1 {
+  BodyLarge(super.text, {super.textAlign});
+}
+
+/// H2('Hello, World') shows bodyLarge
 class BodyText1 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
@@ -146,6 +193,11 @@ class BodyText1 extends StatelessWidget {
   }
 }
 
+class BodyMedium extends BodyText2 {
+  BodyMedium(super.text, {super.textAlign});
+}
+
+/// BodyText2('Hello, World') shows bodyMedium
 class BodyText2 extends StatelessWidget {
   final String text;
   final TextAlign textAlign;
