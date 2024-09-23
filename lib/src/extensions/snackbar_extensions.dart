@@ -50,7 +50,7 @@ extension DisplaySnackBar on BuildContext {
   }
 
   /// Displays a red snackbar indicating error
-  void showErrorSnackBar(
+  void displayErrorSnackBar(
     String message, {
     String? actionLabel,
   }) {

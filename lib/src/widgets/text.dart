@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ///Set of Text replacements that match the Web and Material standards
 
 class DisplayLarge extends H1 {
-  DisplayLarge(super.text, {super.textAlign});
+  const DisplayLarge(super.text, {super.textAlign});
 }
 
 /// H1('Hello, World') shows displayLarge
@@ -25,7 +25,7 @@ class H1 extends StatelessWidget {
 
 /// H2('Hello, World') shows displayMedium
 class DisplayMedium extends H2 {
-  DisplayMedium(super.text, {super.textAlign});
+  const DisplayMedium(super.text, {super.textAlign});
 }
 
 class H2 extends StatelessWidget {
@@ -48,7 +48,7 @@ class H2 extends StatelessWidget {
 
 /// H2('Hello, World') shows displayMedium
 class DisplaySmall extends BodyText1 {
-  DisplaySmall(super.text, {super.textAlign});
+  const DisplaySmall(super.text, {super.textAlign});
 }
 
 class H3 extends StatelessWidget {
@@ -68,7 +68,7 @@ class H3 extends StatelessWidget {
 }
 
 class HeadlineMedium extends H4 {
-  HeadlineMedium(super.text, {super.textAlign});
+  const HeadlineMedium(super.text, {super.textAlign});
 }
 
 /// H2('Hello, World') shows headlineMedium
@@ -89,7 +89,7 @@ class H4 extends StatelessWidget {
 }
 
 class HeadlineSmall extends H5 {
-  HeadlineSmall(super.text, {super.textAlign});
+  const HeadlineSmall(super.text, {super.textAlign});
 }
 
 /// H2('Hello, World') shows headlineSmall
@@ -110,7 +110,7 @@ class H5 extends StatelessWidget {
 }
 
 class TitleLarge extends H6 {
-  TitleLarge(super.text, {super.textAlign});
+  const TitleLarge(super.text, {super.textAlign});
 }
 
 /// H2('Hello, World') shows displayMedium
@@ -173,7 +173,7 @@ class Subtitle2 extends StatelessWidget {
 }
 
 class BodyLarge extends BodyText1 {
-  BodyLarge(super.text, {super.textAlign});
+  const BodyLarge(super.text, {super.textAlign});
 }
 
 /// H2('Hello, World') shows bodyLarge
@@ -194,7 +194,7 @@ class BodyText1 extends StatelessWidget {
 }
 
 class BodyMedium extends BodyText2 {
-  BodyMedium(super.text, {super.textAlign});
+  const BodyMedium(super.text, {super.textAlign});
 }
 
 /// BodyText2('Hello, World') shows bodyMedium

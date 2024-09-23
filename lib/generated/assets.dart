@@ -16,6 +16,8 @@ class Assets {
       'lib/src/widgets/decor/gradient_animated_container.dart';
   static const String decorGradientDecoratedContainer =
       'lib/src/widgets/decor/gradient_decorated_container.dart';
+  static const String extensionsAsynValueUi =
+      'lib/src/extensions/asyn_value_ui.dart';
   static const String extensionsAsyncExtensions =
       'lib/src/extensions/async_extensions.dart';
   static const String extensionsColorExtensions =

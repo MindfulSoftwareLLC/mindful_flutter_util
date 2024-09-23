@@ -1,3 +1,4 @@
+export './src/extensions/asyn_value_ui.dart';
 export './src/extensions/async_extensions.dart';
 export './src/extensions/color_extensions.dart';
 export './src/extensions/firebase_extensions.dart';
@@ -37,6 +38,7 @@ export './src/utils/string_utils.dart';
 export './src/utils/stripe_utils.dart';
 export './src/utils/throttler.dart';
 export './src/utils/user_utils.dart';
+export './src/utils/web_utils.dart';
 export './src/widgets/action_text_button.dart';
 export './src/widgets/app/about.dart';
 export './src/widgets/app/btn_splash.dart';
