@@ -83,7 +83,7 @@ class _AnimatedSaveTextFieldState extends State<AnimatedSaveTextField>
                   backgroundColor: Colors.transparent,
                   valueColor: AlwaysStoppedAnimation<Color>(
                       Colors.blue.withOpacity(0.5)),
-                  minHeight: 2,
+                  minHeight: 3,
                 );
               },
             ),
@@ -94,10 +94,20 @@ class _AnimatedSaveTextFieldState extends State<AnimatedSaveTextField>
   }
 
   InputDecoration buildInputDecoration(String label) {
-    // Implement your input decoration here
     return InputDecoration(
       labelText: label,
-      border: OutlineInputBorder(),
+      labelStyle: TextStyle(color: Colors.black87),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade400),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey.shade400),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.blue),
+      ),
+      fillColor: Colors.grey.shade100,
+      filled: true,
     );
   }
 }
