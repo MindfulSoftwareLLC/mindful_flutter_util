@@ -40,6 +40,7 @@ export './src/utils/throttler.dart';
 export './src/utils/user_utils.dart';
 export './src/utils/web_utils.dart';
 export './src/widgets/action_text_button.dart';
+export './src/widgets/animated_save_text_field.dart';
 export './src/widgets/app/about.dart';
 export './src/widgets/app/btn_splash.dart';
 export './src/widgets/avatar.dart';
