@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 extension RouteExtensions on BuildContext {
   void popResult<T extends Object?>([T? result]) {
@@ -23,5 +24,15 @@ extension RouteExtensions on BuildContext {
       ),
       result: result,
     );
+  }
+}
+
+extension GoRouterLocation on GoRouter {
+  String get location {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
   }
 }

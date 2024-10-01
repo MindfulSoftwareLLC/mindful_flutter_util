@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AnimatedSaveTextField extends StatefulWidget {
   final TextEditingController controller;
   final String label;
+  final String? prefix;
   final String fieldName;
   final int? maxLines;
   final FormFieldValidator<String>? validator;
@@ -16,6 +17,7 @@ class AnimatedSaveTextField extends StatefulWidget {
     required this.fieldName,
     this.maxLines,
     this.validator,
+    this.prefix,
     required this.onSave,
     required this.isSavingField,
   }) : super(key: key);

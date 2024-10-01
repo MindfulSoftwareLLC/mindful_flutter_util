@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../mindful_flutter_util.dart';
 
-class TextInput extends StatelessWidget {
-  const TextInput({
+class MFTextInput extends StatelessWidget {
+  const MFTextInput({
     super.key,
     required String value,
     required this.label,
