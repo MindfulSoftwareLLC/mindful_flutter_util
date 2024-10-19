@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:pluto_grid/pluto_grid.dart';
+import 'package:pluto_grid_plus/pluto_grid_plus.dart';
 
 /// A functon that builds Pluto Rows
 typedef RowsBuilder<T> = List<PlutoRow> Function(List<T> data);
